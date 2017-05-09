@@ -22,16 +22,7 @@ public class main implements Serializable {
     //Таймер
     //Сохранение статистики
 
-    public static ArrayList setList() {
-        ArrayList<String> list = new ArrayList<>();
 
-        list.add("1+1=?");
-        list.add("1*2=?");
-        list.add("3/1=?");
-        list.add("4-1=?");
-
-        return list;
-    }
 
     public static void main(String[] args) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -44,7 +35,7 @@ public class main implements Serializable {
         SimpleDateFormat ldateFormat = new SimpleDateFormat("mm:ss.SSS");
 
         //Выводим список вопросы по очереди
-        ArrayList<String> list = setList();
+        ArrayList<String> list = exList.setList();
 
         int answ = -1, x, y, z;
         char[] vals;
