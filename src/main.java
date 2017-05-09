@@ -97,7 +97,21 @@ public class main implements Serializable {
         }
 
         if (waiter.equals("n") || waiter.equals("no")) {
-            System.out.println("The end");
+            System.out.println("What you want?");
+            waiter = reader.readLine();
+            if (waiter.equals("generate")) {
+                exList.saveList();
+            }
+            if (waiter.equals("read")) {
+                list = exList.readList();
+
+                for (String str: list ) {
+
+                    System.out.println(str);
+
+                }
+            }
+
         }
 
     }

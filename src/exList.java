@@ -1,10 +1,11 @@
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
  * Created by User on 09.05.2017.
  */
 public class exList implements Serializable {
+
     public static ArrayList setList() {
         ArrayList<String> list = new ArrayList<>();
 
@@ -14,6 +15,35 @@ public class exList implements Serializable {
         list.add("4-1=?");
 
         return list;
+    }
+
+
+    public static ArrayList saveList() throws Exception {
+        ArrayList<String> list = new ArrayList<>();
+
+        list.add("1+1=?");
+        list.add("1*2=?");
+        list.add("3/1=?");
+        list.add("4-1=?");
+
+        FileOutputStream fileOutputStream = new FileOutputStream("01.dat");
+        ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
+        outputStream.writeObject(list);
+        fileOutputStream.close();
+        outputStream.close();
+        return null;
+    }
+
+    public static ArrayList readList() throws Exception {
+        ArrayList<String> list = new ArrayList<>();
+
+        FileInputStream fileInputStream = new FileInputStream("01.dat");
+        ObjectInputStream inputStream = new ObjectInputStream(fileInputStream);
+        Object object = inputStream.readObject();
+        inputStream.close();
+        fileInputStream.close();
+
+        return (ArrayList) object;
     }
 
     public static void main (String[] args) {
