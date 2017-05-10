@@ -29,18 +29,33 @@ public class exList implements Serializable {
         for (int j = 0; j <= i ; j++) {
             f = r.nextInt(10);
             s = r.nextInt(10);
-            dr = r.nextInt(12);
-            if ((dr >= 0) && (dr < 3 )) {
+            dr = r.nextInt(4);
+            if (dr == 1) {
                 d = '*';
             }
-            if ((dr >= 3) && (dr < 6)) {
+            else if (dr == 2) {
                 d = '/';
             }
-            if ((dr >= 6) && (dr < 10)) {
+            else if (dr == 3) {
                 d = '+';
             }
             else  {
                 d = '-';
+            }
+
+            if (s > f) {
+                int t = s;
+                s = f;
+                f = t;
+            }
+
+            if (d == '/') {
+                if (f == 0) {
+                    f++;
+                }
+                if (s == 0) {
+                    s++;
+                }
             }
 
             String o = f + Character.toString(d) + s + "=?";
@@ -79,5 +94,6 @@ public class exList implements Serializable {
     }
 
     public static void main (String[] args) {
+        genList(10);
     }
 }

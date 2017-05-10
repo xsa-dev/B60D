@@ -66,6 +66,7 @@ public class main implements Serializable {
                 if (o == '*') {
                     z = x * y;
                 }
+                //todo обарабывать ArithmeticException или исключить такую вероятность
                 if (o == '/') {
                     z = x / y;
                 }
