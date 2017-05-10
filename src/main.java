@@ -23,7 +23,6 @@ public class main implements Serializable {
     //Сохранение статистики
 
 
-
     public static void main(String[] args) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -35,9 +34,10 @@ public class main implements Serializable {
         SimpleDateFormat ldateFormat = new SimpleDateFormat("mm:ss.SSS");
 
         //Выводим список вопросы по очереди
-        ArrayList<String> list = exList.setList();
+        ArrayList<String> list = exList.genList(5);
 
-        int answ = -1, x, y, z;
+        //Статистика
+        int answ = -1, x, y, z, e = 0;
         char[] vals;
         char o;
 
@@ -79,6 +79,7 @@ public class main implements Serializable {
                 }
                 if (answ != z) {
                     System.out.println("bad... one more time..");
+                    e++;
                     i = i - 1;
                 }
             }
@@ -93,6 +94,7 @@ public class main implements Serializable {
             System.out.println("Start at: " + dateFormat.format(sdate.getTime()));
             System.out.println("End at: " + dateFormat.format(edate));
             System.out.println("Test time: " + ldateFormat.format(ldate));
+            System.out.println("Err count: " + e);
             System.out.println("=====----------------=====");
         }
 
@@ -105,10 +107,9 @@ public class main implements Serializable {
             if (waiter.equals("read")) {
                 list = exList.readList();
 
-                for (String str: list ) {
+                for (String str : list) {
 
                     System.out.println(str);
-
                 }
             }
 

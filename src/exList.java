@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by User on 09.05.2017.
@@ -14,6 +15,36 @@ public class exList implements Serializable {
         list.add("3/1=?");
         list.add("4-1=?");
 
+        return list;
+    }
+
+
+    public static ArrayList genList(int i) {
+        ArrayList<String> list = new ArrayList<>();
+        Random r = new Random();
+        int f,s,dr;
+        char d = 'x';
+
+        for (int j = 0; j <= i ; j++) {
+            f = r.nextInt(10);
+            s = r.nextInt(10);
+            dr = r.nextInt(12);
+            if ((dr >= 0) && (dr < 3 )) {
+                d = '*';
+            }
+            if ((dr >= 3) && (dr < 6)) {
+                d = '/';
+            }
+            if ((dr >= 6) && (dr < 10)) {
+                d = '+';
+            }
+            else  {
+                d = '-';
+            }
+
+            String o = f + Character.toString(d) + s + "=?";
+            list.add(o);
+        }
         return list;
     }
 
