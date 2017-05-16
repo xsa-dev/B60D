@@ -92,7 +92,7 @@ public class exList implements Serializable {
 
         return (ArrayList) object;
     }
-
+/////////
     public static void main (String[] args) {
         genList(10);
     }
