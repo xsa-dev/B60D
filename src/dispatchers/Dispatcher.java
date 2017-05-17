@@ -4,7 +4,6 @@ import models.ConsoleHelper;
 import utils.ListUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,11 +11,8 @@ import java.util.List;
  * Created by Administrator1 on 17.05.2017.
  */
 public class Dispatcher {
+    private static List<String> list = ListUtils.genList(16);
     public static void main(String[] args) throws Exception {
-
-        //Выводим список вопросы по очереди
-        ArrayList<String> list = ListUtils.genList(16);
-
         //Are you ready?
         System.out.println("Are you ready? (y/n)");
         String waiter = ConsoleHelper.readWords();
@@ -24,26 +20,8 @@ public class Dispatcher {
         if (waiter.equals("y") || waiter.equals("yes")) {
             runGame(list);
         } else {
-            System.out.println("What you want?");
-            waiter = ConsoleHelper.readWords();
-            if (waiter.equals("generate")) {
-                ListUtils.saveList();
-            }
-            if (waiter.equals("read")) {
-                list = ListUtils.readList();
+            ifExit(waiter);
 
-                for (String str : list) {
-
-                    System.out.println(str);
-                }
-            }
-            if (waiter.equals("stat")) {
-                System.out.println("What you want do?[last, best, top]");
-                if (waiter.equals("read")) {
-                    System.out.println("This is stat");
-                }
-
-            }
         }
     }
 
@@ -101,6 +79,29 @@ public class Dispatcher {
         edate = new Date().getTime();
         ldate = edate - sdate.getTime();
         ConsoleHelper.printWin(sdate, edate, ldate, e);
+    }
+
+    private static  void ifExit(String waiter) throws Exception {
+        System.out.println("What you want?");
+        waiter = ConsoleHelper.readWords();
+        if (waiter.equals("generate")) {
+            ListUtils.saveList();
+        }
+        if (waiter.equals("read")) {
+            list = ListUtils.readList();
+
+            for (String str : list) {
+
+                System.out.println(str);
+            }
+        }
+        if (waiter.equals("stat")) {
+            System.out.println("What you want do?[last, best, top]");
+            if (waiter.equals("read")) {
+                System.out.println("This is stat");
+            }
+
+        }
     }
 }
 
