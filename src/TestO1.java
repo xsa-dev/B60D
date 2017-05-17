@@ -8,8 +8,8 @@ public class TestO1 {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 //        DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
         Connection connection = DriverManager.getConnection("jdbc:sqlserver://mysql.alex-savin.myjino.ru:3306","риои", "июри");
-    }//81.177.140.251
-}//83.220.237.129//
+    }//
+}//
 /*
 Provider / driver: mysql
 Host:
