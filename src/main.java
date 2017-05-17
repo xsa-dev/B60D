@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.Serializable;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,7 +14,7 @@ import java.util.Date;
  */
 
 public class main implements Serializable {
-    //Список заданий Map с ключом и строкой
+    //Список заданий^
     //Вывод на экран задания
     //Проверка решения
     //Таймер
@@ -34,7 +32,7 @@ public class main implements Serializable {
         SimpleDateFormat ldateFormat = new SimpleDateFormat("mm:ss.SSS");
 
         //Выводим список вопросы по очереди
-        ArrayList<String> list = exList.genList(5);
+        ArrayList<String> list = exList.genList(16);
 
         //Статистика
         int answ = -1, x, y, z, e = 0;
@@ -66,7 +64,6 @@ public class main implements Serializable {
                 if (o == '*') {
                     z = x * y;
                 }
-                //todo обарабывать ArithmeticException или исключить такую вероятность
                 if (o == '/') {
                     z = x / y;
                 }
@@ -113,9 +110,15 @@ public class main implements Serializable {
                     System.out.println(str);
                 }
             }
+            if (waiter.equals("stat")) {
+                System.out.println("What you want do?[last, best, top]");
+                if (waiter.equals("read")) {
+                    System.out.println("This is stat");
+                }
+
+            }
 
         }
-
     }
 }
 

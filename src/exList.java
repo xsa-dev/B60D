@@ -25,10 +25,9 @@ public class exList implements Serializable {
         int f,s,dr;
         char d = 'x';
 
-        //todo очень не красивы выбирается знак, это должно радовать глаз
         for (int j = 0; j <= i ; j++) {
-            f = r.nextInt(10);
-            s = r.nextInt(10);
+            f = r.nextInt(9);
+            s = r.nextInt(9);
             dr = r.nextInt(4);
             if (dr == 1) {
                 d = '*';
