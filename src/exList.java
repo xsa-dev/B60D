@@ -29,6 +29,7 @@ public class exList implements Serializable {
             f = r.nextInt(9);
             s = r.nextInt(9);
             dr = r.nextInt(4);
+            ///////
             if (dr == 1) {
                 d = '*';
             }
