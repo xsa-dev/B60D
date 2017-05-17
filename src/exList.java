@@ -30,17 +30,11 @@ public class exList implements Serializable {
             s = r.nextInt(9);
             dr = r.nextInt(4);
             ///////
-            if (dr == 1) {
-                d = '*';
-            }
-            else if (dr == 2) {
-                d = '/';
-            }
-            else if (dr == 3) {
-                d = '+';
-            }
-            else  {
-                d = '-';
+            switch (dr){
+                case 1: d = '*'; break;
+                case 2: d = '/'; break;
+                case 3: d = '+'; break;
+                default: d = '-';
             }
 
             if (s > f) {
