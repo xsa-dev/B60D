@@ -1,30 +1,20 @@
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+package users;
 
 /**
- * Created by xsd on 12.05.2017 with love.
- * :)
- *
- * @author xsd
- * @author alekseysavin.com
- * @version 0.1
+ * Created by Administrator1 on 17.05.2017.
  */
-public class stat {
+public class User {
 
     public static String todaytd, starttd, endtd;
     public static int e;
 
-    public stat(String tdd, String std, String etd, int e) {
+    public User(String tdd, String std, String etd, int e) {
         tdd = todaytd;
         std = starttd;
         etd = endtd;
         this.e = e;
 
     }
-
-
-
 
 //    public stat saveStat(String key) throws Exception {
 //        FileOutputStream fileOutputStream = new FileOutputStream("stat" + key + ".dat");
@@ -34,5 +24,4 @@ public class stat {
 //        outputStream.close();
 //        return;
 //    }
-
 }

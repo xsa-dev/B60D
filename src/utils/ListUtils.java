@@ -1,12 +1,13 @@
+package utils;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Created by User on 09.05.2017.
+ * Created by Administrator1 on 17.05.2017.
  */
-public class exList implements Serializable {
-
+public class ListUtils implements Serializable{
     public static ArrayList setList() {
         ArrayList<String> list = new ArrayList<>();
 
@@ -86,7 +87,7 @@ public class exList implements Serializable {
 
         return (ArrayList) object;
     }///////////////
-/////////
+    /////////
     public static void main (String[] args) {
         genList(10);
     }

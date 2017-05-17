@@ -1,38 +1,22 @@
-import java.io.*;
-import java.text.SimpleDateFormat;
+package dispatchers;
+
+import models.ConsoleHelper;
+import utils.ListUtils;
 import java.util.ArrayList;
 import java.util.Date;
 
-
 /**
- * Created by xsd on 27.04.2017 with love.
- * :)
- *
- * @author xsd
- * @author alekseysavin.com
- * @version 0.1
+ * Created by Administrator1 on 17.05.2017.
  */
-
-public class main implements Serializable {
-    //Список заданий^
-    //Вывод на экран задания
-    //Проверка решения
-    //Таймер
-    //Сохранение статистики
-
-
+public class Dispatcher {
     public static void main(String[] args) throws Exception {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
         //Timer
         Date sdate;  //start timer val
         long edate;  //end timer val
         long ldate;  //end and start diff
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        SimpleDateFormat ldateFormat = new SimpleDateFormat("mm:ss.SSS");
 
         //Выводим список вопросы по очереди
-        ArrayList<String> list = exList.genList(16);
+        ArrayList<String> list = ListUtils.genList(16);
 
         //Статистика
         int answ = -1, x, y, z, e = 0;
@@ -41,7 +25,7 @@ public class main implements Serializable {
 
         //Are you ready?
         System.out.println("Are you ready? (y/n)");
-        String waiter = reader.readLine();
+        String waiter = ConsoleHelper.readWords();
 
         if (waiter.equals("y") || waiter.equals("yes")) {
 
@@ -66,7 +50,7 @@ public class main implements Serializable {
                 }
 
                 System.out.println(list.get(i));
-                answ = Integer.parseInt(reader.readLine());
+                answ = Integer.parseInt( ConsoleHelper.readWords());
                 if (answ == z) {
                     System.out.println("ok, answer is: " + z + " next...");
                 }
@@ -82,23 +66,18 @@ public class main implements Serializable {
             }
             edate = new Date().getTime();
             ldate = edate - sdate.getTime();
+            ConsoleHelper.printWin(sdate, edate, ldate, e);
 
-            System.out.println("=====-----FINISH-----=====");
-            System.out.println("Start at: " + dateFormat.format(sdate.getTime()));
-            System.out.println("End at: " + dateFormat.format(edate));
-            System.out.println("Test time: " + ldateFormat.format(ldate));
-            System.out.println("Err count: " + e);
-            System.out.println("=====----------------=====");
         }
 
         if (waiter.equals("n") || waiter.equals("no")) {
             System.out.println("What you want?");
-            waiter = reader.readLine();
+            waiter = ConsoleHelper.readWords();
             if (waiter.equals("generate")) {
-                exList.saveList();
+                ListUtils.saveList();
             }
             if (waiter.equals("read")) {
-                list = exList.readList();
+                list = ListUtils.readList();
 
                 for (String str : list) {
 
