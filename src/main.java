@@ -58,18 +58,13 @@ public class main implements Serializable {
                 o = vals[1];
                 z = x * y - x - y;
 
-                if (o == '+') {
-                    z = x + y;
+                switch (o){
+                    case '+': z = x + y; break;
+                    case '*': z = x * y; break;
+                    case '/': z = x / y; break;
+                    case '-': z = x - y; break;
                 }
-                if (o == '*') {
-                    z = x * y;
-                }
-                if (o == '/') {
-                    z = x / y;
-                }
-                if (o == '-') {
-                    z = x - y;
-                }
+
                 System.out.println(list.get(i));
                 answ = Integer.parseInt(reader.readLine());
                 if (answ == z) {
