@@ -9,7 +9,7 @@ public class TestO1 {
 //        DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
         Connection connection = DriverManager.getConnection("jdbc:sqlserver://mysql.alex-savin.myjino.ru:3306","046470945_RutaK", "2017!RutaK");
     }//81.177.140.251
-}//83.220.237.129
+}//83.220.237.129//
 /*
 Provider / driver: mysql
 Host:
