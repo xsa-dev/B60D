@@ -90,8 +90,8 @@ public class exList implements Serializable {
         fileInputStream.close();
 
         return (ArrayList) object;
-    }
-
+    }///////////////
+/////////
     public static void main (String[] args) {
         genList(10);
     }
