@@ -11,10 +11,5 @@ public class TestO1 {
     }//
 }//
 /*
-Provider / driver: mysql
-Host:
-mysql.alex-savin.myjino.ru
-Db: alex-savin_trutak
-Login: 046470945_RutaK
-Pass: 2017!RutaK
+
 */
