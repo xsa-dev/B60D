@@ -1,13 +1,30 @@
+import model.ConsoleHelper;
+import model.examles.TextExampl;
+import model.example_generators.TextExamplesGenerator;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
+import java.util.List;
 
 /**
  * Created by Administrator1 on 17.05.2017.
  */
 public class TestO1 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
+        TextExamplesGenerator generator = new TextExamplesGenerator("D:\\tests2\\B60D\\src\\ExamplesTest");
+        List<TextExampl> list = generator.getReadingExamples();
+        for (TextExampl textExampl : list) {
+            System.out.println(textExampl + " \n\n");
+        }
+        for (TextExampl textExampl : list) {
+            System.out.println(textExampl.testAnswer(ConsoleHelper.readWords()));
+        }
+    }
+    public static void main1(String[] args) throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://mysql.alex-savin.myjino.ru:3306/alex-savin_trutak",
+                "jdbc:mysql://mysql.alex-savin.myjino.ru:3306/alex-savin_trutak", "",""
         );
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM users1");

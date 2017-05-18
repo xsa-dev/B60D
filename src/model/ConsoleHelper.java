@@ -1,4 +1,4 @@
-package models;
+package model;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +25,6 @@ public class ConsoleHelper {
     }
 
     public static String readWords() throws IOException {
-
         return reader.readLine();
     }
 }
