@@ -19,7 +19,6 @@ public class IntExamlesGenerator implements Serializable{
         return list;
     }
 
-
     public static ArrayList genList(int i) {
         ArrayList<String> list = new ArrayList<>();
         Random r = new Random();
