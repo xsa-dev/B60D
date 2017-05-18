@@ -1,18 +1,17 @@
 package dispatchers;
 
 import models.ConsoleHelper;
-import utils.ListUtils;
+import utils.IntExamlesGenerator;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-import java.sql.*;
 
 /**
  * Created by Administrator1 on 17.05.2017.
  */
 public class Dispatcher {
-    private static List<String> list = ListUtils.genList(16);
+    private static List<String> list = IntExamlesGenerator.genList(16);
     public static void main(String[] args) throws Exception {
         //Are you ready?
         System.out.println("Are you ready? (y/n)");
@@ -86,10 +85,10 @@ public class Dispatcher {
         System.out.println("What you want?");
         waiter = ConsoleHelper.readWords();
         if (waiter.equals("generate")) {
-            ListUtils.saveList();
+            IntExamlesGenerator.saveList();
         }
         if (waiter.equals("read")) {
-            list = ListUtils.readList();
+            list = IntExamlesGenerator.readList();
 
             for (String str : list) {
 

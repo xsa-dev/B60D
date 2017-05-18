@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * Created by Administrator1 on 17.05.2017.
  */
-public class ListUtils implements Serializable{
+public class IntExamlesGenerator implements Serializable{
     public static ArrayList setList() {
         ArrayList<String> list = new ArrayList<>();
 
