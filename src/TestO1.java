@@ -7,14 +7,7 @@ public class TestO1 {
     public static void main(String[] args) throws Exception {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 //        DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-        Connection connection = DriverManager.getConnection("jdbc:sqlserver://mysql.alex-savin.myjino.ru:3306;DatabaseName=alex-savin_trutak","046470945_RutaK", "2017!RutaK");
-    }//81.177.140.251
-}//83.220.237.129
+        Connection connection = DriverManager.getConnection("","","");
+    }/
+}/
 /*
-Provider / driver: mysql
-Host:
-mysql.alex-savin.myjino.ru
-Db: alex-savin_trutak
-Login: 046470945_RutaK
-Pass: 2017!RutaK
-*/
