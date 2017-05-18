@@ -24,7 +24,17 @@ public class ConsoleHelper {
         System.out.println("=====----------------=====");
     }
 
-    public static String readWords() throws IOException {
-        return reader.readLine();
+    public static String readWords(){
+        try {
+            return reader.readLine();
+        } catch (IOException e) { e.printStackTrace();}
+        return null;
+    }
+
+    public static void writeMessage(String string){
+        System.out.println(string);
+    }
+    public static Integer readInt() {
+        return Integer.parseInt(readWords());
     }
 }

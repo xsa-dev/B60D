@@ -1,4 +1,4 @@
-package dispatchers;
+package model.workers;
 
 import model.ConsoleHelper;
 import model.examles.TextExampl;
@@ -12,8 +12,8 @@ import java.util.List;
 /**
  * Created by Administrator1 on 18.05.2017.
  */
-public class WorkerWithTextExamples {
-    public static void main(String[] args) throws IOException {
+public class WorkerWithTextExamples implements ExamplesWorkeble{
+    public void launching() throws Exception {
         //эта срока находит этот файл на любой машине
 String str = new File(".").getAbsolutePath().toString().
         replaceAll("\\.$", "src/ExamplesTest").
