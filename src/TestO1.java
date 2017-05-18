@@ -7,7 +7,7 @@ public class TestO1 {
     public static void main(String[] args) throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://mysql.alex-savin.myjino.ru:3306/alex-savin_trutak","", ""
+                "jdbc:mysql://mysql.alex-savin.myjino.ru:3306/alex-savin_trutak",
         );
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM users1");
