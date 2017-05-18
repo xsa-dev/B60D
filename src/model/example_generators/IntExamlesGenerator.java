@@ -1,4 +1,4 @@
-package utils;
+package model.example_generators;
 
 import java.io.*;
 import java.util.ArrayList;

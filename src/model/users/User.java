@@ -1,4 +1,4 @@
-package users;
+package model.users;
 
 /**
  * Created by Administrator1 on 17.05.2017.

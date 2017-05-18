@@ -1,7 +1,7 @@
 package dispatchers;
 
-import models.ConsoleHelper;
-import utils.IntExamlesGenerator;
+import model.ConsoleHelper;
+import model.example_generators.IntExamlesGenerator;
 
 import java.io.IOException;
 import java.util.Date;
