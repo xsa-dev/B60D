@@ -22,10 +22,13 @@ public class TextExamplesGenerator {
         this.path = path;
     }
 
-    public List getReadingExamples() throws IOException {
+    public List getReadingExamples() {
         List<TextExampl> result = new ArrayList<>();
 
-        String  allText = new String(Files.readAllBytes(Paths.get(path)), "UTF-8");
+        String  allText = null;
+        try {
+            allText = new String(Files.readAllBytes(Paths.get(path)), "UTF-8");
+        } catch (IOException e) { e.printStackTrace();}
         allText = allText.replaceAll("[\\n\\r]", "");
         String[] examples = allText.toString().split("-{5,15}");
 
