@@ -43,9 +43,9 @@ public class ConectorToBd {
                 if (
                         resultSet.getString("login").equals(login) &
                                 password.equals(resultSet.getString("password"))
-                        ) {
+                        ) {//
                     return true;
-                }//
+                }
             }
             statement.close();
             connection.close();
