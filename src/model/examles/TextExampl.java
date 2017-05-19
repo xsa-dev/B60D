@@ -11,7 +11,7 @@ public class TextExampl {
         this.question = question;
         this.answer = ansver;
     }
-//
+////
     public boolean testAnswer(String answer){
         return this.answer.equalsIgnoreCase(answer);
     }
