@@ -38,10 +38,10 @@ public class ConectorToBd {
         try {
             Connection connection = createConection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT ID, PASSWORD FROM users1");
+            ResultSet resultSet = statement.executeQuery("SELECT LOGIN, PASSWORD FROM users1");
             while (resultSet.next()) {
                 if (
-                        resultSet.getString("id").equals(login) &
+                        resultSet.getString("login").equals(login) &
                                 password.equals(resultSet.getString("password"))
                         ) {
                     return true;
@@ -54,21 +54,20 @@ public class ConectorToBd {
     }
 
 
-    public boolean signUP(int login1, String password1) {
+    public boolean signUP(String login1, String password1) {
         try {
             Connection connection = createConection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT ID FROM users1");
+            ResultSet resultSet = statement.executeQuery("SELECT LOGIN FROM users1");
             while (resultSet.next()) {
-                if ( resultSet.getInt("id") == login1) {
+                if (login1.equals(resultSet.getString("login"))) {
                     return false;
                 }
             }
+            login1 = "\'" + login1 +  "\'";
 
-        statement.execute(
-                "INSERT INTO users1( id, password) VALUES ( " + login1 + ", " + password1 + ");");
-//            statement.executeUpdate(
-//                "Update users1 SET id = this.login;");
+        statement.executeUpdate(
+                "INSERT INTO users1 ( login, password) VALUES ( " + login1 + ", " + password1 + ");");
 
         statement.close();
         connection.close();
