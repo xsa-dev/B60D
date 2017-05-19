@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Administrator1 on 17.05.2017.
  */
-public class TestO1 {//
+public class TestO1 {
 
     public static void main(String[] args) {
         ConectorToBd  conectorToBd = new ConectorToBd();
