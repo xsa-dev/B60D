@@ -13,17 +13,6 @@ import java.util.List;
 public class IntExamplesWorker implements ExamplesWorkeble{
     private static List<String> list = IntExamlesGenerator.genList(16);
 
-    public static void main(String[] args) throws Exception {
-        System.out.println("Are you ready? (y/n)");
-        String waiter = ConsoleHelper.readWords();
-
-        if (waiter.equals("y") || waiter.equals("yes")) {
-            runGame(list);
-        } else {
-            ifExit(waiter);
-
-        }
-    }
 
     public void launching() throws Exception {
         System.out.println("Are you ready? (y/n)");
@@ -110,10 +99,21 @@ public class IntExamplesWorker implements ExamplesWorkeble{
         if (waiter.equals("stat")) {
             System.out.println("What you want do?[last, best, top]");
             if (waiter.equals("read")) {
-                System.out.println("This is stat");
+                ConsoleHelper.writeMessage("This is stat");
             }
 
         }
     }
 }
 
+//    public static void main(String[] args) throws Exception {
+//        System.out.println("Are you ready? (y/n)");
+//        String waiter = ConsoleHelper.readWords();
+//
+//        if (waiter.equals("y") || waiter.equals("yes")) {
+//            runGame(list);
+//        } else {
+//            ifExit(waiter);
+//
+//        }
+//    }
