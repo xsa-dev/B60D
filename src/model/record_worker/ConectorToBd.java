@@ -89,8 +89,4 @@ public class ConectorToBd {
         }
         return null;
     }
-
-    public String getLogin() {
-        return login;
-    }
 }
