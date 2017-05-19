@@ -13,7 +13,9 @@ import java.util.Properties;
 public class ConectorToBd {
     private String login;
     private String password;
-    Properties dataForConectToDB;
+    private Properties dataForConectToDB;
+    private Connection connection;
+
 
     public ConectorToBd() {
         try {
@@ -28,15 +30,18 @@ public class ConectorToBd {
         }
         try {
             Class.forName("com.mysql.jdbc.Driver");
-
-        } catch ( ClassNotFoundException e) {
+            connection = DriverManager.getConnection(
+                    "jdbc:mysql://mysql.alex-savin.myjino.ru:3306/alex-savin_trutak",
+                    dataForConectToDB.getProperty("login"),
+                    dataForConectToDB.getProperty("password")
+            );
+        } catch ( ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
     public boolean logIn(String login, String password) {
         try {
-            Connection connection = createConection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT LOGIN, PASSWORD FROM users1");
             while (resultSet.next()) {
@@ -48,7 +53,6 @@ public class ConectorToBd {
                 }
             }
             statement.close();
-            connection.close();
         } catch (SQLException e) {e.printStackTrace();}
         return false;
     }
@@ -56,7 +60,6 @@ public class ConectorToBd {
 
     public boolean signUP(String login1, String password1) {
         try {
-            Connection connection = createConection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT LOGIN FROM users1");
             while (resultSet.next()) {
@@ -70,23 +73,17 @@ public class ConectorToBd {
                 "INSERT INTO users1 ( login, password) VALUES ( " + login1 + ", " + password1 + ");");
 
         statement.close();
-        connection.close();
         } catch (SQLException e) {e.printStackTrace();}
 
 
         return true;
     }
 
-    private Connection createConection(){
+    public void closeConection(){
         try {
-            return DriverManager.getConnection(
-                    "jdbc:mysql://mysql.alex-savin.myjino.ru:3306/alex-savin_trutak",
-                    dataForConectToDB.getProperty("login"),
-                    dataForConectToDB.getProperty("password")
-            );
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
     }
 }
