@@ -1,6 +1,7 @@
 import model.ConsoleHelper;
 import model.examles.TextExampl;
 import model.example_generators.TextExamplesGenerator;
+import model.record_worker.ConectorToBd;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,7 +12,16 @@ import java.util.List;
  * Created by Administrator1 on 17.05.2017.
  */
 public class TestO1 {
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args) {
+        ConectorToBd  conectorToBd = new ConectorToBd();
+        System.out.println(conectorToBd.signUP("dir3","1234"));
+        System.out.println(conectorToBd.logIn("dir3", "1234"));
+
+    }//
+
+
+    public static void main2(String[] args) throws IOException {
         TextExamplesGenerator generator = new TextExamplesGenerator("D:\\tests2\\B60D\\src\\ExamplesTest");
         List<TextExampl> list = generator.getReadingExamples();
         for (TextExampl textExampl : list) {
