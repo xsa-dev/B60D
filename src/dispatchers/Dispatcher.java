@@ -21,15 +21,12 @@ public class Dispatcher {
 
         int resutLaunc = examplesWorkeble.launching();
 
-        ConsoleHelper.writeMessage("write result press yes");
+        ConsoleHelper.writeMessage("write result to DB press yes");
         if ("yes".equals(ConsoleHelper.readString())) {
             ConectorToBd conectorWriteRecord = new ConectorToBd();
-            ConsoleHelper.writeMessage("signIn or  signUp press 1");
-            if ((ConsoleHelper.readInt()) == 1) {
                 conectorWriteRecord.entranceManager();
                 conectorWriteRecord.writeRecords(resutLaunc);
                 ConsoleHelper.writeMessage("records suchesfull writing");
-            }
             conectorWriteRecord.closeConection();
         }
     }
