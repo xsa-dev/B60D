@@ -16,7 +16,7 @@ import java.util.*;
  * в  них есть вопрос и ответ разделенные "************"
  */
 public class TextExamplesGenerator {
-    private String path;
+    private String path;//
 
     public TextExamplesGenerator(String path) throws FileNotFoundException {
         this.path = path;
