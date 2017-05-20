@@ -21,7 +21,7 @@ public class ConsoleHelper {
         System.out.println("End at: " + dateFormat.format(edate));
         System.out.println("Test time: " + ldateFormat.format(ldate));
         System.out.println("Err count: " + e);
-        System.out.println("=====----------------=====");
+        System.out.println("=====----------------=====");//
     }
 
     public static String readString(){
