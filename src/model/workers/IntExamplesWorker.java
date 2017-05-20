@@ -10,26 +10,23 @@ import java.util.List;
 /**
  * Created by Administrator1 on 17.05.2017.
  */
-public class IntExamplesWorker implements ExamplesWorkeble{
+public class IntExamplesWorker implements ExamplesWorkeble {
     private static List<String> list = IntExamlesGenerator.genList(16);
 
 
-    public void launching() throws Exception {
+    public int launching() throws Exception {
         System.out.println("Are you ready? (y/n)");
         String waiter = ConsoleHelper.readWords();
-
+        int result = 0;
         if (waiter.equals("y") || waiter.equals("yes")) {
-            runGame(list);
+            result = runGame(list);
         } else {
             ifExit(waiter);
-
         }
+        return result;
     }
 
-    private static void runGame(List<String> list) throws IOException {
-        Date sdate;  //start timer val
-        long edate;  //end timer val
-        long ldate;  //end and start diff
+    private int runGame(List<String> list) throws IOException {
         //Статистика
         int answ = -1, x, y, z, e = 0;
         char[] vals;
@@ -37,7 +34,8 @@ public class IntExamplesWorker implements ExamplesWorkeble{
 
         System.out.println("Time Start!");
 
-        sdate = new Date();
+        Date startDate = new Date();
+        int points = 0;
         //для каждого значения в списке выполнить метода anw
         for (int i = 0; i < list.size(); i++) {
 
@@ -67,6 +65,7 @@ public class IntExamplesWorker implements ExamplesWorkeble{
             answ = Integer.parseInt(ConsoleHelper.readWords());
             if (answ == z) {
                 System.out.println("ok, answer is: " + z + " next...");
+                points++;
             }
             if (answ != z) {
                 System.out.println("bad... one more time..");
@@ -77,9 +76,10 @@ public class IntExamplesWorker implements ExamplesWorkeble{
         if (answ == -1) {
             System.out.println("e");
         }
-        edate = new Date().getTime();
-        ldate = edate - sdate.getTime();
-        ConsoleHelper.printWin(sdate, edate, ldate, e);
+
+        Date endDate = new Date();
+        ConsoleHelper.printWin(startDate, endDate.getTime(), endDate.getTime() - startDate.getTime(), e);
+        return considersPoints(points, startDate, endDate);
     }
 
     private static void ifExit(String waiter) throws Exception {
@@ -104,16 +104,9 @@ public class IntExamplesWorker implements ExamplesWorkeble{
 
         }
     }
-}
 
-//    public static void main(String[] args) throws Exception {
-//        System.out.println("Are you ready? (y/n)");
-//        String waiter = ConsoleHelper.readWords();
-//
-//        if (waiter.equals("y") || waiter.equals("yes")) {
-//            runGame(list);
-//        } else {
-//            ifExit(waiter);
-//
-//        }
-//    }
+    private int considersPoints(int points, Date startDate, Date endDate ){
+        long differentsDates = endDate.getTime() - startDate.getTime();
+        return (int) ((double)(points) / (differentsDates / 1000) * 100);
+    }
+}

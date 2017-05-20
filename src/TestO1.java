@@ -2,10 +2,11 @@ import model.ConsoleHelper;
 import model.examles.TextExampl;
 import model.example_generators.TextExamplesGenerator;
 import model.record_worker.ConectorToBd;
+import model.workers.WorkerWithTextExamples;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,11 +14,18 @@ import java.util.List;
  */
 public class TestO1 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        WorkerWithTextExamples workerWithTextExamples = new WorkerWithTextExamples();
+        Date startDate = new Date();
+        Thread.sleep(15000);
+        System.out.println(workerWithTextExamples.considersPoints(6, startDate, new Date()));
+    }
+    public static void main3(String[] args) {
         ConectorToBd  conectorToBd = new ConectorToBd();
-        System.out.println(conectorToBd.signUP("dir3","1234"));
+        System.out.println(conectorToBd.signUp("dir3","1234"));
         System.out.println(conectorToBd.logIn("dir3", "1234"));
-
+        conectorToBd.writeRecords(1024);
+        conectorToBd.closeConection();
     }//
 
 
