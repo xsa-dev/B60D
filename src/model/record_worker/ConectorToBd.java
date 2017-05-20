@@ -121,7 +121,7 @@ public class ConectorToBd {
                 ConsoleHelper.writeMessage("try again ?? yes or EXIT");
                 if ("exit".equals(ConsoleHelper.readString())) {
                     return;
-                }
+                }//
             }
         }
 
