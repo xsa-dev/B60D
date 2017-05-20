@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class IntExamlesGenerator implements Serializable{
     public static ArrayList setList() {
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<String>();
 
         list.add("1+1=?");
         list.add("1*2=?");
@@ -20,7 +20,7 @@ public class IntExamlesGenerator implements Serializable{
     }
 
     public static ArrayList genList(int i) {
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<String>();
         Random r = new Random();
         int f,s,dr;
         char d = 'x';
@@ -60,7 +60,7 @@ public class IntExamlesGenerator implements Serializable{
 
 
     public static ArrayList saveList() throws Exception {
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<String>();
 
         list.add("1+1=?");
         list.add("1*2=?");
@@ -76,7 +76,7 @@ public class IntExamlesGenerator implements Serializable{
     }
 
     public static ArrayList readList() throws Exception {
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<String>();
 
         FileInputStream fileInputStream = new FileInputStream("01.dat");
         ObjectInputStream inputStream = new ObjectInputStream(fileInputStream);

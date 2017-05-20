@@ -23,7 +23,7 @@ public class TextExamplesGenerator {
     }
 
     public List getReadingExamples() {
-        List<TextExampl> result = new ArrayList<>();
+        List<TextExampl> result = new ArrayList<TextExampl>();
 
         String  allText = null;
         try {

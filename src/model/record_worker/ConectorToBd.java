@@ -38,7 +38,7 @@ public class ConectorToBd {
                     dataForConectToDB.getProperty("password")
             );
 
-        } catch ( ClassNotFoundException | SQLException e) {
+        } catch ( Exception e) {
             e.printStackTrace();
         }
     }
