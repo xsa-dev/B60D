@@ -34,7 +34,7 @@ public class ConsoleHelper {
     public static void writeMessage(String string){
         System.out.println(string);
     }
-    public static Integer readInt() {
+    public static int readInt() {
         return Integer.parseInt(readWords());
     }
 }

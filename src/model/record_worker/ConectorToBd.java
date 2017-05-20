@@ -1,5 +1,7 @@
 package model.record_worker;
 
+import model.ConsoleHelper;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,6 +17,7 @@ public class ConectorToBd {
     private String password;
     private Properties dataForConectToDB;
     private Connection connection;
+    private boolean conecting = false;
 
 
     public ConectorToBd() {
@@ -35,12 +38,15 @@ public class ConectorToBd {
                     dataForConectToDB.getProperty("login"),
                     dataForConectToDB.getProperty("password")
             );
+
         } catch ( ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
     public boolean logIn(String login, String password) {
+        this.login = login;
+        this.password = password;
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT LOGIN, PASSWORD FROM users1");
@@ -58,7 +64,9 @@ public class ConectorToBd {
     }
 
 
-    public boolean signUP(String login1, String password1) {
+    public boolean signUp(String login1, String password1) {
+        this.login = login1;
+        this.password = password1;
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT LOGIN FROM users1");
@@ -74,9 +82,16 @@ public class ConectorToBd {
 
         statement.close();
         } catch (SQLException e) {e.printStackTrace();}
-
-
         return true;
+    }
+
+    public void writeRecords(int points) {
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate("UPDATE USERS1 SET POINTS = " + points + " WHERE LOGIN = \'" + login + "\'");
+        } catch (SQLException e) {e.printStackTrace();}
+
     }
 
     public void closeConection(){
@@ -85,5 +100,59 @@ public class ConectorToBd {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void entranceManager(){
+        while (!conecting) {
+            ConsoleHelper.writeMessage("your conect :");
+            ConsoleHelper.writeMessage("write login");
+            String login = ConsoleHelper.readWords();
+            ConsoleHelper.writeMessage("write password");
+            String password = ConsoleHelper.readWords();
+            ConsoleHelper.writeMessage("signIn(1) or  signUp(2)");
+            switch (ConsoleHelper.readInt()) {
+                case 1:
+                    conecting = logIn(login, password);
+                    break;
+                case 2:
+                    conecting = signUp(login, password);
+                    break;
+            }
+            if (!conecting) {
+                ConsoleHelper.writeMessage("plese try again or exit(exit)");
+                if ("exit".equals(ConsoleHelper.readWords())) {
+                    return;
+                }
+            }
+        }
+
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Properties getDataForConectToDB() {
+        return dataForConectToDB;
+    }
+
+    public void setDataForConectToDB(Properties dataForConectToDB) {
+        this.dataForConectToDB = dataForConectToDB;
+    }
+
+    public boolean isConecting() {
+        return conecting;
     }
 }
