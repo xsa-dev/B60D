@@ -37,6 +37,7 @@ public class IntExamplesWorker implements ExamplesWorkeble {
         Date startDate = new Date();
         int points = 0;
         //для каждого значения в списке выполнить метода anw
+        ConsoleHelper.writeMessage("To exit press EXIT\n");
         for (int i = 0; i < list.size(); i++) {
 
             vals = (list.get(i).toCharArray());
@@ -62,7 +63,11 @@ public class IntExamplesWorker implements ExamplesWorkeble {
             }
 
             System.out.println(list.get(i));
-            answ = Integer.parseInt(ConsoleHelper.readWords());
+            String rSuserAnswer = ConsoleHelper.readWords();
+            if ("EXIT".equals(rSuserAnswer)) {
+                return considersPoints(points, startDate, new Date());
+            }
+            answ = Integer.parseInt( rSuserAnswer);
             if (answ == z) {
                 System.out.println("ok, answer is: " + z + " next...");
                 points++;

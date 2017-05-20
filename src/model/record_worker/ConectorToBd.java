@@ -119,7 +119,7 @@ public class ConectorToBd {
                     break;
             }
             if (!conecting) {
-                ConsoleHelper.writeMessage("plese try again or exit(exit)");
+                ConsoleHelper.writeMessage("try again ?? yes or EXIT");
                 if ("exit".equals(ConsoleHelper.readWords())) {
                     return;
                 }
