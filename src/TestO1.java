@@ -18,7 +18,7 @@ public class TestO1 {
         WorkerWithTextExamples workerWithTextExamples = new WorkerWithTextExamples();
         Date startDate = new Date();
         Thread.sleep(15000);
-        System.out.println(workerWithTextExamples.considersPoints(6, startDate, new Date()));
+//        System.out.println(workerWithTextExamples.considersPoints(6, startDate, new Date()));
     }
     public static void main3(String[] args) {
         ConectorToBd  conectorToBd = new ConectorToBd();
