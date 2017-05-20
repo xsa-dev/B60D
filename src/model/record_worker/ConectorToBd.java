@@ -3,7 +3,6 @@ package model.record_worker;
 import model.ConsoleHelper;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
@@ -106,9 +105,9 @@ public class ConectorToBd {
         while (!conecting) {
             ConsoleHelper.writeMessage("your conect :");
             ConsoleHelper.writeMessage("write login");
-            String login = ConsoleHelper.readWords();
+            String login = ConsoleHelper.readString();
             ConsoleHelper.writeMessage("write password");
-            String password = ConsoleHelper.readWords();
+            String password = ConsoleHelper.readString();
             ConsoleHelper.writeMessage("signIn(1) or  signUp(2)");
             switch (ConsoleHelper.readInt()) {
                 case 1:
@@ -120,7 +119,7 @@ public class ConectorToBd {
             }
             if (!conecting) {
                 ConsoleHelper.writeMessage("try again ?? yes or EXIT");
-                if ("exit".equals(ConsoleHelper.readWords())) {
+                if ("exit".equals(ConsoleHelper.readString())) {
                     return;
                 }
             }

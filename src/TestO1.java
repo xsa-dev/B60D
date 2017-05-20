@@ -36,7 +36,7 @@ public class TestO1 {
             System.out.println(textExampl + " \n\n");
         }
         for (TextExampl textExampl : list) {
-            System.out.println(textExampl.testAnswer(ConsoleHelper.readWords()));
+            System.out.println(textExampl.testAnswer(ConsoleHelper.readString()));
         }
     }
     public static void main1(String[] args) throws Exception {
