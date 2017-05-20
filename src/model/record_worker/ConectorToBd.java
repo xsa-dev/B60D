@@ -76,10 +76,10 @@ public class ConectorToBd {
             }
             login1 = "\'" + login1 +  "\'";
 
-        statement.executeUpdate(
-                "INSERT INTO users1 ( login, password) VALUES ( " + login1 + ", " + password1 + ");");
+            statement.executeUpdate(
+                    "INSERT INTO users1 ( login, password) VALUES ( " + login1 + ", " + password1 + ");");
 
-        statement.close();
+            statement.close();
         } catch (SQLException e) {e.printStackTrace();}
         return true;
     }
@@ -121,7 +121,7 @@ public class ConectorToBd {
                 ConsoleHelper.writeMessage("try again ?? yes or EXIT");
                 if ("exit".equals(ConsoleHelper.readString())) {
                     return;
-                }//
+                }
             }
         }
 

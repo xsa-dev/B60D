@@ -14,7 +14,7 @@ public class IntExamlesGenerator implements Serializable{
         list.add("1+1=?");
         list.add("1*2=?");
         list.add("3/1=?");
-        list.add("4-1=?");
+        list.add("4-1=?");//
 
         return list;
     }
