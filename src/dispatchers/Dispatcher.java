@@ -22,7 +22,7 @@ public class Dispatcher {
         int resutLaunc = examplesWorkeble.launching();
 
         ConsoleHelper.writeMessage("write result press yes");
-        if ("yes".equals(ConsoleHelper.readWords())) {
+        if ("yes".equals(ConsoleHelper.readString())) {
             ConectorToBd conectorWriteRecord = new ConectorToBd();
             ConsoleHelper.writeMessage("signIn or  signUp press 1");
             if ((ConsoleHelper.readInt()) == 1) {

@@ -10,13 +10,13 @@ import java.util.List;
 /**
  * Created by Administrator1 on 17.05.2017.
  */
-public class IntExamplesWorker implements ExamplesWorkeble {
+public class IntExamplesWorker extends AbstractExampleWorker {
     private static List<String> list = IntExamlesGenerator.genList(16);
 
 
     public int launching() throws Exception {
         System.out.println("Are you ready? (y/n)");
-        String waiter = ConsoleHelper.readWords();
+        String waiter = ConsoleHelper.readString();
         int result = 0;
         if (waiter.equals("y") || waiter.equals("yes")) {
             result = runGame(list);
@@ -63,7 +63,7 @@ public class IntExamplesWorker implements ExamplesWorkeble {
             }
 
             System.out.println(list.get(i));
-            String rSuserAnswer = ConsoleHelper.readWords();
+            String rSuserAnswer = ConsoleHelper.readString();
             if ("EXIT".equals(rSuserAnswer)) {
                 return considersPoints(points, startDate, new Date());
             }
@@ -89,7 +89,7 @@ public class IntExamplesWorker implements ExamplesWorkeble {
 
     private static void ifExit(String waiter) throws Exception {
         System.out.println("What you want?");
-        waiter = ConsoleHelper.readWords();
+        waiter = ConsoleHelper.readString();
         if (waiter.equals("generate")) {
             IntExamlesGenerator.saveList();
         }
@@ -110,8 +110,8 @@ public class IntExamplesWorker implements ExamplesWorkeble {
         }
     }
 
-    private int considersPoints(int points, Date startDate, Date endDate ){
-        long differentsDates = endDate.getTime() - startDate.getTime();
-        return (int) ((double)(points) / (differentsDates / 1000) * 100);
-    }
+//    private int considersPoints(int points, Date startDate, Date endDate ){
+//        long differentsDates = endDate.getTime() - startDate.getTime();
+//        return (int) ((double)(points) / (differentsDates / 1000) * 100);
+//    }
 }

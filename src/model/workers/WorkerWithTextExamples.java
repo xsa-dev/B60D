@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Administrator1 on 18.05.2017.
  */
-public class WorkerWithTextExamples implements ExamplesWorkeble {
+public class WorkerWithTextExamples extends AbstractExampleWorker {
     public int launching() throws Exception {
         //эта срока находит этот файл на любой машине
         String str = new File(".").getAbsolutePath().toString().
@@ -28,7 +28,7 @@ public class WorkerWithTextExamples implements ExamplesWorkeble {
             ConsoleHelper.writeMessage("Qestion: ");
             ConsoleHelper.writeMessage(textExampl.getQuestion() + "\n your answer:");
 
-            String userAncwer = ConsoleHelper.readWords();
+            String userAncwer = ConsoleHelper.readString();
             if ("EXIT".equals(userAncwer)) {
                 return considersPoints(points, startDate, new Date());
             }
@@ -41,9 +41,9 @@ public class WorkerWithTextExamples implements ExamplesWorkeble {
         Date endDate = new Date();
         return considersPoints(points, startDate, endDate);
     }
-
-    private int considersPoints(int points, Date startDate, Date endDate ){
-        long differentsDates = endDate.getTime() - startDate.getTime();
-        return (int) ((double)(points) / (differentsDates / 1000) * 100);
-    }
+//
+//    private int considersPoints(int points, Date startDate, Date endDate ){
+//        long differentsDates = endDate.getTime() - startDate.getTime();
+//        return (int) ((double)(points) / (differentsDates / 1000) * 100);
+//    }
 }
