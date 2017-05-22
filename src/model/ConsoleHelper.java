@@ -15,7 +15,7 @@ public class ConsoleHelper {
     private final static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 
-    public static void printWin(Date sdate, long edate, long ldate, int e){
+    public static void printWin(Date sdate, long edate, long ldate, int e) {
         System.out.println("=====-----FINISH-----=====");
         System.out.println("Start at: " + dateFormat.format(sdate.getTime()));
         System.out.println("End at: " + dateFormat.format(edate));
@@ -24,17 +24,32 @@ public class ConsoleHelper {
         System.out.println("=====----------------=====");//
     }
 
-    public static String readString(){
+    public static String readString() {
         try {
             return reader.readLine();
-        } catch (IOException e) { e.printStackTrace();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
-    public static void writeMessage(String string){
+    public static void writeMessage(String string) {
         System.out.println(string);
     }
+
     public static int readInt() {
         return Integer.parseInt(readString());
     }
+
+    public static void closeConection() {
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+//    public static void setReader(BufferedReader reader) {
+//        ConsoleHelper.reader = reader;
+//    }//ахаххах эьл для тестов с консолью импровизрованой мне просто хотелось опробовать оду фичу
 }

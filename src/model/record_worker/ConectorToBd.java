@@ -38,7 +38,7 @@ public class ConectorToBd {
                     dataForConectToDB.getProperty("password")
             );
 
-        } catch ( ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
@@ -54,11 +54,14 @@ public class ConectorToBd {
                         resultSet.getString("login").equals(login) &
                                 password.equals(resultSet.getString("password"))
                         ) {//
+                    conecting = true;
                     return true;
                 }
             }
             statement.close();
-        } catch (SQLException e) {e.printStackTrace();}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -74,13 +77,16 @@ public class ConectorToBd {
                     return false;
                 }
             }
-            login1 = "\'" + login1 +  "\'";
+            login1 = "\'" + login1 + "\'";
 
             statement.executeUpdate(
                     "INSERT INTO users1 ( login, password) VALUES ( " + login1 + ", " + password1 + ");");
 
             statement.close();
-        } catch (SQLException e) {e.printStackTrace();}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        conecting = true;
         return true;
     }
 
@@ -89,11 +95,13 @@ public class ConectorToBd {
         try {
             statement = connection.createStatement();
             statement.executeUpdate("UPDATE USERS1 SET POINTS = " + points + " WHERE LOGIN = \'" + login + "\'");
-        } catch (SQLException e) {e.printStackTrace();}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public void closeConection(){
+    public void closeConection() {
         try {
             connection.close();
         } catch (SQLException e) {
@@ -101,7 +109,7 @@ public class ConectorToBd {
         }
     }
 
-    public void entranceManager(){
+    public void entranceManager() {
         while (!conecting) {
             ConsoleHelper.writeMessage("your conect :");
             ConsoleHelper.writeMessage("write login");
@@ -111,10 +119,10 @@ public class ConectorToBd {
             ConsoleHelper.writeMessage("signIn(1) or  signUp(2)");
             switch (ConsoleHelper.readInt()) {
                 case 1:
-                    conecting = logIn(login, password);
+                    logIn(login, password);//conecting =
                     break;
                 case 2:
-                    conecting = signUp(login, password);
+                    signUp(login, password);//conecting =
                     break;
             }
             if (!conecting) {
@@ -125,6 +133,50 @@ public class ConectorToBd {
             }
         }
 
+    }
+
+    public String readRecords() {
+        if (!conecting) {
+            return null;
+        }
+        StringBuilder resalt = new StringBuilder();
+        Statement statement = createStatement();
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT login, name, points  FROM users1");
+            while (resultSet.next()){
+                resalt.append(
+                        resultSet.getString("login")).append("|||").
+//                        append(resultSet.getString("name")).append("|||").
+                        append( resultSet.getString("points")).append("\n");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resalt.toString();
+    }
+
+    public boolean deleteUser(String login, String password){
+        if (!conecting) {
+            if ( !logIn( login, password)) return false;
+        }
+        Statement statement = createStatement();
+        try {
+            statement.executeUpdate("DELETE FROM users1 WHERE login = \'" + login + "\'");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private Statement createStatement() {
+        try {
+            return connection.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public String getLogin() {
