@@ -1,6 +1,7 @@
 package model.record_worker;
 
 import model.ConsoleHelper;
+import model.loging.LogerSituations;
 import org.apache.log4j.Logger;
 
 import java.io.File;
@@ -13,7 +14,7 @@ import java.util.Properties;
  * Created by Administrator1 on 19.05.2017.
  */
 public class ConectorToBd {
-    private static final Logger log = Logger.getLogger(ConectorToBd.class);
+    private static final LogerSituations log = new LogerSituations( ConectorToBd.class);
     //    static {
 ////        org.apache.log4j.PropertyConfigurator.configure("D:\\tests2\\B60D\\src\\log4j.properties\\log4j.properties");
 ////        BasicConfigurator.configure(new NullAppender());
@@ -25,7 +26,7 @@ public class ConectorToBd {
     private boolean conecting = false;
 
     public static void main(String[] args) {
-        logingInfo( "in the main");
+        log.logError( new IllegalAccessException());
     }
 
     public ConectorToBd() {
@@ -37,7 +38,7 @@ public class ConectorToBd {
             dataForConectToDB = new Properties();
             dataForConectToDB.load(new FileReader(pathToDataDB));
         } catch (IOException e) {
-            logingError(e);
+            log.logError(e);
         }
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -48,7 +49,7 @@ public class ConectorToBd {
             );
 
         } catch (ClassNotFoundException | SQLException e) {
-            logingError(e);
+            log.logError(e);
         }
     }
 
@@ -69,7 +70,7 @@ public class ConectorToBd {
             }
             statement.close();
         } catch (SQLException e) {
-            logingError(e);
+            log.logError(e);
         }
         return false;
     }
@@ -93,7 +94,7 @@ public class ConectorToBd {
 
             statement.close();
         } catch (SQLException e) {
-            logingError(e);
+            log.logError(e);
         }
         conecting = true;
         return true;
@@ -105,7 +106,7 @@ public class ConectorToBd {
             statement = createStatement();
             statement.executeUpdate("UPDATE USERS1 SET POINTS = " + points + " WHERE LOGIN = \'" + login + "\'");
         } catch (SQLException e) {
-            logingError(e);
+            log.logError(e);
         }
 
     }
@@ -114,7 +115,7 @@ public class ConectorToBd {
         try {
             connection.close();
         } catch (SQLException e) {
-            logingError(e);
+            log.logError(e);
         }
     }
 
@@ -159,7 +160,7 @@ public class ConectorToBd {
         append(resultSet.getString("points")).append("\n");
             }
         } catch (SQLException e) {
-            logingError(e);
+            log.logError(e);
         }
         return resalt.toString();
     }
@@ -173,7 +174,7 @@ public class ConectorToBd {
             statement.executeUpdate("DELETE FROM users1 WHERE login = \'" + login + "\'");
             return true;
         } catch (SQLException e) {
-            logingError(e);
+            log.logError(e);
         }
         return false;
     }
@@ -182,18 +183,9 @@ public class ConectorToBd {
         try {
             return connection.createStatement();
         } catch (SQLException e) {
-            logingError(e);
+            log.logError(e);
         }
         return null;
-    }
-
-    private static void logingError(Exception e) {
-        log.error(e);
-        e.printStackTrace();
-    }
-
-    private static void logingInfo(String message) {
-        log.info(message);
     }
 
     public String getLogin() {

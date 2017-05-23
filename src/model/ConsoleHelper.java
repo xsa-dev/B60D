@@ -1,5 +1,9 @@
 package model;
 
+import model.loging.LogerSituations;
+import model.record_worker.ConectorToBd;
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +18,8 @@ public class ConsoleHelper {
     private final static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     private final static SimpleDateFormat ldateFormat = new SimpleDateFormat("mm:ss.SSS");
     private final static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static final LogerSituations log = new LogerSituations( ConsoleHelper.class);
+
 
 
     public static void printWin(Date sdate, long edate, long ldate, int e) {
@@ -29,7 +35,7 @@ public class ConsoleHelper {
         try {
             return reader.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError(e);
         }
         return null;
     }
@@ -46,7 +52,7 @@ public class ConsoleHelper {
         try {
             reader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.logError(e);
         }
     }
 
