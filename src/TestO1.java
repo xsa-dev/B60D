@@ -4,6 +4,7 @@ import model.example_generators.TextExamplesGenerator;
 import model.record_worker.ConectorToBd;
 import model.workers.WorkerWithTextExamples;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Date;
@@ -13,8 +14,17 @@ import java.util.List;
  * Created by Administrator1 on 17.05.2017.
  */
 public class TestO1 {
+    public static void main(String[] args) {
+        System.out.println(System.getProperty("java.class.path"));
+    }
+    public static void main5(String[] args) throws IOException {
+        System.out.println(System.getProperty("java.class.path"));
+        System.out.println( ConsoleHelper.getAbsolutePath( ConectorToBd.class));
+        System.out.println("D:\\tests2\\B60D\\src\\model\\record_worker\\ConectorToBd.java".replaceAll("\\\\", "/"));
+        System.out.println(new File(".").getCanonicalPath());
+    }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main4(String[] args) throws InterruptedException {
         WorkerWithTextExamples workerWithTextExamples = new WorkerWithTextExamples();
         Date startDate = new Date();
         Thread.sleep(15000);

@@ -1,6 +1,7 @@
 package model.record_worker;
 
 import model.ConsoleHelper;
+import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileReader;
@@ -12,12 +13,20 @@ import java.util.Properties;
  * Created by Administrator1 on 19.05.2017.
  */
 public class ConectorToBd {
+    private static final Logger log = Logger.getLogger(ConectorToBd.class);
+    //    static {
+////        org.apache.log4j.PropertyConfigurator.configure("D:\\tests2\\B60D\\src\\log4j.properties\\log4j.properties");
+////        BasicConfigurator.configure(new NullAppender());
+//    }
     private String login;
     private String password;
     private Properties dataForConectToDB;
     private Connection connection;
     private boolean conecting = false;
 
+    public static void main(String[] args) {
+        logingInfo( "in the main");
+    }
 
     public ConectorToBd() {
         try {
@@ -28,7 +37,7 @@ public class ConectorToBd {
             dataForConectToDB = new Properties();
             dataForConectToDB.load(new FileReader(pathToDataDB));
         } catch (IOException e) {
-            e.printStackTrace();
+            logingError(e);
         }
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -39,7 +48,7 @@ public class ConectorToBd {
             );
 
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            logingError(e);
         }
     }
 
@@ -47,7 +56,7 @@ public class ConectorToBd {
         this.login = login;
         this.password = password;
         try {
-            Statement statement = connection.createStatement();
+            Statement statement = createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT LOGIN, PASSWORD FROM users1");
             while (resultSet.next()) {
                 if (
@@ -60,7 +69,7 @@ public class ConectorToBd {
             }
             statement.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logingError(e);
         }
         return false;
     }
@@ -70,7 +79,7 @@ public class ConectorToBd {
         this.login = login1;
         this.password = password1;
         try {
-            Statement statement = connection.createStatement();
+            Statement statement = createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT LOGIN FROM users1");
             while (resultSet.next()) {
                 if (login1.equals(resultSet.getString("login"))) {
@@ -84,7 +93,7 @@ public class ConectorToBd {
 
             statement.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logingError(e);
         }
         conecting = true;
         return true;
@@ -93,10 +102,10 @@ public class ConectorToBd {
     public void writeRecords(int points) {
         Statement statement = null;
         try {
-            statement = connection.createStatement();
+            statement = createStatement();
             statement.executeUpdate("UPDATE USERS1 SET POINTS = " + points + " WHERE LOGIN = \'" + login + "\'");
         } catch (SQLException e) {
-            e.printStackTrace();
+            logingError(e);
         }
 
     }
@@ -105,7 +114,7 @@ public class ConectorToBd {
         try {
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logingError(e);
         }
     }
 
@@ -143,29 +152,28 @@ public class ConectorToBd {
         Statement statement = createStatement();
         try {
             ResultSet resultSet = statement.executeQuery("SELECT login, name, points  FROM users1");
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 resalt.append(
                         resultSet.getString("login")).append("|||").
 //                        append(resultSet.getString("name")).append("|||").
-                        append( resultSet.getString("points")).append("\n");
+        append(resultSet.getString("points")).append("\n");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logingError(e);
         }
-
         return resalt.toString();
     }
 
-    public boolean deleteUser(String login, String password){
+    public boolean deleteUser(String login, String password) {
         if (!conecting) {
-            if ( !logIn( login, password)) return false;
+            if (!logIn(login, password)) return false;
         }
         Statement statement = createStatement();
         try {
             statement.executeUpdate("DELETE FROM users1 WHERE login = \'" + login + "\'");
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logingError(e);
         }
         return false;
     }
@@ -174,9 +182,18 @@ public class ConectorToBd {
         try {
             return connection.createStatement();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logingError(e);
         }
         return null;
+    }
+
+    private static void logingError(Exception e) {
+        log.error(e);
+        e.printStackTrace();
+    }
+
+    private static void logingInfo(String message) {
+        log.info(message);
     }
 
     public String getLogin() {

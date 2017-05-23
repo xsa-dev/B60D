@@ -1,6 +1,7 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
@@ -47,6 +48,13 @@ public class ConsoleHelper {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getAbsolutePath(Class  clazz){
+        String resalt = new File(".").getAbsolutePath().toString().
+                replaceAll("\\.$",  "src/" + clazz.getName()).
+                replaceAll("[\\\\,\\.]", "/");
+        return resalt;
     }
 
 //    public static void setReader(BufferedReader reader) {
