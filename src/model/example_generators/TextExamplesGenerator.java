@@ -25,7 +25,7 @@ public class TextExamplesGenerator {
     public List getReadingExamples() {
         List<TextExampl> result = new ArrayList<>();
 
-        String  allText = null;
+        String allText = null;
         try {
             allText = new String(Files.readAllBytes(Paths.get(path)), "UTF-8");
         } catch (IOException e) { e.printStackTrace();}

@@ -16,9 +16,8 @@ public class LogerSituations {
         logger.error(e);
         e.printStackTrace();
     }
+
     public void logInfo( String e) {
         logger.info(e);
     }
-
-
 }

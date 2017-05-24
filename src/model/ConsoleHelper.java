@@ -1,8 +1,6 @@
 package model;
 
 import model.loging.LogerSituations;
-import model.record_worker.ConectorToBd;
-import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,6 +16,7 @@ public class ConsoleHelper {
     private final static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     private final static SimpleDateFormat ldateFormat = new SimpleDateFormat("mm:ss.SSS");
     private final static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    static{ProcesesCloser.putProcess(reader);}
     private static final LogerSituations log = new LogerSituations( ConsoleHelper.class);
 
 

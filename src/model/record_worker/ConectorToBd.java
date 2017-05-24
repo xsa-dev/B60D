@@ -1,8 +1,8 @@
 package model.record_worker;
 
 import model.ConsoleHelper;
+import model.ProcesesCloser;
 import model.loging.LogerSituations;
-import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileReader;
@@ -47,6 +47,7 @@ public class ConectorToBd {
                     dataForConectToDB.getProperty("login"),
                     dataForConectToDB.getProperty("password")
             );
+            ProcesesCloser.putProcess( connection);
 
         } catch (ClassNotFoundException | SQLException e) {
             log.logError(e);
