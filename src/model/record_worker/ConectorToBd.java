@@ -51,7 +51,7 @@ public class ConectorToBd {
             ProcesesCloser.putProcess( connection);
             System.out.println("conection create suchesfull");
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (Exception e) {
             log.logError(e);
         }
     }

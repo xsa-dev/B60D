@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Administrator1 on 24.05.2017.
  */
 public class ProcesesCloser {
-    private static ArrayList<AutoCloseable> operations = new ArrayList<>();
+    private static ArrayList<AutoCloseable> operations = new ArrayList<AutoCloseable>();
 
     public static void putProcess(AutoCloseable ob){
         operations.add(ob);

@@ -2,6 +2,7 @@ package model.example_generators;
 
 import model.examles.TextExampl;
 
+import javax.xml.soap.Text;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -23,7 +24,7 @@ public class TextExamplesGenerator {
     }
 
     public List getReadingExamples() {
-        List<TextExampl> result = new ArrayList<>();
+        List<TextExampl> result = new ArrayList<TextExampl>();
 
         String allText = null;
         try {
