@@ -1,6 +1,6 @@
 package dispatchers;
 
-import model.workers.TextGUIExamples;
+import model.workers.AbstractGUIWorker;
 import view.ManagerGUIGame;
 
 /**
@@ -10,7 +10,7 @@ public class ControllerWithGUI {
     public static void main(String[] args) throws Exception {
 
         ManagerGUIGame startWindow = ManagerGUIGame.play();
-        TextGUIExamples examplesWorkeble = new TextGUIExamples(startWindow);
+        AbstractGUIWorker examplesWorkeble =startWindow.getTextGUIExamples();// new TextGUIExamples(startWindow);
         startWindow.setTextGUIExamples(examplesWorkeble);
 
         int resutLaunc = examplesWorkeble.launching();

@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.record_worker.ConectorToBd;
-import model.workers.TextGUIExamples;
+import model.workers.AbstractGUIWorker;
 
 
 /**
@@ -12,9 +12,9 @@ import model.workers.TextGUIExamples;
  */
 public class ManagerGUIGame extends Application {
     private static ManagerGUIGame managerGUIGame;
-    private volatile GameWindow gameWindow;
+    private volatile TextGame textGame;
     private volatile WriteRecordWindow writeRecordWindow;
-    private volatile TextGUIExamples textGUIExamples;
+    private volatile AbstractGUIWorker textGUIExamples;
     private volatile ConectorToBd conectorToBd;
     private static boolean runingWindow = false;
     private static volatile boolean startGame = false;
@@ -27,29 +27,28 @@ public class ManagerGUIGame extends Application {
     public static ManagerGUIGame play() {
         Thread thread = new Thread(() -> launch());
         thread.start();
-        while (!runingWindow) {
+//        while (!runingWindow) {
+        while (!(startGame & runingWindow)) {
             try {
                 Thread.sleep(600);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        System.out.println("joidcmkllkmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
         return managerGUIGame;
     }
 
     public void start(Stage primaryStage) {
         conectorToBd = new ConectorToBd();
         startWindow = new StartWindow(this);
-        gameWindow = new GameWindow(this);
+        textGame = new TextGame(this);
         writeRecordWindow = new WriteRecordWindow(this);
         managerGUIGame = this;
         theStage = primaryStage;
 
         startScene = startWindow.createStartWindowScene(theStage);
-        gameScene = gameWindow.createGameScene(theStage);
-
-//        writeRecordScene = writeRecordWindow.createWriterToDBScene(theStage);
-//        System.out.println(writeRecordScene);
+        gameScene = textGame.createGameScene(theStage);
 
 
         primaryStage.setTitle("D60B");
@@ -67,19 +66,19 @@ public class ManagerGUIGame extends Application {
     }
 
     public void appendString(String message) {
-        gameWindow.appendString(message);
+        textGame.appendString(message);
         System.out.println("TESTMESSAGE" + message);
     }
 
     public String getString() {
-        return gameWindow.getString();
+        return textGame.getString();
     }
 
     public static ManagerGUIGame getManagerGUIGame() {
         return managerGUIGame;
     }
 
-    public void setTextGUIExamples(TextGUIExamples textGUIExamples) {
+    public void setTextGUIExamples(AbstractGUIWorker textGUIExamples) {
         this.textGUIExamples = textGUIExamples;
     }
 
@@ -99,7 +98,7 @@ public class ManagerGUIGame extends Application {
         ManagerGUIGame.startGame = startGame;
     }
 
-    public TextGUIExamples getTextGUIExamples() {
+    public AbstractGUIWorker getTextGUIExamples() {
         return textGUIExamples;
     }
 

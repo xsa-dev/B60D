@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.workers.IntGUIExamplesWorker;
+import model.workers.TextGUIExamples;
 
 import java.io.IOException;
 
@@ -55,6 +57,7 @@ public class StartWindow {
                 button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
+                        managerGUIGame.setTextGUIExamples(new TextGUIExamples(managerGUIGame));
                         theStage.setScene(managerGUIGame.getGameScene());
                         try {
                             Thread.sleep(2000);
@@ -69,8 +72,14 @@ public class StartWindow {
                 button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-//                        thestage.setScene(scene2);
-                        System.out.println("excpecteed");
+                        managerGUIGame.setTextGUIExamples(new IntGUIExamplesWorker(managerGUIGame));
+                        theStage.setScene(managerGUIGame.getGameScene());
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        managerGUIGame.setStartGame(true);
                     }
                 });
                 break;

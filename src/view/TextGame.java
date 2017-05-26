@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * Created by Administrator1 on 24.05.2017.
  */
-public class GameWindow {
+public class TextGame {
     private TextArea outTextArea;
     private TextField inTextField;
     private String ansver = "";
@@ -29,7 +29,7 @@ public class GameWindow {
     private volatile Stage theStage;
     private ManagerGUIGame managerGUIGame;
 
-    public GameWindow(ManagerGUIGame managerGUIGame) {
+    public TextGame(ManagerGUIGame managerGUIGame) {
         this.managerGUIGame = managerGUIGame;
 //        theStage = managerGUIGame.getTheStage();
     }
@@ -47,7 +47,6 @@ public class GameWindow {
         }
 
         return gameScene = new Scene(gamePane, 400, 400);
-//        return gameScene;
     }
 
     public void appendString(String message) {
