@@ -68,6 +68,7 @@ public class ManagerGUIGame extends Application {
 
     public void appendString(String message) {
         gameWindow.appendString(message);
+        System.out.println("TESTMESSAGE" + message);
     }
 
     public String getString() {

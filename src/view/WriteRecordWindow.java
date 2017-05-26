@@ -64,7 +64,8 @@ public class WriteRecordWindow {
             switch (textField.getId()) {
                 case "1":
                     loginTextField = textField;
-                    textField.setOnAction(new EventHandler<ActionEvent>() {
+                    textField.onActionProperty().setValue(new EventHandler<ActionEvent>() {
+//                    textField.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(javafx.event.ActionEvent event) {
                             login = loginTextField.getText();
@@ -73,9 +74,10 @@ public class WriteRecordWindow {
                     break;
                 case "2":
                     passwordTextField = textField;
-                    textField.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                    textField.onActionProperty().setValue(new EventHandler<ActionEvent>() {
+//                    textField.addEventHandler(new EventHandler<ActionEvent>() {
                         @Override
-                        public void handle(MouseEvent mouseEvent) {
+                        public void handle(ActionEvent mouseEvent) {
                             password = passwordTextField.getText();
                         }
                     });
