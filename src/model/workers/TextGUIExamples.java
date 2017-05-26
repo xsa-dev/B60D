@@ -2,7 +2,7 @@ package model.workers;
 
 import model.examles.TextExampl;
 import model.example_generators.TextExamplesGenerator;
-import view.TestFXMLFiles;
+import view.ManagerGUIGame;
 
 import java.io.File;
 import java.util.Date;
@@ -12,11 +12,11 @@ import java.util.List;
  * Created by Administrator1 on 24.05.2017.
  */
 public class TextGUIExamples extends AbstractGUIWorker {
-    private TestFXMLFiles gameWindow;
+    private ManagerGUIGame gameWindow;
     private boolean wriwRecord = false;
     private int resalt;
 
-    public TextGUIExamples(TestFXMLFiles view) {
+    public TextGUIExamples(ManagerGUIGame view) {
         this.gameWindow = view;
     }
 

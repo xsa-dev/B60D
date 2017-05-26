@@ -25,21 +25,21 @@ public class WriteRecordWindow {
     private String login = "";
     private String password = "";
     private Stage theStage;
-    private TestFXMLFiles testFXMLFiles;
+    private ManagerGUIGame managerGUIGame;
     private ConectorToBd conectorToBd;
     private TextField loginTextField;
     private TextField passwordTextField;
 
-    public WriteRecordWindow(TestFXMLFiles testFXMLFiles) {
-        this.testFXMLFiles = testFXMLFiles;
-        conectorToBd = testFXMLFiles.getConectorToBd();
+    public WriteRecordWindow(ManagerGUIGame managerGUIGame) {
+        this.managerGUIGame = managerGUIGame;
+        conectorToBd = managerGUIGame.getConectorToBd();
     }
 
 
     public Scene createWriterToDBScene(Stage theStage) {
         this.theStage = theStage;
         try {
-            writerPane = FXMLLoader.load(TestFXMLFiles.class.getResource("WriteRecordWindowFXML.fxml"));
+            writerPane = FXMLLoader.load(ManagerGUIGame.class.getResource("WriteRecordWindowFXML.fxml"));
         } catch (IOException e) {
             System.out.println("jncokmserjnvicnefknvejfnv");
             e.printStackTrace();
@@ -105,7 +105,7 @@ public class WriteRecordWindow {
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                theStage.setScene(testFXMLFiles.getGameScene());
+                theStage.setScene(managerGUIGame.getGameScene());
             }
         });
     }
@@ -119,7 +119,7 @@ public class WriteRecordWindow {
                     System.out.println("testLOGIN   " + login + password);
                     if (conectorToBd.logIn(login, password)) {
                         System.out.println(conectorToBd.getConnection());
-                        conectorToBd.writeRecords(testFXMLFiles.getTextGUIExamples().getResalt());
+                        conectorToBd.writeRecords(managerGUIGame.getTextGUIExamples().getResalt());
                         closeConetion();
                     }
                 }
@@ -142,7 +142,7 @@ public class WriteRecordWindow {
                 if (!"".equals(password) && !"".equals(login)) {
                     System.out.println("signUP such");
                     if (conectorToBd.signUp(login, password)) {
-                        conectorToBd.writeRecords(testFXMLFiles.getTextGUIExamples().getResalt());
+                        conectorToBd.writeRecords(managerGUIGame.getTextGUIExamples().getResalt());
                         closeConetion();
                     }
                 }

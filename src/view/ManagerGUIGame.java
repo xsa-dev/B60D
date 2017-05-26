@@ -10,8 +10,8 @@ import model.workers.TextGUIExamples;
 /**
  * Created by Administrator1 on 24.05.2017.
  */
-public class TestFXMLFiles extends Application {
-    private static TestFXMLFiles testFXMLFiles;
+public class ManagerGUIGame extends Application {
+    private static ManagerGUIGame managerGUIGame;
     private volatile GameWindow gameWindow;
     private volatile WriteRecordWindow writeRecordWindow;
     private volatile TextGUIExamples textGUIExamples;
@@ -24,7 +24,7 @@ public class TestFXMLFiles extends Application {
     private Stage theStage;
     private volatile StartWindow startWindow;
 
-    public static view.TestFXMLFiles play() {
+    public static ManagerGUIGame play() {
         Thread thread = new Thread(() -> launch());
         thread.start();
         while (!runingWindow) {
@@ -34,7 +34,7 @@ public class TestFXMLFiles extends Application {
                 e.printStackTrace();
             }
         }
-        return testFXMLFiles;
+        return managerGUIGame;
     }
 
     public void start(Stage primaryStage) {
@@ -42,20 +42,28 @@ public class TestFXMLFiles extends Application {
         startWindow = new StartWindow(this);
         gameWindow = new GameWindow(this);
         writeRecordWindow = new WriteRecordWindow(this);
-        testFXMLFiles = this;
+        managerGUIGame = this;
         theStage = primaryStage;
 
         startScene = startWindow.createStartWindowScene(theStage);
         gameScene = gameWindow.createGameScene(theStage);
 
-        writeRecordScene = writeRecordWindow.createWriterToDBScene(theStage);
-        System.out.println(writeRecordScene);
+//        writeRecordScene = writeRecordWindow.createWriterToDBScene(theStage);
+//        System.out.println(writeRecordScene);
 
 
         primaryStage.setTitle("D60B");
         primaryStage.setScene(startScene);
         primaryStage.show();
         runingWindow = true;
+    }
+
+    public Scene createWriteRecordScene(){
+        conectorToBd = new ConectorToBd();
+        writeRecordWindow = new WriteRecordWindow(this);
+        writeRecordScene = writeRecordWindow.createWriterToDBScene(theStage);
+
+        return writeRecordScene;
     }
 
     public void appendString(String message) {
@@ -66,8 +74,8 @@ public class TestFXMLFiles extends Application {
         return gameWindow.getString();
     }
 
-    public static view.TestFXMLFiles getTestFXMLFiles() {
-        return testFXMLFiles;
+    public static ManagerGUIGame getManagerGUIGame() {
+        return managerGUIGame;
     }
 
     public void setTextGUIExamples(TextGUIExamples textGUIExamples) {
@@ -87,7 +95,7 @@ public class TestFXMLFiles extends Application {
     }
 
     public static void setStartGame(boolean startGame) {
-        TestFXMLFiles.startGame = startGame;
+        ManagerGUIGame.startGame = startGame;
     }
 
     public TextGUIExamples getTextGUIExamples() {
@@ -99,9 +107,9 @@ public class TestFXMLFiles extends Application {
     }
 
     ////    public static void main(String[] args) {
-////        TestFXMLFiles testFXMLFiles = play();
-////        testFXMLFiles.appendString("write message to program");
+////        ManagerGUIGame managerGUIGame = play();
+////        managerGUIGame.appendString("write message to program");
 ////        for (int i = 0; i < 10; i++)
-////            System.out.println(testFXMLFiles.getString());
+////            System.out.println(managerGUIGame.getString());
 ////    }
 }

@@ -27,17 +27,17 @@ public class GameWindow {
     private Pane gamePane;
     private Scene gameScene;
     private volatile Stage theStage;
-    private TestFXMLFiles testFXMLFiles;
+    private ManagerGUIGame managerGUIGame;
 
-    public GameWindow(TestFXMLFiles testFXMLFiles) {
-        this.testFXMLFiles = testFXMLFiles;
-//        theStage = testFXMLFiles.getTheStage();
+    public GameWindow(ManagerGUIGame managerGUIGame) {
+        this.managerGUIGame = managerGUIGame;
+//        theStage = managerGUIGame.getTheStage();
     }
 
     public Scene createGameScene(Stage theStage){
         this.theStage = theStage;
         try {
-            gamePane = FXMLLoader.load(TestFXMLFiles.class.getResource("WindowGameTextFXML.fxml"));
+            gamePane = FXMLLoader.load(ManagerGUIGame.class.getResource("WindowGameTextFXML.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,13 +86,27 @@ public class GameWindow {
         }
     }
 
+    private void initialBattonRecord2(Button button) {
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                managerGUIGame.getTextGUIExamples().endGame();
+                System.out.println(theStage);
+                theStage.setScene(managerGUIGame.getWriteRecordScene());
+                writeRecord = true;
+            }
+        });
+    }
+
+
     private void initialBattonRecord(Button button) {
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                testFXMLFiles.getTextGUIExamples().endGame();
+                managerGUIGame.getTextGUIExamples().endGame();
                 System.out.println(theStage);
-                theStage.setScene(testFXMLFiles.getWriteRecordScene());
+                managerGUIGame.createWriteRecordScene();
+                theStage.setScene(managerGUIGame.getWriteRecordScene());
                 writeRecord = true;
             }
         });

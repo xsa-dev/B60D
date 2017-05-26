@@ -1,7 +1,7 @@
 package dispatchers;
 
 import model.workers.TextGUIExamples;
-import view.TestFXMLFiles;
+import view.ManagerGUIGame;
 
 /**
  * Created by Administrator1 on 24.05.2017.
@@ -9,7 +9,7 @@ import view.TestFXMLFiles;
 public class ControllerWithGUI {
     public static void main(String[] args) throws Exception {
 
-        TestFXMLFiles startWindow = TestFXMLFiles.play();
+        ManagerGUIGame startWindow = ManagerGUIGame.play();
         TextGUIExamples examplesWorkeble = new TextGUIExamples(startWindow);
         startWindow.setTextGUIExamples(examplesWorkeble);
 

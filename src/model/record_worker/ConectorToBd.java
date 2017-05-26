@@ -3,7 +3,7 @@ package model.record_worker;
 import model.ConsoleHelper;
 import model.ProcesesCloser;
 import model.loging.LogerSituations;
-import view.TestFXMLFiles;
+import view.ManagerGUIGame;
 
 import java.io.File;
 import java.io.FileReader;
@@ -126,7 +126,7 @@ public class ConectorToBd {
         }
     }
 
-    public void entranceManager(TestFXMLFiles abstractGUIWorker) {
+    public void entranceManager(ManagerGUIGame abstractGUIWorker) {
 //        abstractGUIWorker.showWriteRecordWindow();
         while (!conecting) {
             ConsoleHelper.writeMessage("your conect :");

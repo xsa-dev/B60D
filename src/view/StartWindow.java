@@ -18,10 +18,10 @@ public class StartWindow {
     private Pane startPane;
     private Scene startScene;
     private Stage theStage;
-    private TestFXMLFiles testFXMLFiles;
+    private ManagerGUIGame managerGUIGame;
 
-    public StartWindow(TestFXMLFiles testFXMLFiles) {
-        this.testFXMLFiles = testFXMLFiles;
+    public StartWindow(ManagerGUIGame managerGUIGame) {
+        this.managerGUIGame = managerGUIGame;
     }
 
 
@@ -55,13 +55,13 @@ public class StartWindow {
                 button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-                        theStage.setScene(testFXMLFiles.getGameScene());
+                        theStage.setScene(managerGUIGame.getGameScene());
                         try {
                             Thread.sleep(2000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        testFXMLFiles.setStartGame(true);
+                        managerGUIGame.setStartGame(true);
                     }
                 });
                 break;
