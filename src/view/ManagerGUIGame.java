@@ -35,7 +35,6 @@ public class ManagerGUIGame extends Application {
                 e.printStackTrace();
             }
         }
-        System.out.println("joidcmkllkmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
         return managerGUIGame;
     }
 
