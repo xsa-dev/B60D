@@ -66,7 +66,7 @@ public class MicroPerformanceRegressionTest extends BaseTestCase {
             BASELINE_TIMES.put("PreparedStatement.setTime()", new Double(0.0107));
             BASELINE_TIMES.put("PreparedStatement.setTimestamp()", new Double(0.0182));
             BASELINE_TIMES.put("PreparedStatement.setDate()", new Double(0.0819));
-            BASELINE_TIMES.put("PreparedStatement.setString()", new Double(0.0081));
+            BASELINE_TIMES.put("PreparedStatement.appendString()", new Double(0.0081));
             BASELINE_TIMES.put("PreparedStatement.setObject() on a string", new Double(0.00793));
             BASELINE_TIMES.put("PreparedStatement.setDouble()", new Double(0.0246));
         } else {
@@ -74,7 +74,7 @@ public class MicroPerformanceRegressionTest extends BaseTestCase {
             BASELINE_TIMES.put("PreparedStatement.setTime()", new Double(0.0642));
             BASELINE_TIMES.put("PreparedStatement.setTimestamp()", new Double(0.03184));
             BASELINE_TIMES.put("PreparedStatement.setDate()", new Double(0.12248));
-            BASELINE_TIMES.put("PreparedStatement.setString()", new Double(0.01512));
+            BASELINE_TIMES.put("PreparedStatement.appendString()", new Double(0.01512));
             BASELINE_TIMES.put("PreparedStatement.setObject() on a string", new Double(0.01923));
             BASELINE_TIMES.put("PreparedStatement.setDouble()", new Double(0.00671));
         }
@@ -332,7 +332,7 @@ public class MicroPerformanceRegressionTest extends BaseTestCase {
 
         double setStringAvgMs = (double) (currentTimeMillis() - start) / numLoops;
 
-        checkTime("PreparedStatement.setString()", setStringAvgMs);
+        checkTime("PreparedStatement.appendString()", setStringAvgMs);
 
         start = currentTimeMillis();
 

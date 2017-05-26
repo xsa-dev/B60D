@@ -3,6 +3,7 @@ package model.record_worker;
 import model.ConsoleHelper;
 import model.ProcesesCloser;
 import model.loging.LogerSituations;
+import view.TestFXMLFiles;
 
 import java.io.File;
 import java.io.FileReader;
@@ -48,6 +49,7 @@ public class ConectorToBd {
                     dataForConectToDB.getProperty("password")
             );
             ProcesesCloser.putProcess( connection);
+            System.out.println("conection create suchesfull");
 
         } catch (ClassNotFoundException | SQLException e) {
             log.logError(e);
@@ -97,30 +99,35 @@ public class ConectorToBd {
         } catch (SQLException e) {
             log.logError(e);
         }
+        System.out.println("hhhhhhhhhhhhhhhhhh");
         conecting = true;
         return true;
     }
 
     public void writeRecords(int points) {
         Statement statement = null;
+        System.out.println("writeRecors");
         try {
             statement = createStatement();
             statement.executeUpdate("UPDATE USERS1 SET POINTS = " + points + " WHERE LOGIN = \'" + login + "\'");
+            System.out.println("suchesfull");
         } catch (SQLException e) {
             log.logError(e);
+            System.out.println("not suchesfull");
         }
-
     }
 
     public void closeConection() {
         try {
+            System.out.println("conecting closed");
             connection.close();
         } catch (SQLException e) {
             log.logError(e);
         }
     }
 
-    public void entranceManager() {
+    public void entranceManager(TestFXMLFiles abstractGUIWorker) {
+//        abstractGUIWorker.showWriteRecordWindow();
         while (!conecting) {
             ConsoleHelper.writeMessage("your conect :");
             ConsoleHelper.writeMessage("write login");
@@ -215,5 +222,9 @@ public class ConectorToBd {
 
     public boolean isConecting() {
         return conecting;
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 }

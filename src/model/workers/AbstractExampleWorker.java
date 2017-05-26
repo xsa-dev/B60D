@@ -11,4 +11,5 @@ public abstract class AbstractExampleWorker  implements ExamplesWorkeble {
         long differentsDates = endDate.getTime() - startDate.getTime();
         return (int) ((double)(points) / (differentsDates / 1000) * 100);
     }
+
 }

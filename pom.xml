@@ -24,7 +24,7 @@
                 <configuration>
                 <archive>
                     <manifest>
-                        <mainClass>dispatchers.Dispatcher</mainClass>
+                        <mainClass>dispatchers.Controller</mainClass>
                     </manifest>
                 </archive>
             </configuration>

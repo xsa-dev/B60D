@@ -4670,7 +4670,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * Set a parameter to a Java String value. The driver converts this to a SQL
      * VARCHAR or LONGVARCHAR value with introducer _utf8 (depending on the
      * arguments size relative to the driver's limits on VARCHARs) when it sends
-     * it to the database. If charset is set as utf8, this method just call setString.
+     * it to the database. If charset is set as utf8, this method just call appendString.
      * 
      * @param parameterIndex
      *            the first parameter is 1...

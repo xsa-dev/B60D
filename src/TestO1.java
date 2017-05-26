@@ -15,7 +15,8 @@ import java.util.List;
  */
 public class TestO1 {
     public static void main(String[] args) {
-        System.out.println(System.getProperty("java.class.path"));
+//        System.out.println(System.getProperty("java.class.path"));
+        System.out.println(new TestO1().getClass().getResource("TestO1.java"));
     }
     public static void main5(String[] args) throws IOException {
         System.out.println(System.getProperty("java.class.path"));

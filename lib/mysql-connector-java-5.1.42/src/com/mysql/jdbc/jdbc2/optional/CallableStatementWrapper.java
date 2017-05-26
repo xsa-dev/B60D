@@ -816,7 +816,7 @@ public class CallableStatementWrapper extends PreparedStatementWrapper implement
     /*
      * (non-Javadoc)
      * 
-     * @see java.sql.CallableStatement#setString(java.lang.String, java.lang.String)
+     * @see java.sql.CallableStatement#appendString(java.lang.String, java.lang.String)
      */
     public void setString(String parameterName, String x) throws SQLException {
         try {

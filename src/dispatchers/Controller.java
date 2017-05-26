@@ -9,7 +9,7 @@ import model.workers.WorkerWithTextExamples;
 /**
  * Created by Administrator1 on 18.05.2017.
  */
-public class Dispatcher {
+public class Controller {
     public static void main(String[] args) throws Exception {
         ExamplesWorkeble examplesWorkeble = null;
 
@@ -24,7 +24,7 @@ public class Dispatcher {
         ConsoleHelper.writeMessage("write result to DB press yes");
         if ("yes".equals(ConsoleHelper.readString())) {
             ConectorToBd conectorWriteRecord = new ConectorToBd();
-                conectorWriteRecord.entranceManager();
+                conectorWriteRecord.entranceManager(null);
                 conectorWriteRecord.writeRecords(resutLaunc);
                 ConsoleHelper.writeMessage("records suchesfull writing");
             conectorWriteRecord.closeConection();

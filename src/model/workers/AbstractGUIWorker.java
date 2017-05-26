@@ -1,0 +1,25 @@
+package model.workers;
+
+import java.util.Date;
+
+/**
+ * Created by Administrator1 on 24.05.2017.
+ */
+public abstract class AbstractGUIWorker{
+    protected int considersPoints(int points, Date startDate, Date endDate ){
+
+        long differentsDates = endDate.getTime() - startDate.getTime();
+        return (int) ((double)(points) / (differentsDates / 1000) * 100);
+    }
+
+    public abstract int launching() throws Exception;
+    public abstract void endGame();
+
+
+//    public int launch() throws Exception {
+//        StartWindow gameWindow = StartWindow.play();
+//
+//        int resalt = launching( gameWindow);//ереименовать в плей
+//        return resalt;
+//    }
+}

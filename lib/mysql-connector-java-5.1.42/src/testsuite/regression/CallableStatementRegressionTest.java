@@ -292,8 +292,8 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * "\nSELECT 1 INTO p_administrador;" ) + "\nEND");
      * 
      * CallableStatement cstmt = db2Connection .prepareCall("{ call
-     * COMPROVAR_USUARI(?, ?, ?, ?, ?, ?) }"); cstmt.setString(1, "abc");
-     * cstmt.setString(2, "def"); cstmt.registerOutParameter(3,
+     * COMPROVAR_USUARI(?, ?, ?, ?, ?, ?) }"); cstmt.appendString(1, "abc");
+     * cstmt.appendString(2, "def"); cstmt.registerOutParameter(3,
      * java.sql.Types.INTEGER); cstmt.registerOutParameter(4,
      * java.sql.Types.VARCHAR); cstmt.registerOutParameter(5,
      * java.sql.Types.VARCHAR);
@@ -307,7 +307,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * assertEquals(2, cstmt.getInt(5)); }
      * 
      * cstmt = this.conn .prepareCall("{ call COMPROVAR_USUARI(?, ?, ?, ?, ?, ?)
-     * }"); cstmt.setString(1, "abc"); cstmt.setString(2, "def");
+     * }"); cstmt.appendString(1, "abc"); cstmt.appendString(2, "def");
      * cstmt.registerOutParameter(3, java.sql.Types.INTEGER);
      * cstmt.registerOutParameter(4, java.sql.Types.VARCHAR);
      * cstmt.registerOutParameter(5, java.sql.Types.VARCHAR);
@@ -318,7 +318,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * }
      * 
      * cstmt = this.conn .prepareCall("{ call COMPROVAR_USUARI(?, ?, ?, ?, ?)
-     * }"); cstmt.setString(1, "abc"); cstmt.setString(2, "def");
+     * }"); cstmt.appendString(1, "abc"); cstmt.appendString(2, "def");
      * cstmt.registerOutParameter(3, java.sql.Types.INTEGER);
      * cstmt.registerOutParameter(4, java.sql.Types.VARCHAR);
      * cstmt.registerOutParameter(5, java.sql.Types.VARCHAR);
@@ -334,8 +334,8 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * 
      * cstmt = db2Connection .prepareCall("{ call " + quoteChar +
      * this.conn.getCatalog() + quoteChar + "." + quoteChar + "COMPROVAR_USUARI"
-     * + quoteChar + "(?, ?, ?, ?, ?) }"); cstmt.setString(1, "abc");
-     * cstmt.setString(2, "def"); cstmt.registerOutParameter(3,
+     * + quoteChar + "(?, ?, ?, ?, ?) }"); cstmt.appendString(1, "abc");
+     * cstmt.appendString(2, "def"); cstmt.registerOutParameter(3,
      * java.sql.Types.INTEGER); cstmt.registerOutParameter(4,
      * java.sql.Types.VARCHAR); cstmt.registerOutParameter(5,
      * java.sql.Types.VARCHAR);
@@ -1476,7 +1476,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
 
             CallableStatement callSt3 = conn1.prepareCall("{ call bug43576_2(?, 'yyy', ?, ?, ?) }");
             callSt3.setString(1, "xxx");
-            // callSt3.setString(2, "yyy");
+            // callSt3.appendString(2, "yyy");
             callSt3.registerOutParameter(2, java.sql.Types.VARCHAR);
             callSt3.registerOutParameter(3, java.sql.Types.VARCHAR);
             callSt3.registerOutParameter(4, java.sql.Types.VARCHAR);

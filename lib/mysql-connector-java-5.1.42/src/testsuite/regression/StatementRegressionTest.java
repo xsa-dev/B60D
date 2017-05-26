@@ -3001,7 +3001,7 @@ public class StatementRegressionTest extends BaseTestCase {
             this.pstmt = noBackslashEscapesConn.prepareStatement(select_sql);
             this.pstmt.setString(1, "c:\\j%");
             // if we comment out the previous line and uncomment the following, the like clause matches
-            // this.pstmt.setString(1,"c:\\\\j%");
+            // this.pstmt.appendString(1,"c:\\\\j%");
             System.out.println("about to execute query " + select_sql);
             this.rs = this.pstmt.executeQuery();
             assertTrue(this.rs.next());

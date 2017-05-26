@@ -3,6 +3,7 @@ package model.workers;
 import model.ConsoleHelper;
 import model.examles.TextExampl;
 import model.example_generators.TextExamplesGenerator;
+import view.StartWindow;
 
 import java.io.File;
 import java.util.Date;
@@ -41,9 +42,35 @@ public class WorkerWithTextExamples extends AbstractExampleWorker {
         Date endDate = new Date();
         return considersPoints(points, startDate, endDate);
     }
+
+    public int launching(StartWindow startWindow) throws Exception {
+//        //эта срока находит этот файл на любой машине
+//        String str = new File(".").getAbsolutePath().toString().
+//                replaceAll("\\.$", "src/ExamplesTest").
+//                replaceAll("\\\\", "/");
+//        TextExamplesGenerator generator = new TextExamplesGenerator(str);
+//        List<TextExampl> list = generator.getReadingExamples();
 //
-//    private int considersPoints(int points, Date startDate, Date endDate ){
-//        long differentsDates = endDate.getTime() - startDate.getTime();
-//        return (int) ((double)(points) / (differentsDates / 1000) * 100);
-//    }
+//        startWindow.appendString("To exit press EXIT\n");
+//        int points = 0;
+//        Date startDate = new Date();
+//
+//        for (TextExampl textExampl : list) {
+//            startWindow.appendString("Qestion: ");
+//            startWindow.appendString(textExampl.getQuestion() + "\n your answer:");
+//
+//            String userAncwer = startWindow.getString();
+//            if ("EXIT".equals(userAncwer)) {
+//                return considersPoints(points, startDate, new Date());
+//            }
+//            //потом фразы брать тз пропперти файлов
+//            startWindow.appendString(textExampl.testAnswer( userAncwer) ?
+//                    "ok, resalt " + ++points :
+//                    "bad, resalt " + points );
+//        }
+//
+//        Date endDate = new Date();
+//        return considersPoints(points, startDate, endDate);
+        return 0;
+    }
 }
