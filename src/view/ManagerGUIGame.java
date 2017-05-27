@@ -1,8 +1,11 @@
 package view;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import model.ProcesesCloser;
 import model.record_worker.ConectorToBd;
 import model.workers.AbstractGUIWorker;
 
@@ -12,10 +15,10 @@ import model.workers.AbstractGUIWorker;
  */
 public class ManagerGUIGame extends Application {
     private static ManagerGUIGame managerGUIGame;
-    private volatile TextGame textGame;
-    private volatile WriteRecordWindow writeRecordWindow;
-    private volatile AbstractGUIWorker textGUIExamples;
-    private volatile ConectorToBd conectorToBd;
+    private GameWindow gameWindow;
+    private WriteRecordWindow writeRecordWindow;
+    private AbstractGUIWorker textGUIExamples;
+    private ConectorToBd conectorToBd;
     private static boolean runingWindow = false;
     private static volatile boolean startGame = false;
     private boolean writeRecord = false;
@@ -39,15 +42,23 @@ public class ManagerGUIGame extends Application {
     }
 
     public void start(Stage primaryStage) {
-        conectorToBd = new ConectorToBd();
+//        conectorToBd = new ConectorToBd();
         startWindow = new StartWindow(this);
-        textGame = new TextGame(this);
+        gameWindow = new GameWindow(this);
         writeRecordWindow = new WriteRecordWindow(this);
         managerGUIGame = this;
         theStage = primaryStage;
+        theStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                ProcesesCloser.closeAllPoceses();
+                System.exit(0);
+//                event.consume();
+            }
+        });
 
         startScene = startWindow.createStartWindowScene(theStage);
-        gameScene = textGame.createGameScene(theStage);
+        gameScene = gameWindow.createGameScene(theStage);
 
 
         primaryStage.setTitle("D60B");
@@ -65,12 +76,16 @@ public class ManagerGUIGame extends Application {
     }
 
     public void appendString(String message) {
-        textGame.appendString(message);
+        gameWindow.appendString(message);
         System.out.println("TESTMESSAGE" + message);
     }
 
+    public void clearOutTextArea(){
+        gameWindow.clesrOutTextArea();
+    }
+
     public String getString() {
-        return textGame.getString();
+        return gameWindow.getString();
     }
 
     public static ManagerGUIGame getManagerGUIGame() {

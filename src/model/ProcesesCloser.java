@@ -21,10 +21,12 @@ public class ProcesesCloser {
         for (AutoCloseable operation : operations) {
             try {
                 operation.close();
+                System.out.println(operation.getClass().getSimpleName());
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+        operations.clear();
     }
 
     public static void closeProces(AutoCloseable ob){

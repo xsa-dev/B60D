@@ -37,6 +37,7 @@ public class IntGUIExamplesWorker extends AbstractGUIWorker{
         //для каждого значения в списке выполнить метода anw
         managerGUIGame.appendString("To exit press EXIT\n");
         for (int i = 0; i < list.size(); i++) {
+//            managerGUIGame.clearOutTextArea();
 
             vals = (list.get(i).toCharArray());
             x = Character.getNumericValue(vals[0]);

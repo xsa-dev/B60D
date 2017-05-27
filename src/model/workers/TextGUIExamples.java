@@ -39,6 +39,7 @@ public class TextGUIExamples extends AbstractGUIWorker {
         Date startDate = new Date();
 
         for (TextExampl textExampl : list) {
+//            managerGUIGame.clearOutTextArea();
             if (isWriwRecord()) {
                 return endResalt(points, startDate, new Date());
             }

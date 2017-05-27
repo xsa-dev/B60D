@@ -19,14 +19,14 @@ import java.io.IOException;
  * Created by Administrator1 on 24.05.2017.
  */
 public class GameWindow {
-    private TextArea outTextArea;
+    private volatile TextArea outTextArea;
     private TextField inTextField;
     private String ansver = "";
     private boolean writeRecord = false;
 
     private Pane gamePane;
     private Scene gameScene;
-    private volatile Stage theStage;
+    private Stage theStage;
     private ManagerGUIGame managerGUIGame;
 
     public GameWindow(ManagerGUIGame managerGUIGame) {
@@ -46,12 +46,16 @@ public class GameWindow {
             initialNodesForTexts(node);
         }
 
-        return gameScene = new Scene(gamePane, 400, 400);
-//        return gameScene;
+        return gameScene = new Scene(gamePane, 600, 500);
     }
 
     public void appendString(String message) {
         outTextArea.appendText(message + "\n");
+        outTextArea.setScrollTop(Double.MAX_VALUE); //this will scroll to the bottom
+    }
+
+    public void clesrOutTextArea(){
+        outTextArea.clear();
     }
 
     public String getString() {
@@ -86,19 +90,6 @@ public class GameWindow {
         }
     }
 
-    private void initialBattonRecord2(Button button) {
-        button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                managerGUIGame.getTextGUIExamples().endGame();
-                System.out.println(theStage);
-                theStage.setScene(managerGUIGame.getWriteRecordScene());
-                writeRecord = true;
-            }
-        });
-    }
-
-
     private void initialBattonRecord(Button button) {
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -114,7 +105,15 @@ public class GameWindow {
 
     private void initialTableView(TextArea node) {
         outTextArea = node;
-        outTextArea.setText("");
+
+//        outTextArea.textProperty().addListener(new ChangeListener<Object>() {
+//            @Override
+//            public void changed(ObservableValue<?> observable, Object oldValue,
+//                                Object newValue) {
+//                outTextArea.setScrollTop(Double.MAX_VALUE); //this will scroll to the bottom
+//                //use Double.MIN_VALUE to scroll to the top
+//            }
+//        });
     }
 
     private void initialTextField(TextField node) {

@@ -47,7 +47,7 @@ public class WriteRecordWindow {
         initialElements();
 
 
-        writerScene = new Scene(writerPane, 500, 400);
+        writerScene = new Scene(writerPane, 600, 400);
         return writerScene;
     }
 
@@ -65,7 +65,7 @@ public class WriteRecordWindow {
                 case "1":
                     loginTextField = textField;
                     textField.onActionProperty().setValue(new EventHandler<ActionEvent>() {
-//                    textField.setOnAction(new EventHandler<ActionEvent>() {
+                        //                    textField.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(javafx.event.ActionEvent event) {
                             login = loginTextField.getText();
@@ -75,7 +75,7 @@ public class WriteRecordWindow {
                 case "2":
                     passwordTextField = textField;
                     textField.onActionProperty().setValue(new EventHandler<ActionEvent>() {
-//                    textField.addEventHandler(new EventHandler<ActionEvent>() {
+                        //                    textField.addEventHandler(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent mouseEvent) {
                             password = passwordTextField.getText();
@@ -103,10 +103,11 @@ public class WriteRecordWindow {
         }
     }
 
-    private void initialBackToGameButton(Button button){
+    private void initialBackToGameButton(Button button) {
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                closeConetion();
                 theStage.setScene(managerGUIGame.getGameScene());
             }
         });
@@ -122,15 +123,21 @@ public class WriteRecordWindow {
                     if (conectorToBd.logIn(login, password)) {
                         System.out.println(conectorToBd.getConnection());
                         conectorToBd.writeRecords(managerGUIGame.getTextGUIExamples().getResalt());
-                        closeConetion();
+                        suchesfullConect();
+//                        closeConetion();
                     }
                 }
             }
         });
     }
 
-    private void closeConetion(){
+    private void closeConetion() {
         conectorToBd.closeConection();
+//        label.setText("write resalt suchesfull");
+//        label.setStyle("-fx-background-color: green;-fx-padding: 10px;");
+    }
+
+    private void suchesfullConect() {
         label.setText("write resalt suchesfull");
         label.setStyle("-fx-background-color: green;-fx-padding: 10px;");
     }
@@ -145,7 +152,7 @@ public class WriteRecordWindow {
                     System.out.println("signUP such");
                     if (conectorToBd.signUp(login, password)) {
                         conectorToBd.writeRecords(managerGUIGame.getTextGUIExamples().getResalt());
-                        closeConetion();
+                        suchesfullConect();//                        closeConetion();
                     }
                 }
             }
