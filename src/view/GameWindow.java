@@ -51,7 +51,8 @@ public class GameWindow {
 
     public void appendString(String message) {
         outTextArea.appendText(message + "\n");
-        outTextArea.setScrollTop(Double.MAX_VALUE); //this will scroll to the bottom
+        outTextArea.setScrollTop(message.length() + 2); //this will scroll to the bottom
+//        outTextArea.setScrollTop(Double.MAX_VALUE); //this will scroll to the bottom
     }
 
     public void clesrOutTextArea(){

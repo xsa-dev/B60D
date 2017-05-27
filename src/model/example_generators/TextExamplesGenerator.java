@@ -30,10 +30,11 @@ public class TextExamplesGenerator {
             allText = new String(Files.readAllBytes(Paths.get(path)), "UTF-8");
         } catch (IOException e) { e.printStackTrace();}
         allText = allText.replaceAll("[\\n\\r]", "");
-        String[] examples = allText.toString().split("-{5,15}");
+        String[] examples = allText.split("-+?\\+");
+        System.out.println(Arrays.toString(examples));
 
         for (String example : examples) {
-            String[] temp = example.split("\\*{5,15}");
+            String[] temp = example.split("\\*+?\\+");//{5,15}");
             result.add(new TextExampl(temp[0], temp[1]));
         }
         return result;
