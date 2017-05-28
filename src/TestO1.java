@@ -20,7 +20,7 @@ public class TestO1 {
     }
     public static void main5(String[] args) throws IOException {
         System.out.println(System.getProperty("java.class.path"));
-        System.out.println( ConsoleHelper.getAbsolutePath( ConectorToBd.class));
+        System.out.println( ConsoleHelper.getParentPath( ConectorToBd.class));
         System.out.println("D:\\tests2\\B60D\\src\\model\\record_worker\\ConectorToBd.java".replaceAll("\\\\", "/"));
         System.out.println(new File(".").getCanonicalPath());
     }

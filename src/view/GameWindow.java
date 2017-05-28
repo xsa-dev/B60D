@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * Created by Administrator1 on 24.05.2017.
  */
-public class GameWindow {
+public class GameWindow extends AbstractWindow{
     private volatile TextArea outTextArea;
     private TextField inTextField;
     private String ansver = "";
@@ -42,9 +42,7 @@ public class GameWindow {
             e.printStackTrace();
         }
 
-        for (Node node : gamePane.getChildren()) {
-            initialNodesForTexts(node);
-        }
+        initialElementsOrPanes(gamePane);
 
         return gameScene = new Scene(gamePane, 600, 500);
     }
@@ -77,7 +75,7 @@ public class GameWindow {
     }
 
 
-    private void initialNodesForTexts(Node node) {
+    protected void initialElements(Node node) {
         switch (node.getId()) {
             case "1":
                 initialTableView((TextArea) node);

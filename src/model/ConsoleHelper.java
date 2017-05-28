@@ -55,10 +55,12 @@ public class ConsoleHelper {
         }
     }
 
-    public static String getAbsolutePath(Class  clazz){
-        String resalt = new File(".").getAbsolutePath().toString().
+    public static String getParentPath(Class  clazz){
+        String resalt = new File(".").getAbsolutePath().
                 replaceAll("\\.$",  "src/" + clazz.getName()).
-                replaceAll("[\\\\,\\.]", "/");
+                replaceAll("[\\\\,\\.]", "/").
+                replaceAll("/" + clazz.getSimpleName() + "$", "");
+
         return resalt;
     }
 

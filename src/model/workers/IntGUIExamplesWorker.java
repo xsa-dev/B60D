@@ -14,8 +14,8 @@ import java.util.List;
 public class IntGUIExamplesWorker extends AbstractGUIWorker{
     private static List<String> list = IntExamlesGenerator.genList(16);
 
-    public IntGUIExamplesWorker(ManagerGUIGame view) {
-            setGameWindow(view);
+    public IntGUIExamplesWorker(ManagerGUIGame managerGUIGame) {
+        super(managerGUIGame);
     }
 
     public int launching() throws Exception {

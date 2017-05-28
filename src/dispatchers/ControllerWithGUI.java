@@ -10,12 +10,13 @@ public class ControllerWithGUI {
     public static void main(String[] args) throws Exception {
 
         ManagerGUIGame startWindow = ManagerGUIGame.play();
-        AbstractGUIWorker examplesWorkeble =startWindow.getTextGUIExamples();// new TextGUIExamples(startWindow);
+        AbstractGUIWorker examplesWorkeble = startWindow.getTextGUIExamples();// new TextGUIExamples(startWindow);
         startWindow.setTextGUIExamples(examplesWorkeble);
 
         int resutLaunc = examplesWorkeble.launching();
 
-        startWindow.appendString("\n-------YOUR RESALT: "  + resutLaunc + "-----------\n");
+//        startWindow.appendString("\n-------YOUR RESALT: "  + resutLaunc + "-----------\n");
+//        startWindow.appendString(startWindow.getLanguageManager().getPhrase( "game.end") + resutLaunc);
         System.out.println("\n\n\n\n" + resutLaunc);
 
 ////        ConsoleHelper.appendString("write result to DB press yes");

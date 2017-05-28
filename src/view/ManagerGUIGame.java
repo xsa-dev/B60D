@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.ProcesesCloser;
+import model.languages.LanguageManager;
 import model.record_worker.ConectorToBd;
 import model.workers.AbstractGUIWorker;
 
@@ -22,6 +23,7 @@ public class ManagerGUIGame extends Application {
     private static boolean runingWindow = false;
     private static volatile boolean startGame = false;
     private boolean writeRecord = false;
+    private volatile LanguageManager languageManager;
 
     private Scene startScene, gameScene, writeRecordScene;// старт сцене сделать менеджером приложения
     private Stage theStage;
@@ -43,6 +45,7 @@ public class ManagerGUIGame extends Application {
 
     public void start(Stage primaryStage) {
 //        conectorToBd = new ConectorToBd();
+        languageManager = new LanguageManager();
         startWindow = new StartWindow(this);
         gameWindow = new GameWindow(this);
         writeRecordWindow = new WriteRecordWindow(this);
@@ -120,10 +123,11 @@ public class ManagerGUIGame extends Application {
         return conectorToBd;
     }
 
-    ////    public static void main(String[] args) {
-////        ManagerGUIGame managerGUIGame = play();
-////        managerGUIGame.appendString("write message to program");
-////        for (int i = 0; i < 10; i++)
-////            System.out.println(managerGUIGame.getString());
-////    }
+    public LanguageManager getLanguageManager() {
+        return languageManager;
+    }
+
+    public void setLanguageManager(LanguageManager languageManager) {
+        this.languageManager = languageManager;
+    }
 }
