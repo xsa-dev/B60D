@@ -66,11 +66,19 @@ public class StartWindow extends AbstractWindow {
                 break;
             case "LanguageInglish":
                 button.addEventHandler(MouseEvent.MOUSE_CLICKED, (mouseEvent) ->
-                    languageManager.setLanguageType(LanguageManager.LanguageType.INGLISH));
+                        languageManager.setLanguageType(LanguageManager.LanguageType.INGLISH));
                 break;
             case "LanguageRussian":
                 button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent ->
                         languageManager.setLanguageType(LanguageManager.LanguageType.RUSSIAN));
+                break;
+            case "ButtonChangeLevel":
+                button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent ->
+                        {
+                            managerGUIGame.setLanguageScene(managerGUIGame.getWindowManagerLevels().createScene(theStage));
+                            theStage.setScene(managerGUIGame.getLanguageScene());
+                        }
+                );
                 break;
         }
     }

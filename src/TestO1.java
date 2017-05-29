@@ -15,6 +15,11 @@ import java.util.List;
  */
 public class TestO1 {
     public static void main(String[] args) {
+        System.out.println(Integer.parseInt(String.valueOf('1')));
+
+    }
+
+    public static void main6(String[] args) {
 //        System.out.println(System.getProperty("java.class.path"));
         System.out.println(new TestO1().getClass().getResource("TestO1.java"));
     }

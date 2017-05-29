@@ -1,10 +1,8 @@
 package view;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.ProcesesCloser;
 import model.languages.LanguageManager;
 import model.record_worker.ConectorToBd;
@@ -23,8 +21,9 @@ public class ManagerGUIGame extends Application {
     private static boolean runingWindow = false;
     private static boolean startGame = false;
     private volatile LanguageManager languageManager;
+    private WindowManagerLevels windowManagerLevels;
 
-    private Scene startScene, gameScene, writeRecordScene;// старт сцене сделать менеджером приложения
+    private Scene startScene, gameScene, languageScene, writeRecordScene;// старт сцене сделать менеджером приложения
     private Stage theStage;
     private StartWindow startWindow;
 
@@ -47,19 +46,16 @@ public class ManagerGUIGame extends Application {
         startWindow = new StartWindow(this);
         gameWindow = new GameWindow(this);
         writeRecordWindow = new WriteRecordWindow(this);
+        windowManagerLevels = new WindowManagerLevels(this);
         managerGUIGame = this;
         theStage = primaryStage;
-        theStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                ProcesesCloser.closeAllPoceses();
-                System.exit(0);
-            }
+        theStage.setOnCloseRequest(event -> {
+            ProcesesCloser.closeAllPoceses();
+            System.exit(0);
         });
 
         startScene = startWindow.createStartWindowScene(theStage);
         gameScene = gameWindow.createGameScene(theStage);
-
 
         primaryStage.setTitle("D60B");
         primaryStage.setScene(startScene);
@@ -96,10 +92,6 @@ public class ManagerGUIGame extends Application {
         return temp;
     }
 
-    public void clearOutTextArea(){
-        gameWindow.clesrOutTextArea();
-    }
-
     public String getString() {
         return gameWindow.getString();
     }
@@ -134,5 +126,21 @@ public class ManagerGUIGame extends Application {
 
     public LanguageManager getLanguageManager() {
         return languageManager;
+    }
+
+    public Scene getLanguageScene() {
+        return languageScene;
+    }
+
+    public void setLanguageScene(Scene languageScene) {
+        this.languageScene = languageScene;
+    }
+
+    public WindowManagerLevels getWindowManagerLevels() {
+        return windowManagerLevels;
+    }
+
+    public Scene getStartScene() {
+        return startScene;
     }
 }
