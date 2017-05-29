@@ -83,6 +83,23 @@ public class ManagerGUIGame extends Application {
         System.out.println("TESTMESSAGE" + message);
     }
 
+    public String getStringNumber(){
+        String temp;
+        while (true){
+            temp = getString();
+            if (temp.equals("EXIT") || temp.matches("^([-+]?\\d+)$")) {
+                break;
+            }
+            appendString(languageManager.getPhrase("game.repeat_operation"));
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return temp;
+    }
+
     public void clearOutTextArea(){
         gameWindow.clesrOutTextArea();
     }

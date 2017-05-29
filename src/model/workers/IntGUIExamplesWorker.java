@@ -1,6 +1,5 @@
 package model.workers;
 
-import model.ConsoleHelper;
 import model.example_generators.IntExamlesGenerator;
 import view.ManagerGUIGame;
 
@@ -30,12 +29,13 @@ public class IntGUIExamplesWorker extends AbstractGUIWorker{
         char[] vals;
         char o;
 
-        managerGUIGame.appendString("Time Start!");
+//        managerGUIGame.appendString("Time Start!");
+        gameWindow.appendString(languageMP.getPhrase("game.start"));
 
         Date startDate = new Date();
         int points = 0;
         //для каждого значения в списке выполнить метода anw
-        managerGUIGame.appendString("To exit press EXIT\n");
+//        managerGUIGame.appendString("To exit press EXIT\n");
         for (int i = 0; i < list.size(); i++) {
 //            managerGUIGame.clearOutTextArea();
 
@@ -61,20 +61,25 @@ public class IntGUIExamplesWorker extends AbstractGUIWorker{
                     break;
             }
 
-            managerGUIGame.appendString(list.get(i));
-            String rSuserAnswer = managerGUIGame.getString();
+            managerGUIGame.appendString(list.get(i));//todo сдесь поставить мехаизм постоянного считывания текста пока он не будет числом или EXIT
+            String rSuserAnswer = managerGUIGame.getStringNumber();//getString();
             if ("EXIT".equals(rSuserAnswer)) {
-                return considersPoints(points, startDate, new Date());
+                return endResalt(points, startDate, new Date());
             }
             answ = Integer.parseInt( rSuserAnswer);
             if (answ == z) {
-                managerGUIGame.appendString("ok, answer is: " + z + " next...");
-                points++;
+//                managerGUIGame.appendString("ok, answer is: " + z + " next...");
+//                points++;
+                managerGUIGame.appendString(languageMP.getPhrase("game.your_ansver") + answ);
+                managerGUIGame.appendString(languageMP.getPhrase("game.good_resalt") + points++);
             }
             if (answ != z) {
-                managerGUIGame.appendString("bad... one more time..");
+//                managerGUIGame.appendString("bad... one more time..");
+                managerGUIGame.appendString(languageMP.getPhrase("game.your_ansver") + answ);
+                managerGUIGame.appendString(languageMP.getPhrase("game.bad_resalt") + points);
                 e++;
-                i = i - 1;
+                --i;
+
             }
         }
         if (answ == -1) {
@@ -82,8 +87,10 @@ public class IntGUIExamplesWorker extends AbstractGUIWorker{
         }
 
         Date endDate = new Date();
-        ConsoleHelper.printWin(startDate, endDate.getTime(), endDate.getTime() - startDate.getTime(), e);
-        return considersPoints(points, startDate, endDate);
+        System.out.println("end in language in IntGui");
+//        ConsoleHelper.printWin(startDate, endDate.getTime(), endDate.getTime() - startDate.getTime(), e);
+        System.out.println("end in language in IntGui");
+        return endResalt(points, startDate, endDate);
     }
 
     private void ifExit(String waiter) throws Exception {

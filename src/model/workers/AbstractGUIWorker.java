@@ -14,10 +14,6 @@ public abstract class AbstractGUIWorker {
     protected int resalt;
     protected LanguageManager languageMP;
 
-    public AbstractGUIWorker() {
-
-    }
-
     public AbstractGUIWorker(ManagerGUIGame gameWindow) {
         this.gameWindow = gameWindow;
         this.languageMP = gameWindow.getLanguageManager();
@@ -36,17 +32,15 @@ public abstract class AbstractGUIWorker {
     }
 
     protected int endResalt(int points, Date startDate, Date endDate) {
+        System.out.println("in end rresalt");
         resalt = considersPoints(points, startDate, endDate);
         gameWindow.appendString(languageMP.getPhrase("game.end") + resalt);
+        System.out.println("in END END rresalt");
         return resalt;
     }
 
     public ManagerGUIGame getGameWindow() {
         return gameWindow;
-    }
-
-    public void setGameWindow(ManagerGUIGame gameWindow) {
-        this.gameWindow = gameWindow;
     }
 
     public boolean isWriwRecord() {

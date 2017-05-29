@@ -42,9 +42,7 @@ public class TextGUIExamples extends AbstractGUIWorker {
 //                replaceAll("\\.$", "src/model/example_generators/ExamplesTest").
 //                replaceAll("\\\\", "/");
 //        TextExamplesGenerator generator = new TextExamplesGenerator(str);
-        List<TextExampl> list = null;//generator.getReadingExamples();
-
-        list = TextExamplesGenerator.getReadingExamples(getPathForSelectedLanguage());
+        List<TextExampl> list = TextExamplesGenerator.getReadingExamples(getPathForSelectedLanguage());
 
         while (!getGameWindow().isStartGame()) {
             Thread.sleep(600);
@@ -81,7 +79,6 @@ public class TextGUIExamples extends AbstractGUIWorker {
                     "bad, resalt " + points);
 
         }
-
         return endResalt(points, startDate, new Date());
     }
 //

@@ -120,6 +120,7 @@ public class ConectorToBd {
     public void closeConection() {
         try {
             System.out.println("conecting closed");
+            if ( connection !=null)
             connection.close();
         } catch (SQLException e) {
             log.logError(e);
