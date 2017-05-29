@@ -21,13 +21,12 @@ public class ManagerGUIGame extends Application {
     private AbstractGUIWorker textGUIExamples;
     private ConectorToBd conectorToBd;
     private static boolean runingWindow = false;
-    private static volatile boolean startGame = false;
-    private boolean writeRecord = false;
+    private static boolean startGame = false;
     private volatile LanguageManager languageManager;
 
     private Scene startScene, gameScene, writeRecordScene;// старт сцене сделать менеджером приложения
     private Stage theStage;
-    private volatile StartWindow startWindow;
+    private StartWindow startWindow;
 
     public static ManagerGUIGame play() {
         Thread thread = new Thread(() -> launch());
@@ -44,7 +43,6 @@ public class ManagerGUIGame extends Application {
     }
 
     public void start(Stage primaryStage) {
-//        conectorToBd = new ConectorToBd();
         languageManager = new LanguageManager();
         startWindow = new StartWindow(this);
         gameWindow = new GameWindow(this);
@@ -56,7 +54,6 @@ public class ManagerGUIGame extends Application {
             public void handle(WindowEvent event) {
                 ProcesesCloser.closeAllPoceses();
                 System.exit(0);
-//                event.consume();
             }
         });
 
@@ -80,7 +77,6 @@ public class ManagerGUIGame extends Application {
 
     public void appendString(String message) {
         gameWindow.appendString(message);
-        System.out.println("TESTMESSAGE" + message);
     }
 
     public String getStringNumber(){
@@ -106,10 +102,6 @@ public class ManagerGUIGame extends Application {
 
     public String getString() {
         return gameWindow.getString();
-    }
-
-    public static ManagerGUIGame getManagerGUIGame() {
-        return managerGUIGame;
     }
 
     public void setTextGUIExamples(AbstractGUIWorker textGUIExamples) {
@@ -142,9 +134,5 @@ public class ManagerGUIGame extends Application {
 
     public LanguageManager getLanguageManager() {
         return languageManager;
-    }
-
-    public void setLanguageManager(LanguageManager languageManager) {
-        this.languageManager = languageManager;
     }
 }

@@ -87,9 +87,6 @@ public class IntGUIExamplesWorker extends AbstractGUIWorker{
         }
 
         Date endDate = new Date();
-        System.out.println("end in language in IntGui");
-//        ConsoleHelper.printWin(startDate, endDate.getTime(), endDate.getTime() - startDate.getTime(), e);
-        System.out.println("end in language in IntGui");
         return endResalt(points, startDate, endDate);
     }
 

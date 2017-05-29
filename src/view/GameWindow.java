@@ -1,5 +1,7 @@
 package view;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +33,6 @@ public class GameWindow extends AbstractWindow{
 
     public GameWindow(ManagerGUIGame managerGUIGame) {
         this.managerGUIGame = managerGUIGame;
-//        theStage = managerGUIGame.getTheStage();
     }
 
     public Scene createGameScene(Stage theStage){
@@ -49,8 +50,7 @@ public class GameWindow extends AbstractWindow{
 
     public void appendString(String message) {
         outTextArea.appendText(message + "\n");
-        outTextArea.setScrollTop(message.length() + 2); //this will scroll to the bottom
-//        outTextArea.setScrollTop(Double.MAX_VALUE); //this will scroll to the bottom
+//        outTextArea.setScrollTop(message.length() + 2); //this will scroll to the bottom
     }
 
     public void clesrOutTextArea(){
@@ -105,14 +105,13 @@ public class GameWindow extends AbstractWindow{
     private void initialTableView(TextArea node) {
         outTextArea = node;
 
-//        outTextArea.textProperty().addListener(new ChangeListener<Object>() {
-//            @Override
-//            public void changed(ObservableValue<?> observable, Object oldValue,
-//                                Object newValue) {
-//                outTextArea.setScrollTop(Double.MAX_VALUE); //this will scroll to the bottom
-//                //use Double.MIN_VALUE to scroll to the top
-//            }
-//        });
+        outTextArea.textProperty().addListener(new ChangeListener<Object>() {
+            @Override
+            public void changed(ObservableValue<?> observable, Object oldValue,
+                                Object newValue) {
+                outTextArea.setScrollTop(Double.MAX_VALUE);
+            }
+        });
     }
 
     private void initialTextField(TextField node) {

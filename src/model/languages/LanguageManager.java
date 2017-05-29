@@ -22,16 +22,17 @@ public class LanguageManager {
 
     public LanguageManager() {
         initialLanguage();
-        System.out.println("in constructor end");
     }
 
-    private void initialLanguage(){
+    private void initialLanguage() {
         String resaltFileName = "";
-        switch (languageType){
-            case INGLISH: resaltFileName = fileNameInglish;
-                System.out.println("INGLISH"); break;
-            case RUSSIAN: resaltFileName = fileNameRussian;
-                System.out.println("RUSSIAN"); break;
+        switch (languageType) {
+            case INGLISH:
+                resaltFileName = fileNameInglish;
+                break;
+            case RUSSIAN:
+                resaltFileName = fileNameRussian;
+                break;
         }
         try {
             selectedLanguagePhrases.load(new FileReader(resaltFileName));
@@ -40,17 +41,14 @@ public class LanguageManager {
         }
     }
 
-    public String getPhrase(String namePhrase){
+    public String getPhrase(String namePhrase) {
         return selectedLanguagePhrases.getProperty(namePhrase);
     }
 
-    public void setLanguageType(LanguageType languageTypeRename){
-        System.out.println("before change language");
+    public void setLanguageType(LanguageType languageTypeRename) {
         if (languageTypeRename != languageType) {
-            System.out.println("changing... language");
             languageType = languageTypeRename;
             initialLanguage();
-            System.out.println("suchesfull change alnguage");
         }
     }
 
@@ -60,8 +58,6 @@ public class LanguageManager {
 
     public static void main(String[] args) {
         LanguageManager languageManager = new LanguageManager();
-        System.out.println(languageManager.getPhrase("game.start"));
         languageManager.setLanguageType(LanguageType.INGLISH);
-        System.out.println(languageManager.getPhrase("game.start"));
     }
 }

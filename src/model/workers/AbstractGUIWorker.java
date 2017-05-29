@@ -32,10 +32,8 @@ public abstract class AbstractGUIWorker {
     }
 
     protected int endResalt(int points, Date startDate, Date endDate) {
-        System.out.println("in end rresalt");
         resalt = considersPoints(points, startDate, endDate);
         gameWindow.appendString(languageMP.getPhrase("game.end") + resalt);
-        System.out.println("in END END rresalt");
         return resalt;
     }
 

@@ -1,6 +1,5 @@
 package view;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -41,11 +40,9 @@ public class WriteRecordWindow {
         try {
             writerPane = FXMLLoader.load(ManagerGUIGame.class.getResource("WriteRecordWindowFXML.fxml"));
         } catch (IOException e) {
-            System.out.println("jncokmserjnvicnefknvejfnv");
             e.printStackTrace();
         }
         initialElements();
-
 
         writerScene = new Scene(writerPane, 600, 400);
         return writerScene;
@@ -64,23 +61,15 @@ public class WriteRecordWindow {
             switch (textField.getId()) {
                 case "1":
                     loginTextField = textField;
-                    textField.onActionProperty().setValue(new EventHandler<ActionEvent>() {
-                        //                    textField.setOnAction(new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(javafx.event.ActionEvent event) {
-                            login = loginTextField.getText();
-                        }
-                    });
+                    textField.onActionProperty().setValue(event ->
+                            login = loginTextField.getText()
+                    );
                     break;
                 case "2":
                     passwordTextField = textField;
-                    textField.onActionProperty().setValue(new EventHandler<ActionEvent>() {
-                        //                    textField.addEventHandler(new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent mouseEvent) {
-                            password = passwordTextField.getText();
-                        }
-                    });
+                    textField.onActionProperty().setValue(mouseEvent ->
+                            password = passwordTextField.getText()
+                    );
                     break;
             }
         }
@@ -104,28 +93,19 @@ public class WriteRecordWindow {
     }
 
     private void initialBackToGameButton(Button button) {
-        button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                closeConetion();
-                theStage.setScene(managerGUIGame.getGameScene());
-            }
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            closeConetion();
+            theStage.setScene(managerGUIGame.getGameScene());
         });
     }
 
     private void initialButtonLogIn(Button button) {
-        button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                System.out.println("vkmsdlc;LOGIN");
-                if (!"".equals(password) && !"".equals(login)) {
-                    System.out.println("testLOGIN   " + login + password);
-                    if (conectorToBd.logIn(login, password)) {
-                        System.out.println(conectorToBd.getConnection());
-                        conectorToBd.writeRecords(managerGUIGame.getTextGUIExamples().getResalt());
-                        suchesfullConect();
-//                        closeConetion();
-                    }
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            if (!"".equals(password) && !"".equals(login)) {
+                if (conectorToBd.logIn(login, password)) {
+                    System.out.println(conectorToBd.getConnection());
+                    conectorToBd.writeRecords(managerGUIGame.getTextGUIExamples().getResalt());
+                    suchesfullConect();
                 }
             }
         });
@@ -133,8 +113,6 @@ public class WriteRecordWindow {
 
     private void closeConetion() {
         conectorToBd.closeConection();
-//        label.setText("write resalt suchesfull");
-//        label.setStyle("-fx-background-color: green;-fx-padding: 10px;");
     }
 
     private void suchesfullConect() {
@@ -146,10 +124,7 @@ public class WriteRecordWindow {
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                System.out.println("vkmsdlc;SIGNUP");
-
                 if (!"".equals(password) && !"".equals(login)) {
-                    System.out.println("signUP such");
                     if (conectorToBd.signUp(login, password)) {
                         conectorToBd.writeRecords(managerGUIGame.getTextGUIExamples().getResalt());
                         suchesfullConect();//                        closeConetion();

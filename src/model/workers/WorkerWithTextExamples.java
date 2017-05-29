@@ -15,7 +15,7 @@ import java.util.List;
 public class WorkerWithTextExamples extends AbstractExampleWorker {
     public int launching() throws Exception {
         //эта срока находит этот файл на любой машине
-        String str = new File(".").getAbsolutePath().toString().
+        String str = new File(".").getAbsolutePath().
                 replaceAll("\\.$", "src/ExamplesTest").
                 replaceAll("\\\\", "/");
         TextExamplesGenerator generator = new TextExamplesGenerator(str);

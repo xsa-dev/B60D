@@ -1,6 +1,5 @@
 package view;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -35,11 +34,10 @@ public class StartWindow extends AbstractWindow {
         try {
             startPane = FXMLLoader.load(StartWindow.class.getResource("WindowStartFXML.fxml"));
         } catch (IOException e) {
-            System.out.println("jncokmserjnvicnefknvejfnv");
             e.printStackTrace();
         }
-        initialElementsOrPanes(startPane);
 
+        initialElementsOrPanes(startPane);
 
         startScene = new Scene(startPane, 400, 400);
         return startScene;
@@ -51,39 +49,26 @@ public class StartWindow extends AbstractWindow {
 
         switch (button.getId()) {
             case "0":
-                button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        managerGUIGame.setTextGUIExamples(new TextGUIExamples(managerGUIGame));
-                        theStage.setScene(managerGUIGame.getGameScene());
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        managerGUIGame.setStartGame(true);
-                    }
+                button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+                    managerGUIGame.setTextGUIExamples(new TextGUIExamples(managerGUIGame));
+                    theStage.setScene(managerGUIGame.getGameScene());
+
+                    managerGUIGame.setStartGame(true);
                 });
                 break;
             case "1":
                 button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
                     managerGUIGame.setTextGUIExamples(new IntGUIExamplesWorker(managerGUIGame));
                     theStage.setScene(managerGUIGame.getGameScene());
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+
                     managerGUIGame.setStartGame(true);
                 });
                 break;
             case "LanguageInglish":
-                System.out.println("gfhjdkslkdjfh");
                 button.addEventHandler(MouseEvent.MOUSE_CLICKED, (mouseEvent) ->
                     languageManager.setLanguageType(LanguageManager.LanguageType.INGLISH));
                 break;
             case "LanguageRussian":
-                System.out.println("gfhjdkslkdjfh");
                 button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent ->
                         languageManager.setLanguageType(LanguageManager.LanguageType.RUSSIAN));
                 break;

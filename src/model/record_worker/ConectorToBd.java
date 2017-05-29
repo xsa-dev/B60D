@@ -15,11 +15,7 @@ import java.util.Properties;
  * Created by Administrator1 on 19.05.2017.
  */
 public class ConectorToBd {
-    private static final LogerSituations log = new LogerSituations( ConectorToBd.class);
-    //    static {
-////        org.apache.log4j.PropertyConfigurator.configure("D:\\tests2\\B60D\\src\\log4j.properties\\log4j.properties");
-////        BasicConfigurator.configure(new NullAppender());
-//    }
+    private static final LogerSituations log = new LogerSituations(ConectorToBd.class);
     private String login;
     private String password;
     private Properties dataForConectToDB;
@@ -27,7 +23,7 @@ public class ConectorToBd {
     private boolean conecting = false;
 
     public static void main(String[] args) {
-        log.logError( new IllegalAccessException());
+        log.logError(new IllegalAccessException());
     }
 
     public ConectorToBd() {
@@ -48,8 +44,7 @@ public class ConectorToBd {
                     dataForConectToDB.getProperty("login"),
                     dataForConectToDB.getProperty("password")
             );
-            ProcesesCloser.putProcess( connection);
-            System.out.println("conection create suchesfull");
+            ProcesesCloser.putProcess(connection);
 
         } catch (ClassNotFoundException | SQLException e) {
             log.logError(e);
@@ -99,29 +94,24 @@ public class ConectorToBd {
         } catch (SQLException e) {
             log.logError(e);
         }
-        System.out.println("hhhhhhhhhhhhhhhhhh");
         conecting = true;
         return true;
     }
 
     public void writeRecords(int points) {
         Statement statement = null;
-        System.out.println("writeRecors");
         try {
             statement = createStatement();
             statement.executeUpdate("UPDATE USERS1 SET POINTS = " + points + " WHERE LOGIN = \'" + login + "\'");
-            System.out.println("suchesfull");
         } catch (SQLException e) {
             log.logError(e);
-            System.out.println("not suchesfull");
         }
     }
 
     public void closeConection() {
         try {
-            System.out.println("conecting closed");
-            if ( connection !=null)
-            connection.close();
+            if (connection != null)
+                connection.close();
         } catch (SQLException e) {
             log.logError(e);
         }
@@ -151,7 +141,6 @@ public class ConectorToBd {
                 }
             }
         }
-
     }
 
     public String readRecords() {
