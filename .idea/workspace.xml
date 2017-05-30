@@ -1761,8 +1761,8 @@
       <file leaf-file-name="TextGUIExamples.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/workers/TextGUIExamples.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="27" column="22" lean-forward="true" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+            <state relative-caret-position="545">
+              <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -3134,14 +3134,7 @@
       <workItem from="1496037117606" duration="5190000" />
       <workItem from="1496054829822" duration="5000" />
       <workItem from="1496069459336" duration="9961000" />
-      <workItem from="1496144310044" duration="4520000" />
-    </task>
-    <task id="LOCAL-00009" summary="optimize code 2">
-      <created>1495015277973</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1495015277974</updated>
+      <workItem from="1496144310044" duration="4573000" />
     </task>
     <task id="LOCAL-00010" summary="this code for test mysql( when show not exception togda very good and tell me about it">
       <created>1495026960385</created>
@@ -3479,7 +3472,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496079528818</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="12121">
+      <created>1496149405364</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1496149405368</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -3515,7 +3515,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240379000" />
+    <option name="totallyTimeSpent" value="240432000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -4069,8 +4069,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/workers/TextGUIExamples.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="27" column="22" lean-forward="true" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+        <state relative-caret-position="545">
+          <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
