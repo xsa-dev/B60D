@@ -1,6 +1,8 @@
 package model.languages;
 
 import model.ConsoleHelper;
+import model.users.ManagerUserSetings;
+import view.ManagerGUIGame;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,6 +14,9 @@ import java.util.Properties;
 public class LanguageManager {
     private volatile Properties selectedLanguagePhrases = new Properties();
     private volatile LanguageType languageType = LanguageType.RUSSIAN;
+    private ManagerGUIGame managerGUIGame;
+    private ManagerUserSetings managerUserSetings;
+
     public static final String fileNameRussian = ConsoleHelper.getParentPath(LanguageManager.class) + "/RussianLanguagePackage.properties";
     public static final String fileNameInglish = ConsoleHelper.getParentPath(LanguageManager.class) + "/InglishLanguagePackage.properties";
 
@@ -20,18 +25,23 @@ public class LanguageManager {
         INGLISH
     }
 
-    public LanguageManager() {
+    public LanguageManager(ManagerGUIGame managerGUIGame) {
+        this.managerGUIGame = managerGUIGame;
+        managerUserSetings = managerGUIGame.getManagerUserSetings();
         initialLanguage();
     }
 
     private void initialLanguage() {
         String resaltFileName = "";
-        switch (languageType) {
+        String languageInSetings = managerUserSetings.getSeting("setings.language");
+        switch ( LanguageType.valueOf(languageInSetings)) {
             case INGLISH:
                 resaltFileName = fileNameInglish;
+                languageType = LanguageType.INGLISH;
                 break;
             case RUSSIAN:
                 resaltFileName = fileNameRussian;
+                languageType = LanguageType.RUSSIAN;
                 break;
         }
         try {
@@ -47,7 +57,8 @@ public class LanguageManager {
 
     public void setLanguageType(LanguageType languageTypeRename) {
         if (languageTypeRename != languageType) {
-            languageType = languageTypeRename;
+            languageType = languageTypeRename;;
+            managerUserSetings.saveSeting("setings.language", languageTypeRename.name());
             initialLanguage();
         }
     }
@@ -57,7 +68,7 @@ public class LanguageManager {
     }
 
     public static void main(String[] args) {
-        LanguageManager languageManager = new LanguageManager();
+        LanguageManager languageManager = new LanguageManager(null);
         languageManager.setLanguageType(LanguageType.INGLISH);
     }
 }

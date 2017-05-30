@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.users.ManagerUserSetings;
 
 import java.io.IOException;
 
@@ -16,9 +17,12 @@ public class WindowManagerLevels extends AbstractWindow {
     private Scene thisScene;
     private Stage theStage;
     private Pane thisPane;
+    private ManagerUserSetings managerUserSetings;
 
     public WindowManagerLevels(ManagerGUIGame managerGUIGame) {
         this.managerGUIGame = managerGUIGame;
+        managerUserSetings = managerGUIGame.getManagerUserSetings();
+        selectedLevel = Integer.parseInt(managerUserSetings.getSeting("setings.level"));
     }
 
     public Scene createScene(Stage theStage) {
@@ -50,6 +54,7 @@ public class WindowManagerLevels extends AbstractWindow {
             button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent ->
                     {
                         selectedLevel = Integer.parseInt(buttonId.substring(6));
+                        managerUserSetings.saveSeting("setings.level", selectedLevel + "");
                         System.out.println(selectedLevel);
                     }
             );

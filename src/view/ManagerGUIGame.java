@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import model.ProcesesCloser;
 import model.languages.LanguageManager;
 import model.record_worker.ConectorToBd;
+import model.users.ManagerUserSetings;
 import model.workers.AbstractGUIWorker;
 
 
@@ -22,6 +23,7 @@ public class ManagerGUIGame extends Application {
     private static boolean startGame = false;
     private volatile LanguageManager languageManager;
     private WindowManagerLevels windowManagerLevels;
+    private ManagerUserSetings managerUserSetings;
 
     private Scene startScene, gameScene, languageScene, writeRecordScene;// старт сцене сделать менеджером приложения
     private Stage theStage;
@@ -42,7 +44,8 @@ public class ManagerGUIGame extends Application {
     }
 
     public void start(Stage primaryStage) {
-        languageManager = new LanguageManager();
+        managerUserSetings = new ManagerUserSetings(this);
+        languageManager = new LanguageManager(this);
         startWindow = new StartWindow(this);
         gameWindow = new GameWindow(this);
         writeRecordWindow = new WriteRecordWindow(this);
@@ -142,5 +145,13 @@ public class ManagerGUIGame extends Application {
 
     public Scene getStartScene() {
         return startScene;
+    }
+
+    public ManagerUserSetings getManagerUserSetings() {
+        return managerUserSetings;
+    }
+
+    public void setManagerUserSetings(ManagerUserSetings managerUserSetings) {
+        this.managerUserSetings = managerUserSetings;
     }
 }

@@ -19,13 +19,12 @@ public class TextGUIExamples extends AbstractGUIWorker {
 
     private String getPathForSelectedLanguage() {
         String resalt = ConsoleHelper.getParentPath(TextExamplesGenerator.class);
-
         switch (gameWindow.getLanguageManager().getLanguageType()) {
             case RUSSIAN:
-                resalt += "/Russian_Examples" + gameWindow.getWindowManagerLevels().getSelectedLevel();
+                resalt += "/russian_examples/Russian_Examples" + gameWindow.getWindowManagerLevels().getSelectedLevel();
                 break;
             case INGLISH:
-                resalt += "/Inglish_Examples" + gameWindow.getWindowManagerLevels().getSelectedLevel();
+                resalt += "/inglish_examples/Inglish_Examples" + gameWindow.getWindowManagerLevels().getSelectedLevel();
                 break;
         }
         System.out.println(resalt);
