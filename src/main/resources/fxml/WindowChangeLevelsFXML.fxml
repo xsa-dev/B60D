@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+       <FlowPane orientation="VERTICAL" prefHeight="400.0" prefWidth="500.0">
+           <children>
+               <Button id="level 1" mnemonicParsing="false" prefHeight="13.0" prefWidth="85.0" text="level 1" />
+               <Button id="level 2" mnemonicParsing="false" prefHeight="29.0" prefWidth="85.0" text="level 2" />
+               <Button id="level 3" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 3" />
+               <Button id="level 4" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 4" />
+               <Button id="level 5" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 5" />
+               <Button id="level 6" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 6" />
+               <Button id="level 7" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 7" />
+               <Button id="level 8" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 8" />
+               <Button id="level 9" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 9" />
+               <Button id="level 10" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 10" />
+               <Button id="level 11" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 11" />
+            <Button id="level 12" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 12" />
+            <Button id="level 13" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 13" />
+            <Button id="level 14" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 14" />
+            <Button id="level 15" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 15" />
+            <Button id="level 15" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 16" />
+            <Button id="level 17" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 17" />
+            <Button id="level 18" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 18" />
+            <Button id="level 19" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 19" />
+            <Button id="level 20" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 20" />
+            <Button id="level 21" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 21" />
+            <Button id="level 22" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 22" />
+            <Button id="level 23" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 23" />
+            <Button id="level 24" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 24" />
+            <Button id="level 25" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 25" />
+            <Button id="level 26" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 26" />
+            <Button id="level 27" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 27" />
+            <Button id="level 28" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 28" />
+            <Button id="level 29" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 29" />
+            <Button id="level 30" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 30" />
+            <Button id="level 31" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 31" />
+            <Button id="level 32" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 32" />
+               <Button id="level 33" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 33"/>
+               <Button id="level 34" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 34"/>
+               <Button id="level 35" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 35"/>
+               <Button id="level 36" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 36"/>
+               <Button id="level 37" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 37"/>
+               <Button id="level 38" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 38"/>
+               <Button id="level 39" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 39"/>
+               <Button id="level 40" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 40"/>
+               <Button id="level 41" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 41"/>
+               <Button id="level 42" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 42"/>
+               <Button id="level 43" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 43"/>
+               <Button id="level 44" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 44"/>
+               <Button id="level 45" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 45"/>
+               <Button id="level 46" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 46"/>
+               <Button id="level 47" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 47"/>
+               <Button id="level 48" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 48"/>
+               <Button id="level 49" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 49"/>
+               <Button id="level 50" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 50"/>
+               <Button id="level 51" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 51"/>
+               <Button id="level 52" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 52"/>
+               <Button id="level 53" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 53"/>
+               <Button id="level 54" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 54"/>
+               <Button id="level 55" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 55"/>
+               <Button id="level 56" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 56"/>
+               <Button id="level 57" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 57"/>
+               <Button id="level 58" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 58"/>
+               <Button id="level 59" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 59"/>
+               <Button id="level 60" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 60"/>
+               <Button id="level 61" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 61"/>
+               <Button id="level 62" mnemonicParsing="false" prefHeight="0.0" prefWidth="85.0" text="level 62"/>
+           </children>
+       </FlowPane>
+      <Button id="BACKButton" layoutX="500.0" layoutY="0" mnemonicParsing="false" prefHeight="400.0" prefWidth="100.0" text="BACK" />
+   </children>
+</AnchorPane>

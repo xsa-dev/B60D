@@ -28,7 +28,7 @@ import java.sql.SQLException;
 /**
  * An exception to represent communications errors with the database.
  * 
- * Attempts to provide 'friendler' error messages to end-model.users, including last time a packet was sent to the database, what the client-timeout is set to, and
+ * Attempts to provide 'friendler' error messages to end-model1.users, including last time a packet was sent to the database, what the client-timeout is set to, and
  * whether the idle time has been exceeded.
  */
 public class CommunicationsException extends SQLException implements StreamingNotifiable {

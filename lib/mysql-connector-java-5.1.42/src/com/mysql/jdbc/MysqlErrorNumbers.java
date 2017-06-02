@@ -160,7 +160,7 @@ public final class MysqlErrorNumbers {
     public final static int ER_FUNCTION_NOT_DEFINED = 1128; //SQLSTATE: HY000 Message: Function '%s' is not defined
     public final static int ER_HOST_IS_BLOCKED = 1129; //SQLSTATE: HY000 Message: Host '%s' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts'
     public final static int ER_HOST_NOT_PRIVILEGED = 1130; //SQLSTATE: HY000 Message: Host '%s' is not allowed to connect to this MySQL server
-    public final static int ER_PASSWORD_ANONYMOUS_USER = 1131; //SQLSTATE: 42000 Message: You are using MySQL as an anonymous user and anonymous model.users are not allowed to change passwords
+    public final static int ER_PASSWORD_ANONYMOUS_USER = 1131; //SQLSTATE: 42000 Message: You are using MySQL as an anonymous user and anonymous model1.users are not allowed to change passwords
     public final static int ER_PASSWORD_NOT_ALLOWED = 1132; //SQLSTATE: 42000 Message: You must have privileges to update tables in the mysql database to be able to change passwords for others
     public final static int ER_PASSWORD_NO_MATCH = 1133; //SQLSTATE: 42000 Message: Can't find any matching row in the user table
     public final static int ER_UPDATE_INFO = 1134; //SQLSTATE: HY000 Message: Rows matched: %ld Changed: %ld Warnings: %ld
@@ -240,7 +240,7 @@ public final class MysqlErrorNumbers {
     public final static int ER_DROP_DB_WITH_READ_LOCK = 1208; //SQLSTATE: HY000 Message: DROP DATABASE not allowed while thread is holding global read lock
     public final static int ER_CREATE_DB_WITH_READ_LOCK = 1209; //SQLSTATE: HY000 Message: CREATE DATABASE not allowed while thread is holding global read lock
     public final static int ER_WRONG_ARGUMENTS = 1210; //SQLSTATE: HY000 Message: Incorrect arguments to %s
-    public final static int ER_NO_PERMISSION_TO_CREATE_USER = 1211; //SQLSTATE: 42000 Message: '%s'@'%s' is not allowed to create new model.users
+    public final static int ER_NO_PERMISSION_TO_CREATE_USER = 1211; //SQLSTATE: 42000 Message: '%s'@'%s' is not allowed to create new model1.users
     public final static int ER_UNION_TABLES_IN_DIFFERENT_DIR = 1212; //SQLSTATE: HY000 Message: Incorrect table definition; all MERGE tables must be in the same database
     public final static int ER_LOCK_DEADLOCK = 1213; //SQLSTATE: 40001 Message: Deadlock found when trying to get lock; try restarting transaction
     public final static int ER_TABLE_CANT_HANDLE_FT = 1214; //SQLSTATE: HY000 Message: The used table type doesn't support FULLTEXT indexes
@@ -297,8 +297,8 @@ public final class MysqlErrorNumbers {
     public final static int ER_WARN_DATA_TRUNCATED = 1265; //SQLSTATE: 01000 Message: Data truncated for column '%s' at row %ld
     public final static int ER_WARN_USING_OTHER_HANDLER = 1266; //SQLSTATE: HY000 Message: Using storage engine %s for table '%s'
     public final static int ER_CANT_AGGREGATE_2COLLATIONS = 1267; //SQLSTATE: HY000 Message: Illegal mix of collations (%s,%s) and (%s,%s) for operation '%s'
-    public final static int ER_DROP_USER = 1268; //SQLSTATE: HY000 Message: Cannot drop one or more of the requested model.users
-    public final static int ER_REVOKE_GRANTS = 1269; //SQLSTATE: HY000 Message: Can't revoke all privileges for one or more of the requested model.users
+    public final static int ER_DROP_USER = 1268; //SQLSTATE: HY000 Message: Cannot drop one or more of the requested model1.users
+    public final static int ER_REVOKE_GRANTS = 1269; //SQLSTATE: HY000 Message: Can't revoke all privileges for one or more of the requested model1.users
     public final static int ER_CANT_AGGREGATE_3COLLATIONS = 1270; //SQLSTATE: HY000 Message: Illegal mix of collations (%s,%s), (%s,%s), (%s,%s) for operation '%s'
     public final static int ER_CANT_AGGREGATE_NCOLLATIONS = 1271; //SQLSTATE: HY000 Message: Illegal mix of collations for operation '%s'
     public final static int ER_VARIABLE_IS_NOT_STRUCT = 1272; //SQLSTATE: HY000 Message: Variable '%s' is not a variable component (can't be used as XXXX.variable_name)
@@ -728,7 +728,7 @@ public final class MysqlErrorNumbers {
     public final static int ER_FAILED_READ_FROM_PAR_FILE = 1696; //SQLSTATE: HY000 Message: Failed to read from the .par file
     public final static int ER_VALUES_IS_NOT_INT_TYPE_ERROR = 1697; //SQLSTATE: HY000 Message: VALUES value for partition '%s' must have type INT
     public final static int ER_ACCESS_DENIED_NO_PASSWORD_ERROR = 1698; //SQLSTATE: 28000 Message: Access denied for user '%s'@'%s'
-    public final static int ER_SET_PASSWORD_AUTH_PLUGIN = 1699; //SQLSTATE: HY000 Message: SET PASSWORD has no significance for model.users authenticating via plugins
+    public final static int ER_SET_PASSWORD_AUTH_PLUGIN = 1699; //SQLSTATE: HY000 Message: SET PASSWORD has no significance for model1.users authenticating via plugins
     public final static int ER_GRANT_PLUGIN_USER_EXISTS = 1700; //SQLSTATE: HY000 Message: GRANT with IDENTIFIED WITH is illegal because the user %-.*s already exists
     public final static int ER_TRUNCATE_ILLEGAL_FK = 1701; //SQLSTATE: 42000 Message: Cannot truncate a table referenced in a foreign key constraint (%s)
     public final static int ER_PLUGIN_IS_PERMANENT = 1702; //SQLSTATE: HY000 Message: Plugin '%s' is force_plus_permanent and can not be unloaded

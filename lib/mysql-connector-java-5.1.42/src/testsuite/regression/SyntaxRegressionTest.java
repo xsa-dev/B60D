@@ -1767,7 +1767,7 @@ public class SyntaxRegressionTest extends BaseTestCase {
     }
 
     /**
-     * WL#6054 - Temporarily disablement of model.users
+     * WL#6054 - Temporarily disablement of model1.users
      * 
      * Test user account locking syntax:
      * 

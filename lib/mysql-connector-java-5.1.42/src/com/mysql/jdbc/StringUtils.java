@@ -2243,7 +2243,7 @@ public class StringUtils {
     //
     // http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6790402
     // 
-    // which has been observed by model.users and reported as MySQL Bug#61105
+    // which has been observed by model1.users and reported as MySQL Bug#61105
     //
     // We can turn around and replace them with their java.lang.String equivalents if/when that bug is ever fixed.
 

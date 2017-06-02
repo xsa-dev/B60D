@@ -1631,7 +1631,7 @@ public class MetaDataRegressionTest extends BaseTestCase {
      * information_schema do not return results consistent with eachother.
      * 
      * (note this fix only addresses the inconsistencies, not the issue that the
-     * driver is treating schemas differently than some model.users expect.
+     * driver is treating schemas differently than some model1.users expect.
      * 
      * We will revisit this behavior when there is full support for schemas in
      * MySQL).

@@ -3504,7 +3504,7 @@ public class ConnectionRegressionTest extends BaseTestCase {
                     assertTrue("No database selected", false);
                 }
 
-                // create proxy model.users
+                // create proxy model1.users
                 createUser("'wl5851user'@'%'", "identified WITH test_plugin_server AS 'plug_dest'");
                 createUser("'plug_dest'@'%'", "IDENTIFIED BY 'foo'");
                 this.stmt.executeUpdate("GRANT PROXY ON 'plug_dest'@'%' TO 'wl5851user'@'%'");
@@ -3957,7 +3957,7 @@ public class ConnectionRegressionTest extends BaseTestCase {
                     assertTrue("No database selected", false);
                 }
 
-                // create proxy model.users
+                // create proxy model1.users
                 createUser("'wl5735user'@'%'", "identified WITH cleartext_plugin_server AS ''");
                 this.stmt.executeUpdate("delete from mysql.db where user='wl5735user'");
                 this.stmt.executeUpdate("insert into mysql.db (Host, Db, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv,Drop_priv, "

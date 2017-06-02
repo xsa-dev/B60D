@@ -4094,7 +4094,7 @@ public class MysqlIO {
 
             //
             // Store this packet in a soft reference...It can be re-used if not GC'd (so clients that use it frequently won't have to re-alloc the 16M buffer),
-            // but we don't penalize infrequent model.users of large packets by keeping 16M allocated all of the time
+            // but we don't penalize infrequent model1.users of large packets by keeping 16M allocated all of the time
             //
             if (packetToSend == null) {
                 packetToSend = new Buffer((this.maxThreeBytes + HEADER_LENGTH));

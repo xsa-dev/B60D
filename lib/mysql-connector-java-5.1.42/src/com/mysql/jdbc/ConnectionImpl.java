@@ -3985,7 +3985,7 @@ public class ConnectionImpl extends ConnectionPropertiesImpl implements MySQLCon
      * efficiently execute this statement multiple times.
      * <p>
      * <B>Note:</B> This method is optimized for handling parametric SQL statements that benefit from precompilation if the driver supports precompilation. In
-     * this case, the statement is not sent to the database until the PreparedStatement is executed. This has no direct effect on model.users; however it does affect
+     * this case, the statement is not sent to the database until the PreparedStatement is executed. This has no direct effect on model1.users; however it does affect
      * which method throws certain java.sql.SQLExceptions
      * </p>
      * <p>
@@ -5219,7 +5219,7 @@ public class ConnectionImpl extends ConnectionPropertiesImpl implements MySQLCon
             // read from results
             cachedMetaData = new CachedResultSetMetaData();
 
-            // assume that model.users will use named-based lookups
+            // assume that model1.users will use named-based lookups
             resultSet.buildIndexMapping();
             resultSet.initializeWithMetadata();
 
