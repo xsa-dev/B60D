@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TableView id="users statistic" prefHeight="380.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columns>
+            <TableColumn id="login" prefWidth="300" text="login">
+                <cellValueFactory>
+                    <PropertyValueFactory property="login"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn id="points" prefWidth="300" text="points">
+                <cellValueFactory>
+                    <PropertyValueFactory property="points"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+      </TableView>
+   </center>
+   <top>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <buttons>
+          <Button id="back" mnemonicParsing="false" text="Back" />
+            <Button id="refresh" mnemonicParsing="false" text="Refresh" />
+        </buttons>
+      </ButtonBar>
+   </top>
+</BorderPane>

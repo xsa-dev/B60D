@@ -14,12 +14,11 @@ public class WorkerWithTextExamplesTest {
 //        WorkerWithTextExamples workerWithTextExamples = new WorkerWithTextExamples();
 //        int res = workerWithTextExamples.launching();
 //        assertEquals(800, res);
-
     }
 
     @Test
     public void considersPoints() throws Exception {
-        WorkerWithTextExamples workerWithTextExamples = new WorkerWithTextExamples();
+        TextGUIExamples workerWithTextExamples = new TextGUIExamples(null);
         Date  startDate = new Date();
         Thread.sleep(1000);
         Date endDate = new Date();

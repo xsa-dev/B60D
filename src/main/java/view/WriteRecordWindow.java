@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.ConsoleHelper;
+import model.loging.LogerSituations;
 import model.record_worker.ConectorToBd;
 
 import java.io.IOException;
@@ -29,6 +30,8 @@ public class WriteRecordWindow {
     private ConectorToBd conectorToBd;
     private TextField loginTextField;
     private TextField passwordTextField;
+    private static LogerSituations loger = new LogerSituations(WriteRecordWindow.class);
+
 
     public WriteRecordWindow(ManagerGUIGame managerGUIGame) {
         this.managerGUIGame = managerGUIGame;
@@ -39,9 +42,9 @@ public class WriteRecordWindow {
     public Scene createWriterToDBScene(Stage theStage) {
         this.theStage = theStage;
         try {
-            writerPane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML("WriteRecordWindowFXML"));
+            writerPane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML1("WriteRecordWindowFXML"));
         } catch (IOException e) {
-            e.printStackTrace();
+            loger.logError(e);
         }
         initialElements();
 
@@ -85,6 +88,10 @@ public class WriteRecordWindow {
                     break;
                 case "buttonBackToGame":
                     initialBackToGameButton(button);
+                    break;
+                case "showRecords":
+                    initialButtonShowStatistic(button);
+                    break;
             }
         }
         if (element instanceof Label) {
@@ -93,10 +100,17 @@ public class WriteRecordWindow {
         }
     }
 
-    private void initialBackToGameButton(Button button) {
+    private void initialButtonShowStatistic(Button button) {
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            theStage.setScene(managerGUIGame.getStatisticScene());
+        });
+    }
+
+    private void initialBackToGameButton(Button button) {
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {//change handling
             closeConetion();
             theStage.setScene(managerGUIGame.getGameScene());
+            System.out.println("back to game");
         });
     }
 

@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.ConsoleHelper;
 import model.languages.LanguageManager;
+import model.loging.LogerSituations;
 import model.workers.IntGUIExamplesWorker;
 import model.workers.TextGUIExamples;
 
@@ -20,6 +21,7 @@ public class StartWindow extends AbstractWindow {
     private Stage theStage;
     private ManagerGUIGame managerGUIGame;
     private LanguageManager languageManager;
+    private static LogerSituations loger = new LogerSituations(StartWindow.class);
 
     public StartWindow(ManagerGUIGame managerGUIGame) {
         this.managerGUIGame = managerGUIGame;
@@ -30,11 +32,9 @@ public class StartWindow extends AbstractWindow {
         this.theStage = theStage;
         languageManager = managerGUIGame.getLanguageManager();
         try {
-            System.out.println(ConsoleHelper.getParentPathFileFXML("WindowStartFXML"));
-
-            startPane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML("WindowStartFXML"));//new File(ConsoleHelper.getParentPath(ControllerConsole.class) + "/WindowStartFXML.fxml").toURL());
+            startPane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML1("WindowStartFXML"));//new File(ConsoleHelper.getParentPath(ControllerConsole.class) + "/WindowStartFXML.fxml").toURL());
         } catch (IOException e) {
-            e.printStackTrace();
+            loger.logError(e);
         }
         initialElementsOrPanes(startPane);
         startScene = new Scene(startPane, 400, 400);

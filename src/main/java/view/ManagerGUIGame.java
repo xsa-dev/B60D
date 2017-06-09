@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.ProcesesCloser;
 import model.languages.LanguageManager;
+import model.loging.LogerSituations;
 import model.record_worker.ConectorToBd;
 import model.users.ManagerUserSetings;
 import model.workers.AbstractGUIWorker;
@@ -24,10 +25,12 @@ public class ManagerGUIGame extends Application {
     private volatile LanguageManager languageManager;
     private WindowManagerLevels windowManagerLevels;
     private ManagerUserSetings managerUserSetings;
+    private ShowUsersStatistic showUsersStatistic;
 
-    private Scene startScene, gameScene, languageScene, writeRecordScene;// старт сцене сделать менеджером приложения
+    private Scene startScene, gameScene, languageScene, writeRecordScene, statisticScene;// старт сцене сделать менеджером приложения
     private Stage theStage;
     private StartWindow startWindow;
+    private static LogerSituations loger = new LogerSituations(ManagerGUIGame.class);
 
     public static ManagerGUIGame play() {
         Thread thread = new Thread(() -> launch());
@@ -37,7 +40,7 @@ public class ManagerGUIGame extends Application {
             try {
                 Thread.sleep(600);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                loger.logError(e);
             }
         }
         return managerGUIGame;
@@ -48,7 +51,8 @@ public class ManagerGUIGame extends Application {
         languageManager = new LanguageManager(this);
         startWindow = new StartWindow(this);
         gameWindow = new GameWindow(this);
-        writeRecordWindow = new WriteRecordWindow(this);
+//        writeRecordWindow = new WriteRecordWindow(this);
+//        showUsersStatistic = new ShowUsersStatistic(this);
         windowManagerLevels = new WindowManagerLevels(this);
         managerGUIGame = this;
         theStage = primaryStage;
@@ -59,13 +63,12 @@ public class ManagerGUIGame extends Application {
 
         startScene = startWindow.createStartWindowScene(theStage);
         gameScene = gameWindow.createGameScene(theStage);
+//        statisticScene = showUsersStatistic.createScene(theStage);
 
         primaryStage.setTitle("D60B");
         primaryStage.setScene(startScene);
-        System.out.println(Thread.currentThread().getName());
 
         primaryStage.show();
-        System.out.println(theStage.getScene());
         runingWindow = true;
     }
 
@@ -73,6 +76,8 @@ public class ManagerGUIGame extends Application {
         conectorToBd = new ConectorToBd();
         writeRecordWindow = new WriteRecordWindow(this);
         writeRecordScene = writeRecordWindow.createWriterToDBScene(theStage);
+        showUsersStatistic = new ShowUsersStatistic(this);
+        statisticScene = showUsersStatistic.createScene(theStage);
 
         return writeRecordScene;
     }
@@ -92,7 +97,7 @@ public class ManagerGUIGame extends Application {
             try {
                 Thread.sleep(400);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                loger.logError(e);
             }
         }
         return temp;
@@ -154,7 +159,11 @@ public class ManagerGUIGame extends Application {
         return managerUserSetings;
     }
 
-    public void setManagerUserSetings(ManagerUserSetings managerUserSetings) {
-        this.managerUserSetings = managerUserSetings;
+    public Scene getStatisticScene() {
+        return statisticScene;
+    }
+
+    public ShowUsersStatistic getShowUsersStatistic() {
+        return showUsersStatistic;
     }
 }

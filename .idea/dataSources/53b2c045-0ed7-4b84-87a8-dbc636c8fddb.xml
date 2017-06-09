@@ -33,11 +33,20 @@
     <column id="10" parent="4" name="points">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <key id="11" parent="4" name="PRIMARY">
+    <index id="11" parent="4" name="users1_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="12" parent="4" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
+    </key>
+    <key id="13" parent="4" name="users1_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>users1_id_uindex</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

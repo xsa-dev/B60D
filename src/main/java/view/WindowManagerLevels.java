@@ -29,7 +29,8 @@ public class WindowManagerLevels extends AbstractWindow {
     public Scene createScene(Stage theStage) {
         this.theStage = theStage;
         try {
-            thisPane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML("WindowChangeLevelsFXML"));
+//            thisPane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML("WindowChangeLevelsFXML"));
+            thisPane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML1("WindowChangeLevelsFXML"));
         } catch (IOException e) {
             e.printStackTrace();
         }
