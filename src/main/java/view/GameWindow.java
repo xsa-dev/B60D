@@ -18,13 +18,13 @@ import java.io.IOException;
 /**
  * Created by Administrator1 on 24.05.2017.
  */
-public class GameWindow extends AbstractWindow{
+public class GameWindow extends GameWindowAbstract{
     private volatile TextArea outTextArea;
     private TextField inTextField;
     private String ansver = "";
     private boolean writeRecord = false;
 
-    private Pane gamePane;
+    private Pane pane;
     private Scene gameScene;
     private Stage theStage;
     private ManagerGUIGame managerGUIGame;
@@ -34,19 +34,17 @@ public class GameWindow extends AbstractWindow{
         this.managerGUIGame = managerGUIGame;
     }
 
-    public Scene createGameScene(Stage theStage){
+    public Scene createScene(Stage theStage){
         this.theStage = theStage;
         try {
-//            gamePane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML("WindowGameTextFXML"));
-            gamePane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML1("WindowGameTextFXML"));
-
+            pane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML1("WindowGameTextFXML"));
         } catch (IOException e) {
             loger.logError(e);
         }
 
-        initialElementsOrPanes(gamePane);
+        initialElementsOrPanes(pane);
 
-        return gameScene = new Scene(gamePane, 600, 500);
+        return gameScene = new Scene(pane, 600, 500);
     }
 
     public void appendString(String message) {

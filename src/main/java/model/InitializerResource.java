@@ -9,6 +9,7 @@ import java.util.zip.ZipInputStream;
 public class InitializerResource {
     public static final String WORK_DIRECTORY = ConsoleHelper.WORK_DIRECTORY;
     private static LogerSituations loger = new LogerSituations(InitializerResource.class);
+    private static final String JAR_NAME = "B60D";
 
     public static void writeResourceToWorkDirectoryNoJar() {
 
@@ -38,7 +39,7 @@ public class InitializerResource {
         }
         String name = "";
         try {
-            File tempFile = new File(new File(".").getAbsolutePath().replaceAll("\\\\.$", "/B60D.jar").replaceAll("\\\\", "/"));
+            File tempFile = new File(new File(".").getAbsolutePath().replaceAll("\\\\.$", "/"+ JAR_NAME+".jar").replaceAll("\\\\", "/"));
             if (!tempFile.exists()) {
                 writeResourceToWorkDirectoryNoJar();
                 return;

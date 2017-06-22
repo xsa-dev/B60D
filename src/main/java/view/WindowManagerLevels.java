@@ -29,7 +29,6 @@ public class WindowManagerLevels extends AbstractWindow {
     public Scene createScene(Stage theStage) {
         this.theStage = theStage;
         try {
-//            thisPane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML("WindowChangeLevelsFXML"));
             thisPane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML1("WindowChangeLevelsFXML"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,7 +52,6 @@ public class WindowManagerLevels extends AbstractWindow {
         Button button = (Button) element;
         String buttonId = button.getId();
         if (buttonId.contains("level")) {
-            //тут мы просто изменяем номер уровня в зависимости от кнопки
             button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent ->
                     {
                         selectedLevel = Integer.parseInt(buttonId.substring(6));

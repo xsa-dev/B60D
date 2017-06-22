@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -15,35 +13,6 @@ import java.util.zip.ZipInputStream;
  * Created by Administrator1 on 17.05.2017.
  */
 public class TestO1 {
-    public class Product {
-        public Product(String title, int size){
-            this.title = title;
-            this.size = size;
-        }
-        String title;
-        int size;
-
-        public String toString()
-        {
-            return title + ":" + size;
-        }
-    }
-
-
-
-    public static void main(String[] args) {
-        TestO1 testO1 = new TestO1();
-        Set products = new HashSet();
-        products.add(testO1.new Product("Hat", 3));
-        products.add(testO1.new Product("Hat", 3));
-        System.out.println(products);
-    }
-
-    public int shift(int value, int offset)
-    {
-        value += offset;
-        return value;
-    }
 
     public static void main9(String[] args) throws IOException {
         ZipInputStream zis = new ZipInputStream(new FileInputStream("D:/tempBackup/B60D-1-jar-with-dependencies.jar"));

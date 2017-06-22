@@ -16,7 +16,7 @@ import model.workers.TextGUIExamples;
 import java.io.IOException;
 
 public class StartWindow extends AbstractWindow {
-    private Pane startPane;
+    private Pane pane;
     private Scene startScene;
     private Stage theStage;
     private ManagerGUIGame managerGUIGame;
@@ -28,16 +28,16 @@ public class StartWindow extends AbstractWindow {
     }
 
 
-    public Scene createStartWindowScene(Stage theStage) {
+    public Scene createScene(Stage theStage) {
         this.theStage = theStage;
         languageManager = managerGUIGame.getLanguageManager();
         try {
-            startPane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML1("WindowStartFXML"));//new File(ConsoleHelper.getParentPath(ControllerConsole.class) + "/WindowStartFXML.fxml").toURL());
+            pane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML1("WindowStartFXML"));//new File(ConsoleHelper.getParentPath(ControllerConsole.class) + "/WindowStartFXML.fxml").toURL());
         } catch (IOException e) {
             loger.logError(e);
         }
-        initialElementsOrPanes(startPane);
-        startScene = new Scene(startPane, 400, 400);
+        initialElementsOrPanes(pane);
+        startScene = new Scene(pane, 400, 400);
 
         return startScene;
     }

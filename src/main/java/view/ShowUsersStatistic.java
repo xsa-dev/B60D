@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -20,14 +19,13 @@ import java.io.IOException;
 
 public class ShowUsersStatistic extends AbstractWindow{
     private Pane pane;
-    private Label label;
     private Scene scene;
     private Stage theStage;
     private ManagerGUIGame managerGUIGame;
     private ConectorToBd conectorToBd;
     private TableView showerTableView;
     private static LogerSituations loger = new LogerSituations(WriteRecordWindow.class);
-    private ObservableList<DBItem> straingsData;//= FXCollections.observableArrayList();
+    private ObservableList<DBItem> straingsData;
 
     public ShowUsersStatistic(ManagerGUIGame managerGUIGame) {
         this.managerGUIGame = managerGUIGame;
@@ -43,7 +41,6 @@ public class ShowUsersStatistic extends AbstractWindow{
             loger.logError(e);
         }
         initialElementsOrPanes(pane);
-//        scene = new Scene(writerPane, 600, 400);
         return (scene = new Scene(pane, 600, 400));
     }
 
@@ -53,7 +50,7 @@ public class ShowUsersStatistic extends AbstractWindow{
             TableView textField = (TableView) element;
             switch (textField.getId()) {
                 case "users statistic":
-                    showerTableView = textField;//todo initialize this
+                    showerTableView = textField;
                     break;
             }
         }
@@ -62,7 +59,7 @@ public class ShowUsersStatistic extends AbstractWindow{
             switch (button.getId()) {
                 case "back":
                     button.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-                        theStage.setScene(managerGUIGame.getWriteRecordScene());//getWriteRecordScene());
+                        theStage.setScene(managerGUIGame.getWriteRecordScene());
                     });
                     break;
                     case "refresh":
@@ -78,17 +75,9 @@ public class ShowUsersStatistic extends AbstractWindow{
 
             showerTableView.setItems(straingsData);
             showerTableView.refresh();
-            for (DBItem straingsDatum : straingsData) {
-                System.out.println(straingsDatum);//тут заменить вывод в тфбое вью
-            }
+//            for (DBItem straingsDatum : straingsData) {
+//                System.out.println(straingsDatum);
+//            }
         });
-    }
-
-    public ConectorToBd getConectorToBd() {
-        return conectorToBd;
-    }
-
-    public void setConectorToBd(ConectorToBd conectorToBd) {
-        this.conectorToBd = conectorToBd;
     }
 }

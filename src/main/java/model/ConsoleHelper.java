@@ -8,14 +8,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 
 /**
  * Created by Administrator1 on 17.05.2017.
  */
 public class ConsoleHelper {
-    private final static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-    private final static SimpleDateFormat ldateFormat = new SimpleDateFormat("mm:ss.SSS");
     private final static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     static {
@@ -24,13 +21,6 @@ public class ConsoleHelper {
 
     private static final LogerSituations log = new LogerSituations(ConsoleHelper.class);
     public static final String WORK_DIRECTORY = "C:\\B60D Project\\B60D";
-    static {
-        try {
-            if (1 == 1) throw new RuntimeException();
-        }catch (Exception e){
-            log.logError(e);
-        }
-    }
 
     public static String readString() {
         try {

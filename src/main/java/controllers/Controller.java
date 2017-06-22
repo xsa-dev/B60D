@@ -8,11 +8,11 @@ import view.ManagerGUIGame;
  * Created by Administrator1 on 24.05.2017.
  */
 public class Controller {
-//    static{
+    //    static{
 //        LoadClases.startLoadClases();
 //    }
     public static void main(String[] args) throws Exception {
-        System.setProperty("console.encoding","utf-8");//пусть будет но я думаю что это не нужно
+        System.setProperty("console.encoding", "utf-8");//пусть будет но я думаю что это не нужно
 
         InitializerResource.writeResourceToWorkDirectory();
 

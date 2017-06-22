@@ -1,6 +1,8 @@
 package model.workers;
 
 import org.junit.Test;
+import view.ManagerGUIGame;
+
 import java.util.Date;
 
 import static org.junit.Assert.*;
@@ -18,11 +20,11 @@ public class WorkerWithTextExamplesTest {
 
     @Test
     public void considersPoints() throws Exception {
-        TextGUIExamples workerWithTextExamples = new TextGUIExamples(null);
+        TextGUIExamples workerWithTextExamples = new TextGUIExamples(new ManagerGUIGame());
         Date  startDate = new Date();
         Thread.sleep(1000);
         Date endDate = new Date();
         int res = workerWithTextExamples.considersPoints(8, startDate, endDate);
-        assertEquals(800, res);
+        assertEquals(80000, res);
     }
 }
