@@ -55,7 +55,7 @@ public class MicroPerformanceRegressionTest extends BaseTestCase {
         BASELINE_TIMES.put("ResultSet.getTime()", new Double(0.02033));
         BASELINE_TIMES.put("ResultSet.getTimestamp()", new Double(0.02363));
         BASELINE_TIMES.put("ResultSet.getDate()", new Double(0.02223));
-        BASELINE_TIMES.put("ResultSet.getString()", new Double(0.00982));
+        BASELINE_TIMES.put("ResultSet.getLogin()", new Double(0.00982));
         BASELINE_TIMES.put("ResultSet.getObject() on a string", new Double(0.00861));
         BASELINE_TIMES.put("Connection.prepareStatement()", new Double(0.18547));
         BASELINE_TIMES.put("single selects", new Double(46));
@@ -185,7 +185,7 @@ public class MicroPerformanceRegressionTest extends BaseTestCase {
 
         double getStringAvgMs = (double) (currentTimeMillis() - start) / numLoops;
 
-        checkTime("ResultSet.getString()", getStringAvgMs);
+        checkTime("ResultSet.getLogin()", getStringAvgMs);
 
         start = currentTimeMillis();
 

@@ -1232,7 +1232,7 @@ public class ResultSetRegressionTest extends BaseTestCase {
     }
 
     /**
-     * Tests fix for BUG#8428 - getString() doesn't maintain format stored on
+     * Tests fix for BUG#8428 - getLogin() doesn't maintain format stored on
      * server.
      * 
      * @throws Exception
@@ -2528,7 +2528,7 @@ public class ResultSetRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#10485, SQLException thrown when retrieving YEAR(2) with
-     * ResultSet.getString().
+     * ResultSet.getLogin().
      * 
      * @throws Exception
      *             if the test fails.
@@ -5144,7 +5144,7 @@ public class ResultSetRegressionTest extends BaseTestCase {
     }
 
     /**
-     * Tests fix for Bug#80631 - ResultSet.getString return garbled result with json type data.
+     * Tests fix for Bug#80631 - ResultSet.getLogin return garbled result with json type data.
      */
     public void testBug80631() throws Exception {
         if (!versionMeetsMinimum(5, 7, 9)) {

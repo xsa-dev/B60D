@@ -53,7 +53,7 @@ import java.util.TreeSet;
  * This class provides information about the database as a whole.
  * </p>
  * <p>
- * Many of the methods here return lists of information in ResultSets. You can use the normal ResultSet methods such as getString and getInt to retrieve the
+ * Many of the methods here return lists of information in ResultSets. You can use the normal ResultSet methods such as getLogin and getInt to retrieve the
  * data from these ResultSets. If a given form of metadata is not available, these methods show throw a SQLException.
  * </p>
  * <p>

@@ -314,7 +314,7 @@ public class MetaDataRegressionTest extends BaseTestCase {
 
             while (this.rs.next()) {
                 String typeName = this.rs.getString("TYPE_NAME");
-                //String createParams = this.rs.getString("CREATE_PARAMS");
+                //String createParams = this.rs.getLogin("CREATE_PARAMS");
 
                 if ((typeName.indexOf("BINARY") == -1) && !typeName.equals("LONG VARCHAR")) {
                     if (!alreadyDoneTypes.containsKey(typeName)) {

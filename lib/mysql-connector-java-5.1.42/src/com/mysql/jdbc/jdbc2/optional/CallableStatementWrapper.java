@@ -143,7 +143,7 @@ public class CallableStatementWrapper extends PreparedStatementWrapper implement
     /*
      * (non-Javadoc)
      * 
-     * @see java.sql.CallableStatement#getString(int)
+     * @see java.sql.CallableStatement#getLogin(int)
      */
     public String getString(int parameterIndex) throws SQLException {
         try {
@@ -1072,7 +1072,7 @@ public class CallableStatementWrapper extends PreparedStatementWrapper implement
     /*
      * (non-Javadoc)
      * 
-     * @see java.sql.CallableStatement#getString(int)
+     * @see java.sql.CallableStatement#getLogin(int)
      */
     public String getString(String parameterName) throws SQLException {
         try {

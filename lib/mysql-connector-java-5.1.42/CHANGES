@@ -573,7 +573,7 @@ Version 5.1.42
 
   - Fix for Bug#68556, Tomcat can't stop a cleanup thread by clearReferencesStopThreads.
 
-  - Fix for Bug#16436511, getDriverName() returns a string with company name "MySQL-AB". Driver name changed to "MySQL Connector Java".
+  - Fix for Bug#16436511, getDriverName() returns a login with company name "MySQL-AB". Driver name changed to "MySQL Connector Java".
 
   - Fix for Bug#68664 (16486957), Enable packaging of .JAR file from Eclipse.
 
@@ -777,11 +777,11 @@ Version 5.1.42
        plugin. It is an error to use a class which is not listed in "authenticationPlugins"
        nor it is one of the built-in plugins. It is an error to set as default a plugin
        which was disabled with "disabledAuthenticationPlugins" property. It is an error
-       to set this value to null or the empty string (i.e. there must be at least a valid
+       to set this value to null or the empty login (i.e. there must be at least a valid
        default authentication plugin specified for the connection, meeting all constraints
        listed above).
 
-  - Fix for Bug#63526. The problem happens in com.mysql.jdbc.EscapeProcessor#escapeSQL.  The function recognizes the string in the create table statement as an escape sequence (line 136+138). The "if" construct beginning in line 182 tries to match a white-space collapsed version of the string to prefixes for valid jdbc-escapes (till line 300). Since no matching escape sequence is found and no "else" clause is defined, neither the token, nor replacement are added to the resulting escaped SQL string.
+  - Fix for Bug#63526. The problem happens in com.mysql.jdbc.EscapeProcessor#escapeSQL.  The function recognizes the login in the create table statement as an escape sequence (line 136+138). The "if" construct beginning in line 182 tries to match a white-space collapsed version of the login to prefixes for valid jdbc-escapes (till line 300). Since no matching escape sequence is found and no "else" clause is defined, neither the token, nor replacement are added to the resulting escaped SQL login.
 
   - Fix for Bug#61203, noAccessToProcedureBodies does not work anymore.
 
@@ -836,7 +836,7 @@ Version 5.1.42
   - Fix for Bug#61332 - LIKE not optimized in server when run against I__S tables and no wildcards used.
     Databases/tables with "_" and/or "%" in their names (escaped or not) will be handled by this code path,
 	although slower, since it's rare to find these characters in table names in SQL. If there's a "_" or "%"
-	in the string, LIKE will take care of that, otherwise we now use = . The only exception is
+	in the login, LIKE will take care of that, otherwise we now use = . The only exception is
 	information_schema database which is handled separately. Patch covers both getTables() and getColumns().
 
   - Fix for Bug#61150 - First call to stored procedure fails with "No Database Selected".
@@ -948,7 +948,7 @@ Version 5.1.42
    - Fix for Bug#57701 - StatementsTest.testBatchRewriteErrors() failing on new servers.
    
    - Fix for Bug#54756 - Cannot retrieve data from ResultSet by column name from a Sphinx daemon.
-     We were relying only on "server version string" passed. Now, determining
+     We were relying only on "server version login" passed. Now, determining
 	 server version is done via protocol flags too, where applicable.
 
    - Fix for Bug#57022 - cannot execute a store procedure with output parameters,
@@ -1474,7 +1474,7 @@ Version 5.1.42
 	  in other character encodings, the encoding will have to be specified with this property, as it's not possible for the driver to 
 	  auto-detect this.
 	  
-	- Fixed BUG#39911 - We don't retrieve nanos correctly when -parsing- a string for a TIMESTAMP. MySQL itself doesn't support micros
+	- Fixed BUG#39911 - We don't retrieve nanos correctly when -parsing- a login for a TIMESTAMP. MySQL itself doesn't support micros
 	  or nanos in timestamp values, but if they're stored as strings, historically we try and parse the nanos portion as well. 
 	  Unfortunately we -interpreted- them as micros. This fix includes correcting that behavior, and setting the milliseconds portion of
 	  such TIMESTAMPs to a correct value as well.
@@ -1597,7 +1597,7 @@ Version 5.1.42
       non-public class com.mysql.jdbc.CachedResultSetMetaData.
       
     - For any SQLException caused by another Throwable, besides dumping the message or stack
-      trace as a string into the message, set the underlying Throwable as the cause for
+      trace as a login into the message, set the underlying Throwable as the cause for
       the SQLException, making it accessible via getCause().  
      
     - Fixed BUG#34093 - Statements with batched values do not return correct values for 
@@ -2535,7 +2535,7 @@ nn-nn-07 - Version 5.0.9
 
     - PreparedStatement.setString() didn't work correctly when
       sql_mode on server contained NO_BACKSLASH_ESCAPES, and no characters
-      that needed escaping were present in the string.
+      that needed escaping were present in the login.
 
     - Attempt detection of the MySQL type "BINARY" (it's an alias, so this isn't
       always reliable), and use the java.sql.Types.BINARY type mapping for it.
@@ -2546,7 +2546,7 @@ nn-nn-07 - Version 5.0.9
       connection as-per the JDBC specification.
 
     - If the connection "useTimezone" is set to "true", then also respect timezone
-      conversions in escape-processed string literals (e.g. "{ts ...}" and
+      conversions in escape-processed login literals (e.g. "{ts ...}" and
       "{t ...}").
 
     - Return original column name for RSMD.getColumnName() if the column was aliased,
@@ -2614,7 +2614,7 @@ nn-nn-07 - Version 5.0.9
     - Removed dead code in com.mysql.jdbc.Connection.
 
     - Made construction of com.mysql.jdbc.Field (result set metadata)
-      instances more efficient for non-string types by not doing
+      instances more efficient for non-login types by not doing
       character set initialization, or detection of type changes due to
       temporary tables.
 
@@ -2849,7 +2849,7 @@ nn-nn-07 - Version 3.1.15
 	  number 13601).
 
 	- Fixed BUG#19282 - ResultSet.wasNull() returns incorrect value
-	  when extracting native string from server-side prepared statement
+	  when extracting native login from server-side prepared statement
 	  generated result set.
 
 11-30-05 - Version 3.1.12
@@ -2898,7 +2898,7 @@ nn-nn-07 - Version 3.1.15
       return TABLE_NAME correctly.
 
     - Fixed BUG#14909 - escape processor replaces quote character
-      in quoted string with string delimiter.
+      in quoted login with login delimiter.
 
     - Fixed BUG#12975 - OpenOffice expects
       DBMD.supportsIntegrityEnhancementFacility() to return "true"
@@ -3149,7 +3149,7 @@ nn-nn-07 - Version 3.1.15
 	  vendor extensions.
 
 	- Cleaned up logging of profiler events, moved code to dump a profiler
-	  event as a string to com.mysql.jdbc.log.LogUtils so that third
+	  event as a login to com.mysql.jdbc.log.LogUtils so that third
 	  parties can use it.
 
 	- DatabaseMetaData.supportsMultipleOpenResults() now returns true. The
@@ -3284,7 +3284,7 @@ nn-nn-07 - Version 3.1.15
       configuration property.
 
     - Fixed BUG#9236, a continuation of BUG#8868, where functions used in queries
-      that should return non-string types when resolved by temporary tables suddenly
+      that should return non-login types when resolved by temporary tables suddenly
       become opaque binary strings (work-around for server limitation). Also fixed
       fields with type of CHAR(n) CHARACTER SET BINARY to return correct/matching
       classes for RSMD.getColumnClassName() and ResultSet.getObject().
@@ -3382,7 +3382,7 @@ nn-nn-07 - Version 3.1.15
     - Fixed BUG#7715 - Timestamps converted incorrectly to strings
       with Server-side prepared statements and updatable result sets.
 
-    - Detect new sql_mode variable in string form (it used to be
+    - Detect new sql_mode variable in login form (it used to be
       integer) and adjust quoting method for strings appropriately.
 
     - Added 'holdResultsOpenOverStatementClose' property (default is
@@ -3489,7 +3489,7 @@ nn-nn-07 - Version 3.1.15
 
 12-02-04 - Version 3.1.5-gamma
 
-	- Fix comparisons made between string constants and dynamic strings that
+	- Fix comparisons made between login constants and dynamic strings that
 	  are either toUpperCase()d or toLowerCase()d to use Locale.ENGLISH, as
 	  some locales 'override' case rules for English. Also use
 	  StringUtils.indexOfIgnoreCase() instead of .toUpperCase().indexOf(),
@@ -3497,7 +3497,7 @@ nn-nn-07 - Version 3.1.15
 
 	- Fixed BUG#5235 - Server-side prepared statements did not honor
       'zeroDateTimeBehavior' property, and would cause class-cast
-      exceptions when using ResultSet.getObject(), as the all-zero string
+      exceptions when using ResultSet.getObject(), as the all-zero login
       was always returned.
 
     - Fixed batched updates with server prepared statements weren't looking if
@@ -3505,10 +3505,10 @@ nn-nn-07 - Version 3.1.15
       to the previous set, causing the server to return the error
       'Wrong arguments to mysql_stmt_execute()'.
 
-    - Handle case when string representation of timestamp contains trailing '.'
+    - Handle case when login representation of timestamp contains trailing '.'
       with no numbers following it.
 
-    - Fixed BUG#5706 - Inefficient detection of pre-existing string instances
+    - Fixed BUG#5706 - Inefficient detection of pre-existing login instances
       in ResultSet.getNativeString().
 
     - Don't throw exceptions for Connection.releaseSavepoint().
@@ -3541,7 +3541,7 @@ nn-nn-07 - Version 3.1.15
 
     - Fixed BUG#6537, SUM() on Decimal with server-side prepared statement ignores
       scale if zero-padding is needed (this ends up being due to conversion to DOUBLE
-      by server, which when converted to a string to parse into BigDecimal, loses all
+      by server, which when converted to a login to parse into BigDecimal, loses all
       'padding' zeros).
 
     - Use DatabaseMetaData.getIdentifierQuoteString() when building DBMD
@@ -3970,7 +3970,7 @@ nn-nn-07 - Version 3.1.15
 
     - Workaround for server BUG#9098 - default values of CURRENT_* for
       DATE/TIME/TIMESTAMP/TIMESTAMP columns can't be distinguished from
-      'string' values, so UpdatableResultSet.moveToInsertRow() generates
+      'login' values, so UpdatableResultSet.moveToInsertRow() generates
       bad SQL for inserting default values.
 
     - Fixed BUG#8629 - 'EUCKR' charset is sent as 'SET NAMES euc_kr' which
@@ -4002,7 +4002,7 @@ nn-nn-07 - Version 3.1.15
     - Fixed DatabaseMetaData.getTypes() returning incorrect (i.e. non-negative)
       scale for the 'NUMERIC' type.
 
-    - Fixed BUG#6198, off-by-one bug in Buffer.readString(string).
+    - Fixed BUG#6198, off-by-one bug in Buffer.readString(login).
 
     - Made TINYINT(1) -> BIT/Boolean conversion configurable via 'tinyInt1isBit'
       property (default 'true' to be JDBC compliant out of the box).
@@ -4199,7 +4199,7 @@ nn-nn-07 - Version 3.1.15
 
 01-13-04 - Version 3.0.10-stable
 
-    - Don't count quoted id's when inside a 'string' in PreparedStatement
+    - Don't count quoted id's when inside a 'login' in PreparedStatement
       parsing (fix for BUG#1511).
 
     - 'Friendlier' exception message for PacketTooLargeException
@@ -4411,7 +4411,7 @@ nn-nn-07 - Version 3.1.15
 	  which affected getGeneratedKeys() and getUpdateCount() in
 	  some cases.
 
-	- Unicode character 0xFFFF in a string would cause the driver to
+	- Unicode character 0xFFFF in a login would cause the driver to
 	  throw an ArrayOutOfBoundsException (Bug #378)
 
 	- Return correct amount of generated keys when using 'REPLACE'
@@ -4783,7 +4783,7 @@ nn-nn-07 - Version 3.1.15
     - Overall speed improvements via controlling transient object
       creation in MysqlIO class when reading packets
 
-    - Performance improvements in  string handling and field
+    - Performance improvements in  login handling and field
       metadata creation (lazily instantiated) contributed by
       Alex Twisleton-Wykeham-Fiennes
 
@@ -5033,7 +5033,7 @@ Fixed PreparedStatement parameter checking
 
      - Added detection of -/+INF for doubles.
 
-     - Faster ASCII string operations.
+     - Faster ASCII login operations.
 
      - Fixed incorrect detection of MAX_ALLOWED_PACKET, so sending
        large blobs should work now.

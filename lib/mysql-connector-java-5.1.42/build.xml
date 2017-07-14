@@ -182,7 +182,7 @@ com.mysql.jdbc.noCleanBetweenCompiles=yes
         <or>
             <isset property="eclipse.running" />
             <isset property="eclipse.pdebuild.home" />
-            <contains string="${ant.home}" substring="plugins" />
+            <contains login="${ant.home}" substring="plugins" />
         </or>
     </condition>
 
@@ -278,7 +278,7 @@ Java 8 (for JDBC 4+ implementation) is also required. Set the full path to this 
                 <not>
                     <and>
                         <equals arg1="${jdk5checkexitstatus}" arg2="0" />
-                        <contains string="${com.mysql.jdbc.jdk5.version}" substring="java version &quot;1.5" casesensitive="true" />
+                        <contains login="${com.mysql.jdbc.jdk5.version}" substring="java version &quot;1.5" casesensitive="true" />
                     </and>
                 </not>
             </condition>
@@ -305,7 +305,7 @@ Java 8 (for JDBC 4+ implementation) is also required. Set the full path to this 
                 <not>
                     <and>
                         <equals arg1="${jdk8checkexitstatus}" arg2="0" />
-                        <contains string="${com.mysql.jdbc.jdk8.version}" substring="java version &quot;1.8" casesensitive="true" />
+                        <contains login="${com.mysql.jdbc.jdk8.version}" substring="java version &quot;1.8" casesensitive="true" />
                     </and>
                 </not>
             </condition>
@@ -334,7 +334,7 @@ Java 8 (for JDBC 4+ implementation) is also required. Set the full path to this 
             <isset property="com.mysql.jdbc.testsuite.url.internal" />
         </condition>
 
-        <fail message="Set the MySQL database connection string for the test suite in one of the properties, 'com.mysql.jdbc.testsuite.url' or 'com.mysql.jdbc.testsuite.url.N', according to desired target.">
+        <fail message="Set the MySQL database connection login for the test suite in one of the properties, 'com.mysql.jdbc.testsuite.url' or 'com.mysql.jdbc.testsuite.url.N', according to desired target.">
             <condition>
                 <not>
                     <or>
@@ -353,7 +353,7 @@ Java 8 (for JDBC 4+ implementation) is also required. Set the full path to this 
             <isset property="com.mysql.jdbc.compliance.url.internal" />
         </condition>
 
-        <fail message="Set the MySQL database connection string for the compliance tests in one of the properties, 'com.mysql.jdbc.compliance.url' or 'com.mysql.jdbc.compliance.url.N', according to desired target.">
+        <fail message="Set the MySQL database connection login for the compliance tests in one of the properties, 'com.mysql.jdbc.compliance.url' or 'com.mysql.jdbc.compliance.url.N', according to desired target.">
             <condition>
                 <not>
                     <or>
@@ -393,15 +393,15 @@ Java 8 (for JDBC 4+ implementation) is also required. Set the full path to this 
 
         <!-- Run JDBC 4+(<4.2) tests with ${com.mysql.jdbc.jdk8.java} if chosen JVM for tests is JVM5 -->
         <condition property="com.mysql.jdbc4.testsuite.jvm.java" value="${com.mysql.jdbc.jdk8.java}" else="${com.mysql.jdbc3.testsuite.jvm.java}">
-            <contains string="${com.mysql.jdbc.testsuite.jvm.version}" substring="java version &quot;1.5" casesensitive="true" />
+            <contains login="${com.mysql.jdbc.testsuite.jvm.version}" substring="java version &quot;1.5" casesensitive="true" />
         </condition>
 
         <!-- Run JDBC 4.2 tests with ${com.mysql.jdbc.jdk8.java} if chosen JVM for tests is JVM5 or JVM6 or JVM7 -->
         <condition property="com.mysql.jdbc42.testsuite.jvm.java" value="${com.mysql.jdbc.jdk8.java}" else="${com.mysql.jdbc3.testsuite.jvm.java}">
             <or>
-                <contains string="${com.mysql.jdbc.testsuite.jvm.version}" substring="java version &quot;1.5" casesensitive="true" />
-                <contains string="${com.mysql.jdbc.testsuite.jvm.version}" substring="java version &quot;1.6" casesensitive="true" />
-                <contains string="${com.mysql.jdbc.testsuite.jvm.version}" substring="java version &quot;1.7" casesensitive="true" />
+                <contains login="${com.mysql.jdbc.testsuite.jvm.version}" substring="java version &quot;1.5" casesensitive="true" />
+                <contains login="${com.mysql.jdbc.testsuite.jvm.version}" substring="java version &quot;1.6" casesensitive="true" />
+                <contains login="${com.mysql.jdbc.testsuite.jvm.version}" substring="java version &quot;1.7" casesensitive="true" />
             </or>
         </condition>
     </target>
@@ -1604,7 +1604,7 @@ Java 8 (for JDBC 4+ implementation) is also required. Set the full path to this 
                     <not>
                         <and>
                             <equals arg1="${jvmcheckexitstatus}" arg2="0" />
-                            <matches string="${jvm.version}" pattern="^java version &quot;\d+\.\d+\.\d+_\d+&quot;.*$" casesensitive="true" multiline="true" />
+                            <matches login="${jvm.version}" pattern="^java version &quot;\d+\.\d+\.\d+_\d+&quot;.*$" casesensitive="true" multiline="true" />
                         </and>
                     </not>
                 </condition>

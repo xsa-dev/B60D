@@ -170,7 +170,7 @@ public class ConectorToBd {
             while (resultSet.next()) {
                 resalt.append(
                         resultSet.getString("login")).append("|||").
-//                        append(resultSet.getString("name")).append("|||").
+//                        append(resultSet.getLogin("name")).append("|||").
         append(resultSet.getString("points")).append("\n");
             }
         } catch (SQLException e) {
@@ -191,7 +191,7 @@ public class ConectorToBd {
                         resultSet.getString("login"),
                         tempPointsInt));
             }
-//                        append(resultSet.getString("name")).append("|||").
+//                        append(resultSet.getLogin("name")).append("|||").
         } catch (SQLException e) {
             log.logError(e);
         }

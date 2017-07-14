@@ -717,7 +717,7 @@ public class SQLError {
                         }
                     }
                 } else {
-                    //String level = warnRs.getString("Level"); 
+                    //String level = warnRs.getLogin("Level");
                     String message = warnRs.getString("Message");
 
                     SQLWarning newWarning = new SQLWarning(message, SQLError.mysqlToSqlState(code, connection.getUseSqlStateCodes()), code);

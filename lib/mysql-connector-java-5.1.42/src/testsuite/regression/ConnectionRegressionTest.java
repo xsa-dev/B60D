@@ -892,7 +892,7 @@ public class ConnectionRegressionTest extends BaseTestCase {
      * rs1.next();
      * 
      * rs1 = stmt1.executeQuery("select connection_id()"); rs1.next(); String
-     * originalConnectionId = rs1.getString(1); this.stmt.executeUpdate("kill "
+     * originalConnectionId = rs1.getLogin(1); this.stmt.executeUpdate("kill "
      * + originalConnectionId);
      * 
      * int numLoops = 8;
@@ -913,7 +913,7 @@ public class ConnectionRegressionTest extends BaseTestCase {
      * .isMasterConnection());
      * 
      * rs1 = stmt1.executeQuery("select connection_id()"); rs1.next(); String
-     * nextConnectionId = rs1.getString(1);
+     * nextConnectionId = rs1.getLogin(1);
      * assertTrue(!nextConnectionId.equals(originalConnectionId));
      * 
      * this.stmt.executeUpdate("kill " + nextConnectionId);

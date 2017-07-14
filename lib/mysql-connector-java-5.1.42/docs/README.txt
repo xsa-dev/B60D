@@ -1304,7 +1304,7 @@ Setting Configuration Properties
    nor it is one of the built-in plugins. It is an error to set
    as default a plugin which was disabled with
    "disabledAuthenticationPlugins" property. It is an error to
-   set this value to null or the empty string (i.e. there must
+   set this value to null or the empty login (i.e. there must
    be at least a valid default authentication plugin specified
    for the connection, meeting all constraints listed above).
 
@@ -2735,7 +2735,7 @@ Setting Configuration Properties
 
    emptyStringsConvertToZero
 
-   Should the driver allow conversions from empty string fields
+   Should the driver allow conversions from empty login fields
    to numeric values of '0'?
 
    Default: true
@@ -2753,7 +2753,7 @@ Setting Configuration Properties
    of the Blob. The feature also has the following restrictions:
    The SELECT that created the result set must reference only
    one table, the table must have a primary key; the SELECT must
-   alias the original blob column name, specified as a string,
+   alias the original blob column name, specified as a login,
    to an alternate name; the SELECT must cover all columns that
    make up the primary key.
 
@@ -3557,7 +3557,7 @@ SELECT id, 'data' as blob_data from blobtable
           + The SELECT
             (http://dev.mysql.com/doc/refman/5.7/en/select.html)
             must alias the original BLOB column name, specified
-            as a string, to an alternate name.
+            as a login, to an alternate name.
 
           + The SELECT
             (http://dev.mysql.com/doc/refman/5.7/en/select.html)
@@ -3908,7 +3908,7 @@ Setting the Character Encoding
    character_set_server=utf8mb4
    (http://dev.mysql.com/doc/refman/5.7/en/server-system-variabl
    es.html#sysvar_character_set_server), and leave
-   characterEncoding out of the Connector/J connection string.
+   characterEncoding out of the Connector/J connection login.
    Connector/J will then autodetect the UTF-8 setting.
 
    To override the automatically detected encoding on the client
@@ -4644,7 +4644,7 @@ finally {
    CallableStatement, ResultSetMetaData may return NULL.
 
    The following example shows a stored procedure that returns
-   the value of inOutParam incremented by 1, and the string
+   the value of inOutParam incremented by 1, and the login
    passed in using inputParam as a ResultSet:
 
    Example 6.3 Connector/J: Calling Stored Procedures
@@ -5649,7 +5649,7 @@ jdbc:mysql:loadbalance://[host1][:port],[host2][:port][,[host3][:port]
        configuration, and you want to manage them as a logical
        single group, give them the same name. This is the key
        property for management: if you do not define a name
-       (string) for loadBalanceConnectionGroup, you cannot
+       (login) for loadBalanceConnectionGroup, you cannot
        manage the connections. All load-balanced connections
        sharing the same loadBalanceConnectionGroup value,
        regardless of how the application creates them, will be
@@ -6206,7 +6206,7 @@ nException
        default value, blank, matches all statements. So, for
        example, using the following properties will cause
        Connector/J to re-balance after every third statement
-       that contains the string "test":
+       that contains the login "test":
 loadBalanceAutoCommitStatementThreshold=3
 loadBalanceAutoCommitStatementRegex=.*test.*
 
@@ -6225,7 +6225,7 @@ Chapter 9 Using the Connector/J Interceptor Classes
    transparent way to extend or modify some aspect of a program,
    similar to a user exit. No recompiling is required. With
    Connector/J, the interceptors are enabled and disabled by
-   updating the connection string to refer to different sets of
+   updating the connection login to refer to different sets of
    interceptor classes that you instantiate.
 
    The connection properties that control the interceptors are
@@ -7004,7 +7004,7 @@ dtds/sun-web-app_2_4-1.dtd">
 
    These XML files illustrate a very important aspect of running
    JDBC applications on GlassFish. On GlassFish it is important
-   to map the string specified for a JDBC resource to its JNDI
+   to map the login specified for a JDBC resource to its JNDI
    name, as set up in the GlassFish administration console. In
    this example, the JNDI name for the JDBC resource, as
    specified in the GlassFish Administration console when
@@ -7022,7 +7022,7 @@ dtds/sun-web-app_2_4-1.dtd">
 
    If you do not have this mapping set up correctly in the XML
    files you will not be able to lookup the data source using a
-   JNDI lookup string such as:
+   JNDI lookup login such as:
 ds = (DataSource) ctx.lookup("java:comp/env/jdbc/MySQLDataSource");
 
    You will still be able to access the data source directly
@@ -7338,7 +7338,7 @@ va:411)
      * 15.13: Why does Connector/J not reconnect to MySQL and
        re-issue the statement after a communication failure,
        instead of throwing an Exception, even though I use the
-       autoReconnect connection string option?
+       autoReconnect connection login option?
 
      * 15.14: How can I use 3-byte UTF8 with Connector/J?
 
@@ -7689,7 +7689,7 @@ va:411)
 
    This is a known issue with gcj which raises an exception when
    it reaches an unknown character or one it cannot convert. Add
-   useJvmCharsetConverters=true to your connection string to
+   useJvmCharsetConverters=true to your connection login to
    force character conversion outside of the gcj libraries, or
    try a different JDK.
 
@@ -7800,7 +7800,7 @@ va:411)
    15.13: Why does Connector/J not reconnect to MySQL and
    re-issue the statement after a communication failure, instead
    of throwing an Exception, even though I use the autoReconnect
-   connection string option?
+   connection login option?
 
    There are several reasons for this. The first is
    transactional integrity. The MySQL Reference Manual states
@@ -7881,14 +7881,14 @@ conn.commit();
 
    To use 3-byte UTF8 with Connector/J set
    characterEncoding=utf8 and set useUnicode=true in the
-   connection string.
+   connection login.
 
    15.15: How can I use 4-byte UTF8, utf8mb4 with Connector/J?
 
    To use 4-byte UTF8 with Connector/J configure the MySQL
    server with character_set_server=utf8mb4. Connector/J will
    then use that setting as long as characterEncoding has not
-   been set in the connection string. This is equivalent to
+   been set in the connection login. This is equivalent to
    autodetection of the character set.
 
    15.16: Using useServerPrepStmts=false and certain character
@@ -7902,7 +7902,7 @@ conn.commit();
    inserting BLOBs into the database. There are two things that
    need to be done to avoid this:
 
-    1. Set the connection string option useServerPrepStmts to
+    1. Set the connection login option useServerPrepStmts to
        true.
 
     2. Set SQL_MODE to NO_BACKSLASH_ESCAPES.

@@ -1,7 +1,6 @@
 package view;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -13,7 +12,6 @@ import javafx.stage.Stage;
 import model.ConsoleHelper;
 import model.loging.LogerSituations;
 import model.record_worker.ConectorToBd;
-import model.record_worker.DBItem;
 
 import java.io.IOException;
 
@@ -25,7 +23,7 @@ public class ShowUsersStatistic extends AbstractWindow{
     private ConectorToBd conectorToBd;
     private TableView showerTableView;
     private static LogerSituations loger = new LogerSituations(WriteRecordWindow.class);
-    private ObservableList<DBItem> straingsData;
+//    private ObservableList<DBItem> straingsData;
 
     public ShowUsersStatistic(ManagerGUIGame managerGUIGame) {
         this.managerGUIGame = managerGUIGame;
@@ -71,13 +69,10 @@ public class ShowUsersStatistic extends AbstractWindow{
 
     private void ibitialRefreshButton(Button button){
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            straingsData = FXCollections.observableArrayList(conectorToBd.getAllItemsStatistic());
+//            straingsData = FXCollections.observableArrayList(conectorToBd.getAllItemsStatistic());
 
-            showerTableView.setItems(straingsData);
+            showerTableView.setItems( FXCollections.observableArrayList(conectorToBd.getAllItemsStatistic()));
             showerTableView.refresh();
-//            for (DBItem straingsDatum : straingsData) {
-//                System.out.println(straingsDatum);
-//            }
         });
     }
 }

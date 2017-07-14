@@ -62,7 +62,7 @@ public class IntGUIExamplesWorker extends AbstractGUIWorker{
             }
 
             managerGUIGame.appendString(list.get(i));
-            String rSuserAnswer = managerGUIGame.getStringNumber();//getString();
+            String rSuserAnswer = managerGUIGame.getStringNumber();//getLogin();
             if ("EXIT".equals(rSuserAnswer)) {
                 return endResalt(points, startDate, new Date());
             }

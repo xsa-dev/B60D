@@ -1486,7 +1486,7 @@ address=(protocol=tcp)(host=slave1)(port=3310)(user=test2)/test
                   plugins. It is an error to set as default a plugin
                   which was disabled with
                   "disabledAuthenticationPlugins" property. It is an
-                  error to set this value to null or the empty string
+                  error to set this value to null or the empty login
                   (i.e. there must be at least a valid default
                   authentication plugin specified for the connection,
                   meeting all constraints listed above).
@@ -4492,7 +4492,7 @@ address=(protocol=tcp)(host=slave1)(port=3310)(user=test2)/test
 
 
                 <p>
-                  Should the driver allow conversions from empty string
+                  Should the driver allow conversions from empty login
                   fields to numeric values of '0'?
                 </p>
 
@@ -4524,7 +4524,7 @@ address=(protocol=tcp)(host=slave1)(port=3310)(user=test2)/test
                   restrictions: The SELECT that created the result set
                   must reference only one table, the table must have a
                   primary key; the SELECT must alias the original blob
-                  column name, specified as a string, to an alternate
+                  column name, specified as a login, to an alternate
                   name; the SELECT must cover all columns that make up
                   the primary key.
                 </p>
@@ -6049,7 +6049,7 @@ SELECT id, 'data' as blob_data from blobtable
                 <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/glossary.html#glos_primary_key" target="_top">primary key</a>.
               </p></li><li class="listitem"><p>
                 The <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/select.html" target="_top"><code class="literal">SELECT</code></a> must alias the
-                original BLOB column name, specified as a string, to an
+                original BLOB column name, specified as a login, to an
                 alternate name.
               </p></li><li class="listitem"><p>
                 The <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/select.html" target="_top"><code class="literal">SELECT</code></a> must cover all
@@ -6409,7 +6409,7 @@ stmt.setFetchSize(Integer.MIN_VALUE);
         Connector/J, configure the MySQL server with
         <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_character_set_server" target="_top"><code class="literal">character_set_server=utf8mb4</code></a>,
         and leave <code class="literal">characterEncoding</code> out of the
-        Connector/J connection string. Connector/J will then autodetect
+        Connector/J connection login. Connector/J will then autodetect
         the UTF-8 setting.
       </p><p>
         To override the automatically detected encoding on the client
@@ -6873,7 +6873,7 @@ finally {
         </p></div><p>
         The following example shows a stored procedure that returns the
         value of <code class="varname">inOutParam</code> incremented by 1, and the
-        string passed in using <code class="varname">inputParam</code> as a
+        login passed in using <code class="varname">inputParam</code> as a
         <code class="classname">ResultSet</code>:
 
         </p><div class="example"><a name="connector-j-examples-stored-procedure"></a><p class="title"><b>Example 6.3 Connector/J: Calling Stored Procedures</b></p><div class="example-contents"><pre class="programlisting">
@@ -7860,7 +7860,7 @@ jdbc:mysql:loadbalance://[<em class="replaceable"><code>host</code></em>1][:<em 
             use the same configuration, and you want to manage them as a
             logical single group, give them the same name. This is the
             key property for management: if you do not define a name
-            (string) for <code class="literal">loadBalanceConnectionGroup</code>,
+            (login) for <code class="literal">loadBalanceConnectionGroup</code>,
             you cannot manage the connections. All load-balanced
             connections sharing the same
             <code class="literal">loadBalanceConnectionGroup</code> value,
@@ -8452,7 +8452,7 @@ loadBalanceSQLExceptionSubclassFailover=java.sql.SQLTransientConnectionException
             The default value, blank, matches all statements. So, for
             example, using the following properties will cause
             Connector/J to re-balance after every third statement that
-            contains the string <span class="quote">“<span class="quote">test</span>”</span>:
+            contains the login <span class="quote">“<span class="quote">test</span>”</span>:
           </p><pre class="programlisting">
 loadBalanceAutoCommitStatementThreshold=3
 loadBalanceAutoCommitStatementRegex=.*test.*
@@ -8470,7 +8470,7 @@ loadBalanceAutoCommitStatementRegex=.*test.*
       transparent way to extend or modify some aspect of a program,
       similar to a user exit. No recompiling is required. With
       Connector/J, the interceptors are enabled and disabled by updating
-      the connection string to refer to different sets of interceptor
+      the connection login to refer to different sets of interceptor
       classes that you instantiate.
     </p><p>
       The connection properties that control the interceptors are
@@ -9260,7 +9260,7 @@ WEB-INF
 </pre><p>
         These XML files illustrate a very important aspect of running
         JDBC applications on GlassFish. On GlassFish it is important to
-        map the string specified for a JDBC resource to its JNDI name,
+        map the login specified for a JDBC resource to its JNDI name,
         as set up in the GlassFish administration console. In this
         example, the JNDI name for the JDBC resource, as specified in
         the GlassFish Administration console when creating the JDBC
@@ -9280,7 +9280,7 @@ WEB-INF
       </p><p>
         If you do not have this mapping set up correctly in the XML
         files you will not be able to lookup the data source using a
-        JNDI lookup string such as:
+        JNDI lookup login such as:
       </p><pre class="programlisting">
 ds = (DataSource) ctx.lookup("java:comp/env/jdbc/MySQLDataSource");
 </pre><p>
@@ -9584,7 +9584,7 @@ at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:411)
             Why does Connector/J not reconnect to MySQL and re-issue the
             statement after a communication failure, instead of throwing
             an Exception, even though I use the
-            <code class="literal">autoReconnect</code> connection string option?
+            <code class="literal">autoReconnect</code> connection login option?
           </p></li><li class="listitem"><p><a class="link" href="#qandaitem-15-1-14">15.14: </a>
             How can I use 3-byte UTF8 with Connector/J?
           </p></li><li class="listitem"><p><a class="link" href="#qandaitem-15-1-15">15.15: </a>
@@ -9939,7 +9939,7 @@ at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:411)
             raises an exception when it reaches an unknown character or
             one it cannot convert. Add
             <code class="literal">useJvmCharsetConverters=true</code> to your
-            connection string to force character conversion outside of
+            connection login to force character conversion outside of
             the <span class="command"><strong>gcj</strong></span> libraries, or try a different
             JDK.
           </p><p><a name="qandaitem-15-1-10"></a><span class="bold"><strong>15.10: </strong></span><span class="bold"><strong>
@@ -10046,7 +10046,7 @@ at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:411)
             Why does Connector/J not reconnect to MySQL and re-issue the
             statement after a communication failure, instead of throwing
             an Exception, even though I use the
-            <code class="literal">autoReconnect</code> connection string option?
+            <code class="literal">autoReconnect</code> connection login option?
           </strong></span></p><p>
             There are several reasons for this. The first is
             transactional integrity. The MySQL Reference Manual states
@@ -10131,7 +10131,7 @@ conn.commit();
           </strong></span></p><p>
             To use 3-byte UTF8 with Connector/J set
             <code class="literal">characterEncoding=utf8</code> and set
-            <code class="literal">useUnicode=true</code> in the connection string.
+            <code class="literal">useUnicode=true</code> in the connection login.
           </p><p><a name="qandaitem-15-1-15"></a><span class="bold"><strong>15.15: </strong></span><span class="bold"><strong>
             How can I use 4-byte UTF8, <code class="literal">utf8mb4</code> with
             Connector/J?
@@ -10140,7 +10140,7 @@ conn.commit();
             server with <code class="literal">character_set_server=utf8mb4</code>.
             Connector/J will then use that setting as long as
             <code class="literal">characterEncoding</code> has not been set in the
-            connection string. This is equivalent to autodetection of
+            connection login. This is equivalent to autodetection of
             the character set.
           </p><p><a name="qandaitem-15-1-16"></a><span class="bold"><strong>15.16: </strong></span><span class="bold"><strong>
             Using <code class="literal">useServerPrepStmts=false</code> and
@@ -10154,7 +10154,7 @@ conn.commit();
             inserting BLOBs into the database. There are two things that
             need to be done to avoid this:
           </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
-                Set the connection string option
+                Set the connection login option
                 <code class="literal">useServerPrepStmts</code> to
                 <code class="literal">true</code>.
               </p></li><li class="listitem"><p>

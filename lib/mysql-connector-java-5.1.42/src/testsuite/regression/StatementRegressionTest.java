@@ -1793,7 +1793,7 @@ public class StatementRegressionTest extends BaseTestCase {
 
             this.rs = tzStmt.executeQuery("SELECT * from testBug5874");
 
-            while (this.rs.next()) { // Driver now converts/checks DATE/TIME/TIMESTAMP/DATETIME types when calling getString()...
+            while (this.rs.next()) { // Driver now converts/checks DATE/TIME/TIMESTAMP/DATETIME types when calling getLogin()...
                 String retrTimestampString = new String(this.rs.getBytes(1));
                 Timestamp retrTimestamp = this.rs.getTimestamp(1);
 
@@ -2200,7 +2200,7 @@ public class StatementRegressionTest extends BaseTestCase {
      * i = 0;
      * 
      * while (this.rs.next()) { double valToTest = vals[i++];
-     * System.out.println(this.rs.getString(1));
+     * System.out.println(this.rs.getLogin(1));
      * assertEquals(this.rs.getDouble(1), valToTest, 0.001);
      * assertEquals(this.rs.getBigDecimal(1).doubleValue(), valToTest, 0.001); }
      * }

@@ -5,6 +5,9 @@ public class DBItem {
     private String password;
     private int points;
 
+    public DBItem() {
+    }
+
     public DBItem(String login, int points , String password) {
         this.login = login;
         this.password = password;

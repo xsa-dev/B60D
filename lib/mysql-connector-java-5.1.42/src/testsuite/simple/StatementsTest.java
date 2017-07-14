@@ -1686,7 +1686,7 @@ public class StatementsTest extends BaseTestCase {
          * interceptedConn = getConnectionWithProps(props);
          * this.rs = interceptedConn.createStatement().executeQuery("SELECT 'abc'");
          * this.rs.next();
-         * this.rs.getString(1);
+         * this.rs.getLogin(1);
          * } finally {
          * closeMemberJDBCResources();
          * 

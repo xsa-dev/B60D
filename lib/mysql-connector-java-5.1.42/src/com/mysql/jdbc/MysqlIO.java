@@ -1147,7 +1147,7 @@ public class MysqlIO {
                     // TODO: disabled the following check for further clarification
                     //         			if (this.authPluginDataLength < 21) {
                     //                      forceClose();
-                    //                      throw SQLError.createSQLException(Messages.getString("MysqlIO.103"), 
+                    //                      throw SQLError.createSQLException(Messages.getLogin("MysqlIO.103"),
                     //                          SQLError.SQL_STATE_UNABLE_TO_CONNECT_TO_DATASOURCE, getExceptionInterceptor());
                     //         			}
                     seedPart2 = buf.readString("ASCII", getExceptionInterceptor(), this.authPluginDataLength - 8);
@@ -2353,7 +2353,7 @@ public class MysqlIO {
         if (serverHasMoreResults && streamResults) {
             //clearInputStream();
             //
-            //throw SQLError.createSQLException(Messages.getString("MysqlIO.23"), 
+            //throw SQLError.createSQLException(Messages.getLogin("MysqlIO.23"),
             //SQLError.SQL_STATE_DRIVER_NOT_CAPABLE);
             if (topLevelResultSet.getUpdateCount() != -1) {
                 tackOnMoreStreamingResults(topLevelResultSet);
