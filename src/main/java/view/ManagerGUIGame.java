@@ -15,7 +15,7 @@ import model.workers.AbstractGUIWorker;
  * Created by Administrator1 on 24.05.2017.
  */
 public class ManagerGUIGame extends Application {
-    private static ManagerGUIGame managerGUIGame;
+    private static volatile ManagerGUIGame managerGUIGame;
     private GameWindowAbstract gameWindow;
     private AbstractWindow writeRecordWindow;
     private AbstractGUIWorker textGUIExamples;
