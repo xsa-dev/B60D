@@ -1,4 +1,4 @@
-package view;
+package ru.b60d.view;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -7,11 +7,13 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.ConsoleHelper;
-import model.users.ManagerUserSetings;
+import org.springframework.stereotype.Component;
+import ru.b60d.model.ConsoleHelper;
+import ru.b60d.model.users.ManagerUserSetings;
 
 import java.io.IOException;
 
+@Component
 public class WindowManagerLevels extends AbstractWindow {
     private int selectedLevel = 1;
     private ManagerGUIGame managerGUIGame;
@@ -20,9 +22,20 @@ public class WindowManagerLevels extends AbstractWindow {
     private Pane thisPane;
     private ManagerUserSetings managerUserSetings;
 
-    public WindowManagerLevels(ManagerGUIGame managerGUIGame) {
-        this.managerGUIGame = managerGUIGame;
-        managerUserSetings = managerGUIGame.getManagerUserSetings();
+    public WindowManagerLevels() {
+        managerGUIGame = ManagerGUIGame.getManagerGUIGame();
+    }
+
+    public WindowManagerLevels(ManagerGUIGame managerGUI) {
+        this.managerGUIGame = ManagerGUIGame.getManagerGUIGame();
+        managerUserSetings = ManagerGUIGame.getManagerUserSetings();
+        selectedLevel = Integer.parseInt(managerUserSetings.getSeting("setings.level"));
+    }
+
+    @Override
+    protected void initial() {
+        managerUserSetings = ManagerGUIGame.getManagerUserSetings();
+        System.out.println(managerUserSetings);
         selectedLevel = Integer.parseInt(managerUserSetings.getSeting("setings.level"));
     }
 
@@ -62,7 +75,7 @@ public class WindowManagerLevels extends AbstractWindow {
             );
         } else if ("BACKButton".equals(buttonId)) {
             button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent ->
-                    theStage.setScene(managerGUIGame.getStartScene()));
+                    theStage.setScene(ManagerGUIGame.getStartScene()));
         }
     }
 

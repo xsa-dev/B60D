@@ -1,6 +1,5 @@
-package view;
+package ru.b60d.view;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -10,16 +9,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.ConsoleHelper;
-import model.record_worker.ConectorToBd;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import ru.b60d.controllers.Controller;
+import ru.b60d.model.ConsoleHelper;
+import ru.b60d.model.loging.LogerSituations;
+import ru.b60d.model.record_worker.ConectorToBd;
 
 import java.io.IOException;
 
-/**
- * Created by Administrator1 on 25.05.2017.
- */
-public class WriteRecordWindow {
-    private Pane writerPane;
+@Component
+public class WriteRecordWindow extends AbstractWindow{
+    private Pane pane;
     private Label label;
     private Scene writerScene;
     private String login = "";
@@ -29,30 +30,35 @@ public class WriteRecordWindow {
     private ConectorToBd conectorToBd;
     private TextField loginTextField;
     private TextField passwordTextField;
+    private static LogerSituations loger = new LogerSituations(WriteRecordWindow.class);
 
-    public WriteRecordWindow(ManagerGUIGame managerGUIGame) {
-        this.managerGUIGame = managerGUIGame;
+    public WriteRecordWindow() {
+        managerGUIGame = ManagerGUIGame.getManagerGUIGame();
+    }
+
+    public void initial(){
+        conectorToBd = (ConectorToBd) Controller.applicationContext.getBean("conectorToBd");
+    }
+
+    @Autowired
+    public WriteRecordWindow(ManagerGUIGame managerGUI) {
+        this.managerGUIGame = managerGUI;
         conectorToBd = managerGUIGame.getConectorToBd();
     }
 
 
-    public Scene createWriterToDBScene(Stage theStage) {
+    public Scene createScene(Stage theStage) {
+        initial();
         this.theStage = theStage;
         try {
-            writerPane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML("WriteRecordWindowFXML"));
+            pane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML1("WriteRecordWindowFXML"));
         } catch (IOException e) {
-            e.printStackTrace();
+            loger.logError(e);
         }
-        initialElements();
+        initialElementsOrPanes(pane);
 
-        writerScene = new Scene(writerPane, 600, 400);
+        writerScene = new Scene(pane, 600, 400);
         return writerScene;
-    }
-
-    private void initialElements() {
-        for (Node node : writerPane.getChildren()) {
-            initialStartElements(node);
-        }
     }
 
     private void initialStartElements(Node element) {
@@ -85,6 +91,10 @@ public class WriteRecordWindow {
                     break;
                 case "buttonBackToGame":
                     initialBackToGameButton(button);
+                    break;
+                case "showRecords":
+                    initialButtonShowStatistic(button);
+                    break;
             }
         }
         if (element instanceof Label) {
@@ -93,10 +103,17 @@ public class WriteRecordWindow {
         }
     }
 
-    private void initialBackToGameButton(Button button) {
+    private void initialButtonShowStatistic(Button button) {
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            theStage.setScene(ManagerGUIGame.getStatisticScene());
+        });
+    }
+
+    private void initialBackToGameButton(Button button) {
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {//change handling
             closeConetion();
-            theStage.setScene(managerGUIGame.getGameScene());
+            theStage.setScene(ManagerGUIGame.getGameScene());
+            System.out.println("back to game");
         });
     }
 
@@ -105,7 +122,7 @@ public class WriteRecordWindow {
             if (!"".equals(password) && !"".equals(login)) {
                 if (conectorToBd.logIn(login, password)) {
                     System.out.println(conectorToBd.getConnection());
-                    conectorToBd.writeRecords(managerGUIGame.getTextGUIExamples().getResalt());
+                    conectorToBd.writeRecords(ManagerGUIGame.getTextGUIExamples().getResalt());
                     suchesfullConect();
                 }
             }
@@ -122,24 +139,20 @@ public class WriteRecordWindow {
     }
 
     private void initialButtonSignUp(Button button) {
-        button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if (!"".equals(password) && !"".equals(login)) {
-                    if (conectorToBd.signUp(login, password)) {
-                        conectorToBd.writeRecords(managerGUIGame.getTextGUIExamples().getResalt());
-                        suchesfullConect();//                        closeConetion();
-                    }
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            if (!"".equals(password) && !"".equals(login)) {
+                if (conectorToBd.signUp(login, password)) {
+                    conectorToBd.writeRecords(ManagerGUIGame.getTextGUIExamples().getResalt());
+                    suchesfullConect();
                 }
             }
         });
     }
 
-    public ConectorToBd getConectorToBd() {
-        return conectorToBd;
-    }
-
-    public void setConectorToBd(ConectorToBd conectorToBd) {
-        this.conectorToBd = conectorToBd;
+    @Override
+    protected void initialElements(Node element) {
+        for (Node node : pane.getChildren()) {
+            initialStartElements(node);
+        }
     }
 }

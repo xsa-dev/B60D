@@ -29,7 +29,7 @@ This distribution may include materials developed by third
 parties. For license and attribution notices for these
 materials, please refer to the documentation that accompanies
 this distribution (see the "Licenses for Third-Party Components"
-appendix) or view the online documentation at 
+appendix) or ru.b60d.view the online documentation at
 <http://dev.mysql.com/doc/>
 A copy of the license/notices is also reproduced below.
 
@@ -85,7 +85,7 @@ the version number 2.1.]
  The licenses for most software are designed to take away your
 freedom to share and change it.  By contrast, the GNU General Public
 Licenses are intended to guarantee your freedom to share and change
-free software--to make sure the software is free for all its model.users.
+free software--to make sure the software is free for all its ru.b60d.model.users.
 
  This license, the Lesser General Public License, applies to some
 specially designated software packages--typically libraries--of the
@@ -128,7 +128,7 @@ introduced by others.
 
  Finally, software patents pose a constant threat to the existence of
 any free program.  We wish to make sure that a company cannot
-effectively restrict the model.users of a free program by obtaining a
+effectively restrict the ru.b60d.model.users of a free program by obtaining a
 restrictive license from a patent holder.  Therefore, we insist that
 any patent license obtained for a version of the library must be
 consistent with the full freedom of use specified in this license.
@@ -172,7 +172,7 @@ operating system, as well as its variant, the GNU/Linux operating
 system.
 
  Although the Lesser General Public License is Less protective of the
-model.users' freedom, it does ensure that the user of a program that is
+ru.b60d.model.users' freedom, it does ensure that the user of a program that is
 linked with the Library has the freedom and the wherewithal to run
 that program using a modified version of the Library.
 
@@ -598,7 +598,7 @@ Licenses are intended to guarantee your freedom to share and change
 
 18      
 
-free software--to make sure the software is free for all its model.users.
+free software--to make sure the software is free for all its ru.b60d.model.users.
 
 19      
 
@@ -758,7 +758,7 @@ any free program.  We wish to make sure that a company cannot
 
 61      
 
-effectively restrict the model.users of a free program by obtaining a
+effectively restrict the ru.b60d.model.users of a free program by obtaining a
 
 62      
 
@@ -922,7 +922,7 @@ system.
 
 105         
 
-model.users' freedom, it does ensure that the user of a program that is
+ru.b60d.model.users' freedom, it does ensure that the user of a program that is
 
 106         
 

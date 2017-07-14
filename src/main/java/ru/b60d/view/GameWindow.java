@@ -1,9 +1,5 @@
-package view;
+package ru.b60d.view;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -13,45 +9,53 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.ConsoleHelper;
+import org.springframework.stereotype.Component;
+import ru.b60d.model.ConsoleHelper;
+import ru.b60d.model.loging.LogerSituations;
 
 import java.io.IOException;
 
-
-/**
- * Created by Administrator1 on 24.05.2017.
- */
-public class GameWindow extends AbstractWindow{
+@Component
+public class GameWindow extends GameWindowAbstract{
     private volatile TextArea outTextArea;
     private TextField inTextField;
     private String ansver = "";
     private boolean writeRecord = false;
 
-    private Pane gamePane;
+    private Pane pane;
     private Scene gameScene;
     private Stage theStage;
     private ManagerGUIGame managerGUIGame;
+    private static LogerSituations loger = new LogerSituations(GameWindow.class);
 
-    public GameWindow(ManagerGUIGame managerGUIGame) {
-        this.managerGUIGame = managerGUIGame;
+    public GameWindow() {
+        managerGUIGame = ManagerGUIGame.getManagerGUIGame();
     }
 
-    public Scene createGameScene(Stage theStage){
+    public GameWindow(ManagerGUIGame managerGUI) {
+        this.managerGUIGame = managerGUI;
+    }
+
+    public Scene createScene(Stage theStage){
         this.theStage = theStage;
         try {
-            gamePane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML("WindowGameTextFXML"));
+            pane = FXMLLoader.load(ConsoleHelper.getParentPathFileFXML1("WindowGameTextFXML"));
         } catch (IOException e) {
-            e.printStackTrace();
+            loger.logError(e);
         }
 
-        initialElementsOrPanes(gamePane);
+        initialElementsOrPanes(pane);
 
-        return gameScene = new Scene(gamePane, 600, 500);
+        return gameScene = new Scene(pane, 600, 500);
+    }
+
+    @Override
+    protected void initial() {
+
     }
 
     public void appendString(String message) {
         outTextArea.appendText(message + "\n");
-//        outTextArea.setScrollTop(message.length() + 2); //this will scroll to the bottom
     }
 
     public void clesrOutTextArea(){
@@ -67,7 +71,7 @@ public class GameWindow extends AbstractWindow{
             try {
                 Thread.sleep(600);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                loger.logError(e);
             }
         }
         String res = ansver;
@@ -91,40 +95,35 @@ public class GameWindow extends AbstractWindow{
     }
 
     private void initialBattonRecord(Button button) {
-        button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                managerGUIGame.getTextGUIExamples().endGame();
-                System.out.println(theStage);
-                managerGUIGame.createWriteRecordScene();
-                theStage.setScene(managerGUIGame.getWriteRecordScene());
-                writeRecord = true;
-            }
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            ManagerGUIGame.getTextGUIExamples().endGame();
+            theStage.setScene(ManagerGUIGame.getWriteRecordScene());
+            writeRecord = true;
         });
     }
 
     private void initialTableView(TextArea node) {
         outTextArea = node;
 
-        outTextArea.textProperty().addListener(new ChangeListener<Object>() {
-            @Override
-            public void changed(ObservableValue<?> observable, Object oldValue,
-                                Object newValue) {
-                outTextArea.setScrollTop(Double.MAX_VALUE);
-            }
-        });
+        outTextArea.textProperty().addListener((observable, oldValue, newValue) ->
+                outTextArea.setScrollTop(Double.MAX_VALUE)
+        );
     }
 
     private void initialTextField(TextField node) {
         inTextField = node;
-        inTextField.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(javafx.event.ActionEvent event) {
-                ansver = inTextField.getText();
-                inTextField.clear();
-            }
+        inTextField.setOnAction(event -> {
+            ansver = inTextField.getText();
+            inTextField.clear();
         });
         inTextField.requestFocus();
     }
 
+    public ManagerGUIGame getManagerGUIGame() {
+        return managerGUIGame;
+    }
+
+    public void setManagerGUIGame(ManagerGUIGame managerGUIGame) {
+        this.managerGUIGame = managerGUIGame;
+    }
 }

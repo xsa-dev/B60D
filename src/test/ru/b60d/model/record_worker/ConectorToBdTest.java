@@ -1,4 +1,4 @@
-package model.record_worker;
+package ru.b60d.model.record_worker;
 
 import org.junit.Ignore;
 import org.junit.Test;
